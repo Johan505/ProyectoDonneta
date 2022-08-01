@@ -11,29 +11,27 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <title>Venta</title>
+    <title>Empleado</title>
 </head>
 <body>
+    <div class="container-fluid">
+         <p th:text="${msn}"></p>       
+    </div>
+    <script>
 
-      <table class="table table-hover table-bordered border-dark" id="datat">
-        <thead>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Estado</th>
-        </thead>
-        <tbody>
-                <td th:text="${genero.id}"></td>
-                <td th:text="${genero.nombre}"></td>
-                <td th:if="${genero.estado==true}"> 
-                    <span class="badge bg-success active">Activo</span> 
-                </td> 
-                <td th:if="${genero.estado==false}"> 
-                    <span class="badge bg-danger active">Inactivo</span> 
-                </td> 
-            </tr>
-        </tbody>
-    </table>
-    
+        var datat=document.querySelector("#datat"); 
+        var dataTable=new DataTable("#datat",{ 
+          perPage:10,
+          labels: {
+              placeholder: "Busca por un campo...",
+              perPage: "{select} registros por página",
+              noRows: "No se encontraron registros",
+              info: "Mostrando {start} a {end} de {rows} registros",
+          }
+        } ) ;
+        
+        
+        </script>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>

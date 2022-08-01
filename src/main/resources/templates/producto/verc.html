@@ -18,12 +18,19 @@
       <table class="table table-hover table-bordered border-dark" id="datat">
         <thead>
             <th>Id</th>
+            <th>Marca</th>
             <th>Nombre</th>
-            <th>Estado</th>
+            <th>Cantidad</th>
+            <th>precio</th>
+            <th>Categoria</th>
         </thead>
         <tbody>
-                <td th:text="${genero.id}"></td>
-                <td th:text="${genero.nombre}"></td>
+                <td th:text="${producto.idProducto}"></td>
+                <td th:text="${producto.marca}"></td>
+                <td th:text="${producto.nombre}"></td>
+                <td th:text="${producto.cantidad}"></td>
+                <td th:text="${producto.precio}"></td>
+                <td th:text="${producto.categoria.nombre}"></td>
                 <td th:if="${genero.estado==true}"> 
                     <span class="badge bg-success active">Activo</span> 
                 </td> 

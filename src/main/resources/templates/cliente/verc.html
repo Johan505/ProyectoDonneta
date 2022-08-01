@@ -11,29 +11,28 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <title>Venta</title>
+    <title>Cliente</title>
 </head>
 <body>
-
-      <table class="table table-hover table-bordered border-dark" id="datat">
-        <thead>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Estado</th>
-        </thead>
-        <tbody>
-                <td th:text="${genero.id}"></td>
-                <td th:text="${genero.nombre}"></td>
-                <td th:if="${genero.estado==true}"> 
-                    <span class="badge bg-success active">Activo</span> 
-                </td> 
-                <td th:if="${genero.estado==false}"> 
-                    <span class="badge bg-danger active">Inactivo</span> 
-                </td> 
-            </tr>
-        </tbody>
-    </table>
-    
+   <center><a role="button" class="btn btn-secondary btn-sm" th:href="@{/cliente/listar/}"> 
+        <i class="bi bi">Volver a Clientes</i>
+        </a> 
+    </td>
+    </center> <br> 
+    <div class="container-fluid">
+        <p th:text="${cliente.idCliente}"></p>
+        <p th:text="${cliente.tipoDocumento}"></p>
+        <p th:text="${cliente.noDocumento}"></p>
+        <p th:text="${cliente.nombre}"></p>
+        <p th:text="${cliente.apellido}"></p>
+        <p th:text="${cliente.telefono}"></p>
+        <p th:text="${cliente.direccion}"></p>
+        <p th:text="${cliente.email}"></p>
+        
+        <p th:text="${cliente.estado}"></p>
+        <span class="badge bg-success active" th:if="${cliente.estado==true}">Activo</span>
+        <span class="badge bg-danger active" th:if="${cliente.estado==false}">Inactivo</span>
+    </div> 
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>

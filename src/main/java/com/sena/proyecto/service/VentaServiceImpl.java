@@ -25,14 +25,14 @@ public class VentaServiceImpl implements IVentaService{
     }
 
     @Override
-    public Venta findOne(Integer id) {
+    public Venta findOne(Integer idVenta) {
         
-        return ventad.findById(id).orElse(null);
+        return ventad.findById(idVenta).orElse(null);
     }
 
     @Override
-    public void delete(Integer id) {
-        ventad.deleteById(id);
+    public void delete(Integer idVenta) {
+        ventad.deleteById(idVenta);
         
     }
  
