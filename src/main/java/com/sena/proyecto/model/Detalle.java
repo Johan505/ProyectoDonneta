@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -23,18 +25,23 @@ public class Detalle {
     private Integer cantidadVenta;
 
 
-    @OneToMany(mappedBy = "detalle", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Venta> venta;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="idVentaFK", nullable = false) 
+    private Venta venta;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="idProductoFK", nullable = false) 
+    private Producto producto;
 
     //Constructores
     public Detalle() {
-        venta=new ArrayList<Venta>();
     }
 
-    public Detalle(Integer idDetalle, Integer cantidadVenta, List<Venta> venta) {
+    public Detalle(Integer idDetalle, Integer cantidadVenta, Venta venta, Producto producto) {
         this.idDetalle = idDetalle;
         this.cantidadVenta = cantidadVenta;
         this.venta = venta;
+        this.producto = producto;
     }
 
     public Integer getIdDetalle() {
@@ -53,12 +60,22 @@ public class Detalle {
         this.cantidadVenta = cantidadVenta;
     }
 
-    public List<Venta> getVenta() {
+    public Venta getVenta() {
         return venta;
     }
 
-    public void setVenta(List<Venta> venta) {
+    public void setVenta(Venta venta) {
         this.venta = venta;
     }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+    
 
 }

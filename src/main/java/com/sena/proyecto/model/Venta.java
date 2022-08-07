@@ -1,7 +1,10 @@
 package com.sena.proyecto.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -9,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,9 +35,6 @@ public class Venta {
     
     private Integer valorTotal;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="idDetalleFK", nullable = false) 
-    private Detalle detalle;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="idClienteFK", nullable = false) 
@@ -43,22 +44,27 @@ public class Venta {
     @JoinColumn(name="idEmpleadoFK", nullable = false) 
     private Empleado empleado;
 
+    @OneToMany(mappedBy = "venta", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Detalle> detalle;
+
 
     //Constructores
-    
+
+
     public Venta() {
+        detalle=new ArrayList<Detalle>();
     }
 
 
-    public Venta(Integer idVenta, Date fechaVenta, Integer subTotal, Integer valorTotal, Detalle detalle,
-            Cliente cliente, Empleado empleado) {
+    public Venta(Integer idVenta, Date fechaVenta, Integer subTotal, Integer valorTotal, Cliente cliente,
+            Empleado empleado, List<Detalle> detalle) {
         this.idVenta = idVenta;
         this.fechaVenta = fechaVenta;
         this.subTotal = subTotal;
         this.valorTotal = valorTotal;
-        this.detalle = detalle;
         this.cliente = cliente;
         this.empleado = empleado;
+        this.detalle = detalle;
     }
 
 
@@ -102,16 +108,6 @@ public class Venta {
     }
 
 
-    public Detalle getDetalle() {
-        return detalle;
-    }
-
-
-    public void setDetalle(Detalle detalle) {
-        this.detalle = detalle;
-    }
-
-
     public Cliente getCliente() {
         return cliente;
     }
@@ -132,7 +128,16 @@ public class Venta {
     }
 
 
-    
+    public List<Detalle> getDetalle() {
+        return detalle;
+    }
+
+
+    public void setDetalle(List<Detalle> detalle) {
+        this.detalle = detalle;
+    }
+
+
     
 
 }
