@@ -5,9 +5,13 @@ import java.util.List;
 import javax.validation.Valid;
 
 import com.sena.proyecto.model.Venta;
+import com.sena.proyecto.model.Cliente;
 import com.sena.proyecto.model.Detalle;
+import com.sena.proyecto.model.Empleado;
 import com.sena.proyecto.service.IVentaService;
+import com.sena.proyecto.service.IClienteService;
 import com.sena.proyecto.service.IDetalleService;
+import com.sena.proyecto.service.IEmpleadoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,6 +36,12 @@ public class VentaController {
 
     @Autowired
     private IDetalleService detalled;
+
+    @Autowired
+    private IClienteService cliented;
+
+    @Autowired
+    private IEmpleadoService empleadod;
 
     
     @GetMapping(path={"/listar","","/"})
@@ -64,7 +74,12 @@ public class VentaController {
             return "redirect:listar";
         }
 
+
         List<Detalle>listade=detalled.findAll();
+        List<Cliente>listac=cliented.findAll();
+        List<Empleado>listaem=empleadod.findAll();
+        m.addAttribute("em",listaem);
+        m.addAttribute("cl", listac);
         m.addAttribute("de", listade);
         m.addAttribute("venta",venta);
         m.addAttribute("accion", "Actualizar Venta");
@@ -76,6 +91,10 @@ public class VentaController {
         Venta venta=new Venta();
 
         List<Detalle>listade=detalled.findAll();
+        List<Cliente>listac=cliented.findAll();
+        List<Empleado>listaem=empleadod.findAll();
+        m.addAttribute("em",listaem);
+        m.addAttribute("cl", listac);
         m.addAttribute("de", listade);
         m.addAttribute("venta", venta);
         m.addAttribute("accion", "Agregar Venta");

@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="detalle_venta")
@@ -17,6 +18,7 @@ public class Detalle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idDetalle;
 
+    @NotNull
     private Integer cantidadVenta;
 
 

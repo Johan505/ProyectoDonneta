@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "domiciliarios") 
@@ -15,21 +16,27 @@ public class Domiciliario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idDomiciliario;
 
+    @NotEmpty
     @Column(name="tipoDocumento", length=6)
     private String tipoDocumento;
 
+    @NotEmpty
     @Column(name="noDocumento", length=20)
     private String noDocumento;
 
+    @NotEmpty
     @Column(name="nombre", length=40)
     private String nombre;
 
+    @NotEmpty
     @Column(name="apellido", length=40)
     private String apellido;
 
+    @NotEmpty
     @Column(name="telefono", length=20)
     private String telefono;
 
+    @NotEmpty
     @Column(name="tipoTransporte", length=20)
     private String tipoTransporte;
 

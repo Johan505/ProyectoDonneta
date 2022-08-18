@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -24,18 +25,16 @@ public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idProducto;
-
-    @NotEmpty
-    @Size(min=2,max=50)
-    private String marca;
     
     @NotEmpty
     @Size(min=2,max=50)
     private String nombre;
 
-    private Integer cantidad;
+    @NotEmpty
+    @Size(min=2,max=200)
+    private String descripcion;
 
-    
+    @NotNull
     private Integer precio;
 
 
@@ -54,15 +53,15 @@ public class Producto {
     }
 
 
-    public Producto(Integer idProducto, @NotEmpty @Size(min = 2, max = 50) String marca,
-            @NotEmpty @Size(min = 2, max = 50) String nombre, @NotEmpty Integer cantidad, @NotEmpty Integer precio,
-            Categoria categoria) {
+    public Producto(Integer idProducto, @NotEmpty @Size(min = 2, max = 50) String nombre,
+            @NotEmpty @Size(min = 2, max = 200) String descripcion, @NotNull Integer precio, Categoria categoria,
+            List<Detalle> detalle) {
         this.idProducto = idProducto;
-        this.marca = marca;
         this.nombre = nombre;
-        this.cantidad = cantidad;
+        this.descripcion = descripcion;
         this.precio = precio;
         this.categoria = categoria;
+        this.detalle = detalle;
     }
 
 
@@ -76,16 +75,6 @@ public class Producto {
     }
 
 
-    public String getMarca() {
-        return marca;
-    }
-
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
-
     public String getNombre() {
         return nombre;
     }
@@ -96,13 +85,13 @@ public class Producto {
     }
 
 
-    public Integer getCantidad() {
-        return cantidad;
+    public String getDescripcion() {
+        return descripcion;
     }
 
 
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
 
@@ -126,7 +115,16 @@ public class Producto {
     }
 
 
-    
+    public List<Detalle> getDetalle() {
+        return detalle;
+    }
+
+
+    public void setDetalle(List<Detalle> detalle) {
+        this.detalle = detalle;
+    }
+
+
     
     
 }

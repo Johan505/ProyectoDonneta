@@ -17,6 +17,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -32,9 +35,15 @@ public class Venta {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaVenta;
 
+    @NotNull
     private Integer subTotal;
     
+    @NotNull
     private Integer valorTotal;
+
+    @NotEmpty
+    @Size(min=2, max=30)
+    private String estado;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -48,7 +57,7 @@ public class Venta {
     @OneToMany(mappedBy = "venta", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Detalle> detalle;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "venta") 
     private Domicilio domicilio;
 
 
@@ -60,15 +69,18 @@ public class Venta {
     }
 
 
-    public Venta(Integer idVenta, Date fechaVenta, Integer subTotal, Integer valorTotal, Cliente cliente,
-            Empleado empleado, List<Detalle> detalle) {
+    public Venta(Integer idVenta, Date fechaVenta, @NotNull Integer subTotal, @NotNull Integer valorTotal,
+            @NotEmpty @Size(min = 2, max = 30) String estado, Cliente cliente, Empleado empleado, List<Detalle> detalle,
+            Domicilio domicilio) {
         this.idVenta = idVenta;
         this.fechaVenta = fechaVenta;
         this.subTotal = subTotal;
         this.valorTotal = valorTotal;
+        this.estado = estado;
         this.cliente = cliente;
         this.empleado = empleado;
         this.detalle = detalle;
+        this.domicilio = domicilio;
     }
 
 
@@ -112,6 +124,16 @@ public class Venta {
     }
 
 
+    public String getEstado() {
+        return estado;
+    }
+
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+
     public Cliente getCliente() {
         return cliente;
     }
@@ -141,6 +163,18 @@ public class Venta {
         this.detalle = detalle;
     }
 
+
+    public Domicilio getDomicilio() {
+        return domicilio;
+    }
+
+
+    public void setDomicilio(Domicilio domicilio) {
+        this.domicilio = domicilio;
+    }
+
+
+    
 
     
 

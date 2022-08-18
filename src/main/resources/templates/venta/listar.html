@@ -29,14 +29,20 @@
                 <th>fecha</th>
                 <th>Subtotal</th>
                 <th>Valor total</th>
+                <th>Estado</th>
+                <th>Cliente</th>
+                <th>Empleado</th>
                 <th colspan="2">Acciones</th>
             </thead>
             <tbody>
                 <tr th:if="${ventas.size()>0}" th:each="c:${ventas}">
                     <td th:text="${c.idVenta}"></td>
-                    <td th:date="${c.fechaVenta}"></td>
+                    <td th:text="${c.fechaVenta}"></td>
                     <td th:text="${c.subTotal}"></td>
                     <td th:text="${c.valorTotal}"></td>
+                    <td th:text="${c.estado}"></td>
+                    <td th:text="${c.cliente.nombre}"></td>
+                    <td th:text="${c.empleado.nombre}"></td>
                         
                     <td> 
                         <a role="button" class="btn btn-info btn-sm" th:href="@{/venta/ver-venta/}+${c.idVenta}"> 

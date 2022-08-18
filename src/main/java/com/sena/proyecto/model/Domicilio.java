@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "domicilios") 
@@ -19,11 +20,11 @@ public class Domicilio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idDomicilio;
 
-    @Column(name="estadoDomicilio", length=20)
-    private String estado;
+    @NotNull
+    private Integer trayecto;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="idVentaFK", nullable = false) 
+    @OneToOne(cascade =CascadeType.ALL)
+    @JoinColumn(name="idVentaFK", referencedColumnName="idVenta") 
     private Venta venta;
     
     @OneToOne(cascade =CascadeType.ALL)
@@ -33,9 +34,9 @@ public class Domicilio {
     public Domicilio() {
     }
 
-    public Domicilio(Integer idDomicilio, String estado, Venta venta, Domiciliario domiciliario) {
+    public Domicilio(Integer idDomicilio, @NotNull Integer trayecto, Venta venta, Domiciliario domiciliario) {
         this.idDomicilio = idDomicilio;
-        this.estado = estado;
+        this.trayecto = trayecto;
         this.venta = venta;
         this.domiciliario = domiciliario;
     }
@@ -48,12 +49,12 @@ public class Domicilio {
         this.idDomicilio = idDomicilio;
     }
 
-    public String getEstado() {
-        return estado;
+    public Integer getTrayecto() {
+        return trayecto;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setTrayecto(Integer trayecto) {
+        this.trayecto = trayecto;
     }
 
     public Venta getVenta() {
@@ -72,7 +73,6 @@ public class Domicilio {
         this.domiciliario = domiciliario;
     }
 
-    
     
     
     
