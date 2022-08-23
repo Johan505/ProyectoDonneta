@@ -25,6 +25,8 @@ public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idProducto;
+
+    private String foto;
     
     @NotEmpty
     @Size(min=2,max=50)
@@ -53,10 +55,11 @@ public class Producto {
     }
 
 
-    public Producto(Integer idProducto, @NotEmpty @Size(min = 2, max = 50) String nombre,
+    public Producto(Integer idProducto, String foto, @NotEmpty @Size(min = 2, max = 50) String nombre,
             @NotEmpty @Size(min = 2, max = 200) String descripcion, @NotNull Integer precio, Categoria categoria,
             List<Detalle> detalle) {
         this.idProducto = idProducto;
+        this.foto = foto;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
@@ -72,6 +75,16 @@ public class Producto {
 
     public void setIdProducto(Integer idProducto) {
         this.idProducto = idProducto;
+    }
+
+
+    public String getFoto() {
+        return foto;
+    }
+
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
 

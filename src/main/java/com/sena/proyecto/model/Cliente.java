@@ -26,14 +26,15 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCliente;
 
+    private String foto;
+
     @NotEmpty
-    @Size(min=2,max=50)
     @Column(length = 50,nullable=false)
-    private String tipoDocumento;
+    public String tipodoc;
 
     @NotEmpty
     @Size(min=2,max=50)
-    @Column(length = 50,nullable=false)
+    @Column(length = 50,nullable=false, unique = true)
     private String noDocumento;
 
     @NotEmpty
@@ -46,7 +47,7 @@ public class Cliente {
 
     @NotEmpty
     @Email
-    @Column(length=100, nullable=false)
+    @Column(length=100, nullable=false, unique = true)
     private String email;
 
     @Column(length = 20)
@@ -69,12 +70,13 @@ public class Cliente {
     }
 
 
-    public Cliente(Integer idCliente, @NotEmpty @Size(min = 2, max = 50) String tipoDocumento,
+    public Cliente(Integer idCliente, String foto, @NotEmpty String tipodoc,
             @NotEmpty @Size(min = 2, max = 50) String noDocumento, @NotEmpty @Size(min = 2, max = 50) String nombre,
             @NotEmpty @Size(min = 2, max = 50) String apellido, @NotEmpty @Email String email, String telefono,
             @NotEmpty String direccion, Boolean estado, List<Venta> venta) {
         this.idCliente = idCliente;
-        this.tipoDocumento = tipoDocumento;
+        this.foto = foto;
+        this.tipodoc = tipodoc;
         this.noDocumento = noDocumento;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -96,13 +98,23 @@ public class Cliente {
     }
 
 
-    public String getTipoDocumento() {
-        return tipoDocumento;
+    public String getFoto() {
+        return foto;
     }
 
 
-    public void setTipoDocumento(String tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+
+    public String getTipodoc() {
+        return tipodoc;
+    }
+
+
+    public void setTipodoc(String tipodoc) {
+        this.tipodoc = tipodoc;
     }
 
 
@@ -185,11 +197,8 @@ public class Cliente {
         this.venta = venta;
     }
 
-
-    
-    
     
     
 }
-
+    
     

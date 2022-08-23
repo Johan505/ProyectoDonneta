@@ -25,6 +25,8 @@ public class Empleado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idEmpleado;
     
+    private String foto;
+
     @NotEmpty
     @Size(min=2,max=50)
     private String nombre;
@@ -34,9 +36,8 @@ public class Empleado {
     private String apellido;
 
     @NotEmpty
-    @Size(min=2,max=50)
     @Column(length = 50,nullable=false)
-    private String tipoDocumento;
+    public String tipodoc;
 
     @NotEmpty
     @Size(min=2,max=50)
@@ -65,14 +66,15 @@ public class Empleado {
     }
 
 
-    public Empleado(Integer idEmpleado, @NotEmpty @Size(min = 2, max = 50) String nombre,
-            @NotEmpty @Size(min = 2, max = 50) String apellido, @NotEmpty @Size(min = 2, max = 50) String tipoDocumento,
+    public Empleado(Integer idEmpleado, String foto, @NotEmpty @Size(min = 2, max = 50) String nombre,
+            @NotEmpty @Size(min = 2, max = 50) String apellido, @NotEmpty String tipodoc,
             @NotEmpty @Size(min = 2, max = 50) String noDocumento, @NotEmpty @Email String email, String telefono,
             Boolean estado, List<Venta> venta) {
         this.idEmpleado = idEmpleado;
+        this.foto = foto;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.tipoDocumento = tipoDocumento;
+        this.tipodoc = tipodoc;
         this.noDocumento = noDocumento;
         this.email = email;
         this.telefono = telefono;
@@ -88,6 +90,16 @@ public class Empleado {
 
     public void setIdEmpleado(Integer idEmpleado) {
         this.idEmpleado = idEmpleado;
+    }
+
+
+    public String getFoto() {
+        return foto;
+    }
+
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
 
@@ -111,13 +123,13 @@ public class Empleado {
     }
 
 
-    public String getTipoDocumento() {
-        return tipoDocumento;
+    public String getTipodoc() {
+        return tipodoc;
     }
 
 
-    public void setTipoDocumento(String tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
+    public void setTipodoc(String tipodoc) {
+        this.tipodoc = tipodoc;
     }
 
 
@@ -169,7 +181,7 @@ public class Empleado {
     public void setVenta(List<Venta> venta) {
         this.venta = venta;
     }
-    
+
 }
 
     

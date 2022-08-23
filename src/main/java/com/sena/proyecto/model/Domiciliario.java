@@ -16,9 +16,11 @@ public class Domiciliario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idDomiciliario;
 
+    private String foto;
+
     @NotEmpty
-    @Column(name="tipoDocumento", length=6)
-    private String tipoDocumento;
+    @Column(length = 50,nullable=false)
+    public String tipodoc;
 
     @NotEmpty
     @Column(name="noDocumento", length=20)
@@ -46,13 +48,17 @@ public class Domiciliario {
     @OneToOne(mappedBy = "domiciliario") 
     private Domicilio domicilio;
 
+
     public Domiciliario() {
     }
 
-    public Domiciliario(Integer idDomiciliario, String tipoDocumento, String noDocumento, String nombre,
-            String apellido, String telefono, String tipoTransporte, Boolean estado, Domicilio domicilio) {
+
+    public Domiciliario(Integer idDomiciliario, String foto, @NotEmpty String tipodoc, @NotEmpty String noDocumento,
+            @NotEmpty String nombre, @NotEmpty String apellido, @NotEmpty String telefono,
+            @NotEmpty String tipoTransporte, Boolean estado, Domicilio domicilio) {
         this.idDomiciliario = idDomiciliario;
-        this.tipoDocumento = tipoDocumento;
+        this.foto = foto;
+        this.tipodoc = tipodoc;
         this.noDocumento = noDocumento;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -61,78 +67,107 @@ public class Domiciliario {
         this.estado = estado;
         this.domicilio = domicilio;
     }
+
 
     public Integer getIdDomiciliario() {
         return idDomiciliario;
     }
 
+
     public void setIdDomiciliario(Integer idDomiciliario) {
         this.idDomiciliario = idDomiciliario;
     }
 
-    public String getTipoDocumento() {
-        return tipoDocumento;
+
+    public String getFoto() {
+        return foto;
     }
 
-    public void setTipoDocumento(String tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
+
+
+    public String getTipodoc() {
+        return tipodoc;
+    }
+
+
+    public void setTipodoc(String tipodoc) {
+        this.tipodoc = tipodoc;
+    }
+
 
     public String getNoDocumento() {
         return noDocumento;
     }
 
+
     public void setNoDocumento(String noDocumento) {
         this.noDocumento = noDocumento;
     }
+
 
     public String getNombre() {
         return nombre;
     }
 
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
 
     public String getApellido() {
         return apellido;
     }
 
+
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
+
 
     public String getTelefono() {
         return telefono;
     }
 
+
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+
 
     public String getTipoTransporte() {
         return tipoTransporte;
     }
 
+
     public void setTipoTransporte(String tipoTransporte) {
         this.tipoTransporte = tipoTransporte;
     }
+
 
     public Boolean getEstado() {
         return estado;
     }
 
+
     public void setEstado(Boolean estado) {
         this.estado = estado;
     }
+
 
     public Domicilio getDomicilio() {
         return domicilio;
     }
 
+
     public void setDomicilio(Domicilio domicilio) {
         this.domicilio = domicilio;
     }
 
-   
+    
+    
 }
