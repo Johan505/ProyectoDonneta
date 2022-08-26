@@ -14,32 +14,28 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-
-
 @Entity
-@Table(name="categorias")
+@Table(name = "categorias")
 public class Categoria {
-    //atributos
+    // atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCategoria;
 
     @NotEmpty
-    @Size(min=2,max=50)
+    @Size(min = 2, max = 50)
     private String nombre;
 
     @NotEmpty
     private String descripcion;
 
-
     @OneToMany(mappedBy = "categoria", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Producto> producto;
 
-    //Constructores
-
+    // Constructores
 
     public Categoria() {
-        producto=new ArrayList<Producto>();
+        producto = new ArrayList<Producto>();
     }
 
     public Categoria(Integer idCategoria, @NotEmpty @Size(min = 2, max = 50) String nombre,
@@ -82,7 +78,4 @@ public class Categoria {
         this.producto = producto;
     }
 
-
 }
-
-

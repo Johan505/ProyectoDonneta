@@ -24,8 +24,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-
-
 @Controller
 @SessionAttributes("venta")
 @RequestMapping("/venta")
@@ -43,81 +41,80 @@ public class VentaController {
     @Autowired
     private IEmpleadoService empleadod;
 
-    
-    @GetMapping(path={"/listar","","/"})
-    public String listar(Model m){
+    @GetMapping(path = { "/listar", "", "/" })
+    public String listar(Model m) {
         m.addAttribute("ventas", ventad.findAll());
-        return "venta/listar";    
+        return "venta/listar";
     }
 
     @GetMapping("/ver-venta/{idVenta}")
-    public String verAlbum(@PathVariable Integer idVenta,Model m){
-        Venta venta=null;
-        if(idVenta>0){
-            venta=ventad.findOne(idVenta);
-        }else{
+    public String verAlbum(@PathVariable Integer idVenta, Model m) {
+        Venta venta = null;
+        if (idVenta > 0) {
+            venta = ventad.findOne(idVenta);
+        } else {
             return "redirect:listar";
         }
-        m.addAttribute("venta",venta);
+        m.addAttribute("venta", venta);
         m.addAttribute("accion", "Detalle Venta");
         return "venta/verc";
     }
 
-    
-
     @GetMapping("/ver/{idVenta}")
-    public String ver(@PathVariable Integer idVenta,Model m){
-        Venta venta=null;
-        if(idVenta>0){
-            venta=ventad.findOne(idVenta);
-        }else{
+    public String ver(@PathVariable Integer idVenta, Model m) {
+        Venta venta = null;
+        if (idVenta > 0) {
+            venta = ventad.findOne(idVenta);
+        } else {
             return "redirect:listar";
         }
 
-
-        List<Detalle>listade=detalled.findAll();
-        List<Cliente>listac=cliented.findAll();
-        List<Empleado>listaem=empleadod.findAll();
-        m.addAttribute("em",listaem);
+        List<Detalle> listade = detalled.findAll();
+        List<Cliente> listac = cliented.findAll();
+        List<Empleado> listaem = empleadod.findAll();
+        m.addAttribute("em", listaem);
         m.addAttribute("cl", listac);
         m.addAttribute("de", listade);
-        m.addAttribute("venta",venta);
+        m.addAttribute("venta", venta);
         m.addAttribute("accion", "Actualizar Venta");
         return "venta/form";
     }
 
-    @GetMapping("/form")     
-    public String form(Model m){
-        Venta venta=new Venta();
+    @GetMapping("/form")
+    public String form(Model m) {
+        Venta venta = new Venta();
 
-        List<Detalle>listade=detalled.findAll();
-        List<Cliente>listac=cliented.findAll();
-        List<Empleado>listaem=empleadod.findAll();
-        m.addAttribute("em",listaem);
+        List<Detalle> listade = detalled.findAll();
+        List<Cliente> listac = cliented.findAll();
+        List<Empleado> listaem = empleadod.findAll();
+        m.addAttribute("em", listaem);
         m.addAttribute("cl", listac);
         m.addAttribute("de", listade);
         m.addAttribute("venta", venta);
         m.addAttribute("accion", "Agregar Venta");
-        return "venta/form"; 
+        return "venta/form";
     }
 
     @PostMapping("/add")
-    public String add(@Valid Venta venta,BindingResult res, Model m,SessionStatus status){
-        if(res.hasErrors()){
+    public String add(@Valid Venta venta, BindingResult res, Model m, SessionStatus status) {
+        if (res.hasErrors()) {
             return "venta/form";
         }
-        /*m.addAttribute("cliente",cliente); 
-        return "cliente/verc";*/
+        /*
+         * m.addAttribute("cliente",cliente);
+         * return "cliente/verc";
+         */
         ventad.save(venta);
         status.setComplete();
         return "redirect:listar";
-    }    
+    }
+
     @GetMapping("/delete/{idVenta}")
     public String delete(@PathVariable Integer idVenta) {
-		
-		if(idVenta > 0) {
-			ventad.delete(idVenta);
-		}
-		return "redirect:/venta/listar";
-	}
+
+        if (idVenta > 0) {
+            ventad.delete(idVenta);
+        }
+        return "redirect:/venta/listar";
+    }
 }

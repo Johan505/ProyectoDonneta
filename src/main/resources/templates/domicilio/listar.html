@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <title>Domicilios</title>
+    <title>Domicilio</title>
 </head>
 <body>
           
@@ -37,7 +37,7 @@
                     <td th:text="${d.trayecto}"></td>
                     <td th:text="${d.domiciliario.nombre}"></td>
                     <td th:text="${d.venta.idVenta}"></td>
- 
+                    <td> 
                         <a role="button" class="btn btn-info btn-sm" th:href="@{/domicilio/ver-producto/}+${d.idDomicilio}"> 
                             <i class="bi bi-eye"></i> 
                         </a>

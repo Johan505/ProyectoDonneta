@@ -11,9 +11,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="detalle_venta")
+@Table(name = "detalle_venta")
 public class Detalle {
-    //atributos
+    // atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idDetalle;
@@ -21,16 +21,15 @@ public class Detalle {
     @NotNull
     private Integer cantidadVenta;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="idVentaFK", nullable = false) 
+    @JoinColumn(name = "idVentaFK", nullable = false)
     private Venta venta;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="idProductoFK", nullable = false) 
+    @JoinColumn(name = "idProductoFK", nullable = false)
     private Producto producto;
 
-    //Constructores
+    // Constructores
     public Detalle() {
     }
 
@@ -72,7 +71,5 @@ public class Detalle {
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
-
-    
 
 }

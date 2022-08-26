@@ -38,7 +38,8 @@ public class Producto {
 
     @NotNull
     private Integer precio;
-
+    
+    private Boolean estado;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="idCategoriaFK", nullable = false) 
@@ -54,15 +55,15 @@ public class Producto {
         detalle=new ArrayList<Detalle>();
     }
 
-
     public Producto(Integer idProducto, String foto, @NotEmpty @Size(min = 2, max = 50) String nombre,
-            @NotEmpty @Size(min = 2, max = 200) String descripcion, @NotNull Integer precio, Categoria categoria,
-            List<Detalle> detalle) {
+            @NotEmpty @Size(min = 2, max = 200) String descripcion, @NotNull Integer precio, Boolean estado,
+            Categoria categoria, List<Detalle> detalle) {
         this.idProducto = idProducto;
         this.foto = foto;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
+        this.estado = estado;
         this.categoria = categoria;
         this.detalle = detalle;
     }
@@ -135,6 +136,14 @@ public class Producto {
 
     public void setDetalle(List<Detalle> detalle) {
         this.detalle = detalle;
+    }
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
     }
 
 
