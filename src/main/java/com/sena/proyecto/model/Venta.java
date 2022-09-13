@@ -31,7 +31,7 @@ public class Venta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idVenta;
-    
+
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Future
@@ -39,7 +39,7 @@ public class Venta {
 
     @NotNull
     private Integer subTotal;
-    
+
     @NotNull
     private Integer valorTotal;
 
@@ -49,17 +49,17 @@ public class Venta {
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="idClienteFK", nullable = false) 
+    @JoinColumn(name="idClienteFK", nullable = false)
     private Cliente cliente;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="idEmpleadoFK", nullable = false) 
+    @JoinColumn(name="idEmpleadoFK", nullable = false)
     private Empleado empleado;
 
     @OneToMany(mappedBy = "venta", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Detalle> detalle;
 
-    @OneToOne(mappedBy = "venta") 
+    @OneToOne(mappedBy = "venta")
     private Domicilio domicilio;
 
 
@@ -176,16 +176,16 @@ public class Venta {
     }
 
 
-    
 
-    
+
+
 
 }
 
 
-// git init
-// git add README.md
-// git commit -m "first commit"
-// git branch -M main
-// git remote add origin https://github.com/Verink55/DomiDonneta.git
-// git push -u origin main
+git init
+git add .
+git commit -m "este es el que hay que pasar"
+git branch -M a_pasar
+git remote add origin https://github.com/Verink55/DomiDonneta.git
+git push -u origin a_pasar
