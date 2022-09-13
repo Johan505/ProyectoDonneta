@@ -1,128 +1,191 @@
 package com.sena.proyecto.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "ventas")
+@Table(name="ventas")
 public class Venta {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	private String numero;
-	private Date fechaCreacion;
-	private Date fechaRecibida;
+    //atributos
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idVenta;
+    
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Future
+    private Date fechaVenta;
 
-	private double total;
-	
-	
-	@OneToMany(mappedBy = "venta")
-	private List<Detalle> detalle;
-	
-	public Venta() {
-	
-	}
+    @NotNull
+    private Integer subTotal;
+    
+    @NotNull
+    private Integer valorTotal;
 
-	
-
-	public Venta(Integer id, String numero, Date fechaCreacion, Date fechaRecibida, double total) {
-		super();
-		this.id = id;
-		this.numero = numero;
-		this.fechaCreacion = fechaCreacion;
-		this.fechaRecibida = fechaRecibida;
-		this.total = total;
-	}
+    @NotEmpty
+    @Size(min=2, max=30)
+    private String estado;
 
 
-	
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="idClienteFK", nullable = false) 
+    private Cliente cliente;
 
-	public Integer getId() {
-		return id;
-	}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="idEmpleadoFK", nullable = false) 
+    private Empleado empleado;
 
+    @OneToMany(mappedBy = "venta", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Detalle> detalle;
 
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-
-
-	public String getNumero() {
-		return numero;
-	}
+    @OneToOne(mappedBy = "venta") 
+    private Domicilio domicilio;
 
 
-
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
+    //Constructores
 
 
-
-	public Date getFechaCreacion() {
-		return fechaCreacion;
-	}
-
+    public Venta() {
+        detalle=new ArrayList<Detalle>();
+    }
 
 
-	public void setFechaCreacion(Date fechaCreacion) {
-		this.fechaCreacion = fechaCreacion;
-	}
+    public Venta(Integer idVenta, Date fechaVenta, @NotNull Integer subTotal, @NotNull Integer valorTotal,
+            @NotEmpty @Size(min = 2, max = 30) String estado, Cliente cliente, Empleado empleado, List<Detalle> detalle,
+            Domicilio domicilio) {
+        this.idVenta = idVenta;
+        this.fechaVenta = fechaVenta;
+        this.subTotal = subTotal;
+        this.valorTotal = valorTotal;
+        this.estado = estado;
+        this.cliente = cliente;
+        this.empleado = empleado;
+        this.detalle = detalle;
+        this.domicilio = domicilio;
+    }
 
 
-
-	public Date getFechaRecibida() {
-		return fechaRecibida;
-	}
-
+    public Integer getIdVenta() {
+        return idVenta;
+    }
 
 
-	public void setFechaRecibida(Date fechaRecibida) {
-		this.fechaRecibida = fechaRecibida;
-	}
+    public void setIdVenta(Integer idVenta) {
+        this.idVenta = idVenta;
+    }
 
 
-
-	public double getTotal() {
-		return total;
-	}
-
+    public Date getFechaVenta() {
+        return fechaVenta;
+    }
 
 
-	public void setTotal(double total) {
-		this.total = total;
-	}
+    public void setFechaVenta(Date fechaVenta) {
+        this.fechaVenta = fechaVenta;
+    }
 
 
-
-	public List<Detalle> getDetalle() {
-		return detalle;
-	}
-
+    public Integer getSubTotal() {
+        return subTotal;
+    }
 
 
-	public void setDetalle(List<Detalle> detalle) {
-		this.detalle = detalle;
-	}
+    public void setSubTotal(Integer subTotal) {
+        this.subTotal = subTotal;
+    }
 
 
+    public Integer getValorTotal() {
+        return valorTotal;
+    }
 
-	@Override
-	public String toString() {
-		return "Venta [id=" + id + ", numero=" + numero + ", fechaCreacion=" + fechaCreacion + ", fechaRecibida="
-				+ fechaRecibida + ", total=" + total + "]";
-	}
-	
+
+    public void setValorTotal(Integer valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+
+    public String getEstado() {
+        return estado;
+    }
+
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
+
+
+    public List<Detalle> getDetalle() {
+        return detalle;
+    }
+
+
+    public void setDetalle(List<Detalle> detalle) {
+        this.detalle = detalle;
+    }
+
+
+    public Domicilio getDomicilio() {
+        return domicilio;
+    }
+
+
+    public void setDomicilio(Domicilio domicilio) {
+        this.domicilio = domicilio;
+    }
+
+
+    
+
+    
 
 }
+
+
+// git init
+// git add README.md
+// git commit -m "first commit"
+// git branch -M main
+// git remote add origin https://github.com/Verink55/DomiDonneta.git
+// git push -u origin main

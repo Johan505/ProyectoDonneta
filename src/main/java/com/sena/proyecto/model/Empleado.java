@@ -25,52 +25,57 @@ public class Empleado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idEmpleado;
     
+    @NotEmpty
+    @Column(nullable=false)
     private String foto;
 
     @NotEmpty
-    @Size(min=2,max=50)
-    private String nombre;
-
-    @NotEmpty
-    @Size(min=2,max=50)
-    private String apellido;
-
-    @NotEmpty
-    @Column(length = 50,nullable=false)
+    @Column(length = 25,nullable=false)
     public String tipodoc;
 
     @NotEmpty
-    @Size(min=2,max=50)
-    @Column(length = 50,nullable=false)
+    @Size(min=8, max=15)
+    @Column(length = 15, nullable=false, unique = true)
     private String noDocumento;
 
     @NotEmpty
+    @Size(min=10,max=25)
+    @Column(length = 25,nullable=false)
+    private String nombre;
+
+    @NotEmpty
+    @Size(min=10,max=25)
+    @Column(length = 25,nullable=false)
+    private String apellido;
+
+    @NotEmpty
     @Email
-    @Column(length=100, nullable=false)
+    @Column(length=40, nullable=false, unique = true)
     private String email;
 
-    @Column(length = 20)
+    @NotEmpty
+    @Size(min=10,max=10)
+    @Column(length=10, nullable=false, unique = true)
     private String telefono;
     
     private Boolean estado;
 
-    
+    @OneToMany(mappedBy = "empleado", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Venta> venta;
 
 
     //Constructores
 
 
     public Empleado() {
-     
+        venta=new ArrayList<Venta>();
     }
-
-
 
 
     public Empleado(Integer idEmpleado, String foto, @NotEmpty @Size(min = 2, max = 50) String nombre,
             @NotEmpty @Size(min = 2, max = 50) String apellido, @NotEmpty String tipodoc,
             @NotEmpty @Size(min = 2, max = 50) String noDocumento, @NotEmpty @Email String email, String telefono,
-            Boolean estado) {
+            Boolean estado, List<Venta> venta) {
         this.idEmpleado = idEmpleado;
         this.foto = foto;
         this.nombre = nombre;
@@ -80,9 +85,8 @@ public class Empleado {
         this.email = email;
         this.telefono = telefono;
         this.estado = estado;
+        this.venta = venta;
     }
-
-
 
 
     public Integer getIdEmpleado() {
@@ -90,13 +94,9 @@ public class Empleado {
     }
 
 
-
-
     public void setIdEmpleado(Integer idEmpleado) {
         this.idEmpleado = idEmpleado;
     }
-
-
 
 
     public String getFoto() {
@@ -104,13 +104,9 @@ public class Empleado {
     }
 
 
-
-
     public void setFoto(String foto) {
         this.foto = foto;
     }
-
-
 
 
     public String getNombre() {
@@ -118,13 +114,9 @@ public class Empleado {
     }
 
 
-
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-
 
 
     public String getApellido() {
@@ -132,13 +124,9 @@ public class Empleado {
     }
 
 
-
-
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-
-
 
 
     public String getTipodoc() {
@@ -146,13 +134,9 @@ public class Empleado {
     }
 
 
-
-
     public void setTipodoc(String tipodoc) {
         this.tipodoc = tipodoc;
     }
-
-
 
 
     public String getNoDocumento() {
@@ -160,13 +144,9 @@ public class Empleado {
     }
 
 
-
-
     public void setNoDocumento(String noDocumento) {
         this.noDocumento = noDocumento;
     }
-
-
 
 
     public String getEmail() {
@@ -174,13 +154,9 @@ public class Empleado {
     }
 
 
-
-
     public void setEmail(String email) {
         this.email = email;
     }
-
-
 
 
     public String getTelefono() {
@@ -188,13 +164,9 @@ public class Empleado {
     }
 
 
-
-
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-
-
 
 
     public Boolean getEstado() {
@@ -202,14 +174,19 @@ public class Empleado {
     }
 
 
-
-
     public void setEstado(Boolean estado) {
         this.estado = estado;
     }
 
 
-   
+    public List<Venta> getVenta() {
+        return venta;
+    }
+
+
+    public void setVenta(List<Venta> venta) {
+        this.venta = venta;
+    }
 
 }
 

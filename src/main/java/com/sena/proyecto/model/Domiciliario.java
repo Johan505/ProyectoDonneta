@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "domiciliarios") 
@@ -16,45 +17,53 @@ public class Domiciliario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idDomiciliario;
 
+    @NotEmpty
+    @Column(nullable=false)
     private String foto;
 
     @NotEmpty
-    @Column(length = 50,nullable=false)
+    @Column(length = 25,nullable=false)
     public String tipodoc;
 
     @NotEmpty
-    @Column(name="noDocumento", length=20)
+    @Size(min=8, max=15)
+    @Column(length = 15, nullable=false, unique = true)
     private String noDocumento;
 
     @NotEmpty
-    @Column(name="nombre", length=40)
+    @Size(min=10,max=25)
+    @Column(length = 25,nullable=false)
     private String nombre;
 
     @NotEmpty
-    @Column(name="apellido", length=40)
+    @Size(min=10,max=25)
+    @Column(length = 25,nullable=false)
     private String apellido;
 
     @NotEmpty
-    @Column(name="telefono", length=20)
+    @Size(min=10,max=10)
+    @Column(length=10, nullable=false, unique = true)  
     private String telefono;
 
     @NotEmpty
-    @Column(name="tipoTransporte", length=20)
+    @Size(min=3,max=10)
+    @Column(length=10, name="tipoTransporte")
     private String tipoTransporte;
 
     @Column(name="estado")
     private Boolean estado;
 
+    @OneToOne(mappedBy = "domiciliario") 
+    private Domicilio domicilio;
 
 
     public Domiciliario() {
     }
 
 
-
     public Domiciliario(Integer idDomiciliario, String foto, @NotEmpty String tipodoc, @NotEmpty String noDocumento,
             @NotEmpty String nombre, @NotEmpty String apellido, @NotEmpty String telefono,
-            @NotEmpty String tipoTransporte, Boolean estado) {
+            @NotEmpty String tipoTransporte, Boolean estado, Domicilio domicilio) {
         this.idDomiciliario = idDomiciliario;
         this.foto = foto;
         this.tipodoc = tipodoc;
@@ -64,8 +73,8 @@ public class Domiciliario {
         this.telefono = telefono;
         this.tipoTransporte = tipoTransporte;
         this.estado = estado;
+        this.domicilio = domicilio;
     }
-
 
 
     public Integer getIdDomiciliario() {
@@ -73,11 +82,9 @@ public class Domiciliario {
     }
 
 
-
     public void setIdDomiciliario(Integer idDomiciliario) {
         this.idDomiciliario = idDomiciliario;
     }
-
 
 
     public String getFoto() {
@@ -85,11 +92,9 @@ public class Domiciliario {
     }
 
 
-
     public void setFoto(String foto) {
         this.foto = foto;
     }
-
 
 
     public String getTipodoc() {
@@ -97,11 +102,9 @@ public class Domiciliario {
     }
 
 
-
     public void setTipodoc(String tipodoc) {
         this.tipodoc = tipodoc;
     }
-
 
 
     public String getNoDocumento() {
@@ -109,11 +112,9 @@ public class Domiciliario {
     }
 
 
-
     public void setNoDocumento(String noDocumento) {
         this.noDocumento = noDocumento;
     }
-
 
 
     public String getNombre() {
@@ -121,11 +122,9 @@ public class Domiciliario {
     }
 
 
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
 
 
     public String getApellido() {
@@ -133,11 +132,9 @@ public class Domiciliario {
     }
 
 
-
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-
 
 
     public String getTelefono() {
@@ -145,11 +142,9 @@ public class Domiciliario {
     }
 
 
-
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-
 
 
     public String getTipoTransporte() {
@@ -157,11 +152,9 @@ public class Domiciliario {
     }
 
 
-
     public void setTipoTransporte(String tipoTransporte) {
         this.tipoTransporte = tipoTransporte;
     }
-
 
 
     public Boolean getEstado() {
@@ -169,13 +162,19 @@ public class Domiciliario {
     }
 
 
-
     public void setEstado(Boolean estado) {
         this.estado = estado;
     }
 
 
-    
+    public Domicilio getDomicilio() {
+        return domicilio;
+    }
+
+
+    public void setDomicilio(Domicilio domicilio) {
+        this.domicilio = domicilio;
+    }
 
     
     

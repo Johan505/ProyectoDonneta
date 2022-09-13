@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -26,20 +27,28 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idProducto;
 
+    @NotEmpty
+    @Column(nullable=false)
     private String foto;
     
     @NotEmpty
-    @Size(min=2,max=50)
+    @Size(min=5,max=15)
+    @Column(length = 15,nullable=false,unique=true)
     private String nombre;
 
     @NotEmpty
-    @Size(min=2,max=200)
+    @Size(min=28,max=55)
+    @Column(length = 55, nullable=false)
     private String descripcion;
 
     @NotNull
+    @Size(min=1000, max=50000)
+    @Column(length = 50000, nullable=false)
     private Integer precio;
 
     @NotNull
+    @Size(min=1, max=200)
+    @Column(length = 200, nullable=false)
     private Integer cantidad;
 
 

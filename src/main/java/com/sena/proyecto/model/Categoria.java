@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,8 +15,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-
-
 @Entity
 @Table(name="categorias")
 public class Categoria {
@@ -25,25 +24,26 @@ public class Categoria {
     private Integer idCategoria;
 
     @NotEmpty
-    @Size(min=2,max=50)
+    @Size(min=3,max=25)
+    @Column(length = 25, nullable=false, unique=true)
     private String nombre;
 
     @NotEmpty
+    @Size(min=28,max=55)
+    @Column(length = 55, nullable=false)
     private String descripcion;
-
 
     @OneToMany(mappedBy = "categoria", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Producto> producto;
 
     //Constructores
 
-
     public Categoria() {
         producto=new ArrayList<Producto>();
     }
 
-    public Categoria(Integer idCategoria, @NotEmpty @Size(min = 2, max = 50) String nombre,
-            @NotEmpty String descripcion, List<Producto> producto) {
+    public Categoria(Integer idCategoria, @NotEmpty @Size(min = 3, max = 25) String nombre,
+            @NotEmpty @Size(min = 28, max = 55) String descripcion, List<Producto> producto) {
         this.idCategoria = idCategoria;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -81,7 +81,6 @@ public class Categoria {
     public void setProducto(List<Producto> producto) {
         this.producto = producto;
     }
-
 
 }
 
