@@ -213,7 +213,7 @@ iframe {
 [  ]*/
 .login100-form {
   width: 290px;
-  padding-top: 80px;
+  padding-top: 40px;
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -227,7 +227,7 @@ iframe {
 
   width: 100%;
   display: block;
-  padding-bottom: 54px;
+  padding-bottom: 10px;
 }
 
 
@@ -254,15 +254,15 @@ iframe {
 }
 
 .labelu {
-  color: #000000;
-  font-family: Arial, Helvetica, sans-serif;
+  color: #212529;
+  font-family: Poppins-Regular, sans-serif;
   padding-right: 190px;
 
 }
 
 .labelc {
   color: #000000;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Poppins-Regular, sans-serif;
   padding-right: 160px;
 
 }
@@ -417,7 +417,7 @@ iframe {
 
 @media (max-width: 576px) {
   .wrap-login100 {
-    padding: 100px 15px 33px 15px;
+    padding: 50px 15px 33px 15px;
   }
 
   .LogoLogin {
