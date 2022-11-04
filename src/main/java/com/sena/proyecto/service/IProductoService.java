@@ -10,6 +10,8 @@ import com.sena.proyecto.model.Producto;
 public interface IProductoService {
     public List<Producto> findAll();
 
+    public List<Producto> findAlla();
+
     public void save(@Valid Producto producto);
 
     public Optional<Producto> get(Integer idProducto);

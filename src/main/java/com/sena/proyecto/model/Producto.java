@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -28,7 +29,8 @@ public class Producto {
     private String foto;
 
     @NotEmpty
-    @Size(min = 2, max = 50)
+    @Column(name = "nombre", length = 40, nullable = false, unique = true)
+    @Size(min = 3, max = 30)
     private String nombre;
 
     @NotEmpty
@@ -40,6 +42,9 @@ public class Producto {
 
     @NotNull
     private Integer cantidad;
+
+    @Column
+    private Boolean estado;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idCategoriaFK", nullable = false)
@@ -54,15 +59,16 @@ public class Producto {
         detalle = new ArrayList<Detalle>();
     }
 
-    public Producto(Integer idProducto, String foto, @NotEmpty @Size(min = 2, max = 50) String nombre,
+    public Producto(Integer idProducto, String foto, @NotEmpty @Size(min = 3, max = 30) String nombre,
             @NotEmpty @Size(min = 2, max = 200) String descripcion, @NotNull Integer precio, @NotNull Integer cantidad,
-            Categoria categoria, List<Detalle> detalle) {
+            Boolean estado, Categoria categoria, List<Detalle> detalle) {
         this.idProducto = idProducto;
         this.foto = foto;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.cantidad = cantidad;
+        this.estado = estado;
         this.categoria = categoria;
         this.detalle = detalle;
     }
@@ -113,6 +119,14 @@ public class Producto {
 
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
     }
 
     public Categoria getCategoria() {

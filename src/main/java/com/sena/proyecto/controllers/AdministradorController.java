@@ -21,7 +21,6 @@ import com.sena.proyecto.service.IProductoService;
 @RequestMapping("/administrador")
 public class AdministradorController {
 
-	
 	@Autowired
 	private IProductoService productoService;
 
@@ -63,6 +62,5 @@ public class AdministradorController {
 
 		return "VistaAdmin/detalle";
 	}
-
 
 }

@@ -1,6 +1,7 @@
 package com.sena.proyecto.model;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "domicilios")
@@ -16,10 +19,17 @@ public class Domicilio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idDomicilio;
 
+    @NotEmpty
+    @Size(min = 3, max = 30)
     private String nombre;
 
+    @NotEmpty
+    @Size(min = 15, max = 35)
+    @Column(length = 100, nullable = false)
     private String direccion;
 
+    @Column(length = 20, nullable = false, unique = true)
+    @Size(min = 7, max = 15)
     private String telefono;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -32,7 +42,8 @@ public class Domicilio {
     public Domicilio() {
     }
 
-    public Domicilio(Integer idDomicilio, String nombre, String direccion, String telefono, Venta venta,
+    public Domicilio(Integer idDomicilio, @NotEmpty @Size(min = 3, max = 30) String nombre,
+            @NotEmpty @Size(min = 15, max = 35) String direccion, @Size(min = 7, max = 15) String telefono, Venta venta,
             Domiciliario domiciliario) {
         this.idDomicilio = idDomicilio;
         this.nombre = nombre;
@@ -89,5 +100,4 @@ public class Domicilio {
     public void setDomiciliario(Domiciliario domiciliario) {
         this.domiciliario = domiciliario;
     }
-
 }

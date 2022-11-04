@@ -14,10 +14,19 @@ public class ProductoServiceImpl implements IProductoService {
     @Autowired
     private IProducto productod;
 
+    @Autowired
+    private IProducto productoda;
+
     @Override
     public List<Producto> findAll() {
 
         return (List<Producto>) productod.findAll();
+    }
+
+    @Override
+    public List<Producto> findAlla() {
+
+    return (List<Producto>) productoda.findAll();
     }
 
     @Override

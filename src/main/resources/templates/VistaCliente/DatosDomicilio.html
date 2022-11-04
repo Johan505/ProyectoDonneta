@@ -22,9 +22,9 @@
   <!--===============================================================================================-->
   <link rel="icon" th:href="@{/img/logo-solo - negro.png}">
   <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" thhref="@{/css/util.css}">
+  <link rel="stylesheet" thhref="@{/css/util.css}">
   <!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+  <link rel="stylesheet" th:href="@{/css/main.css}">
   <!--===============================================================================================-->
   <link rel="stylesheet" th:href="@{/css/footer.css}">
   <!--===============================================================================================-->
@@ -72,96 +72,100 @@
 
   <!-- Blog Post -->
   <section class="sec-product-detail bg0">
-  <div class="card mb-4">
-    <div class="card-body">
-      <div class="row" style="align-items: flex-start;">
-        <div class="col-lg-9" style="width: auto;">
-          <div class="card-body">
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="row" style="align-items: flex-start;">
+          <div class="col-lg-9" style="width: auto;">
+            <div class="card-body">
+              <div class="p-b-10">
+                <h3 class="ltext-103 cl5">
+                  DATOS DOMICILIO
+                </h3>
+              </div>
+
+              <form th:action="@{/guardarVenta}" th:object="${domicilio}" method="post" enctype="multipart/form-data"
+                style="width: 35rem;" class="mx-auto needs-validation clearfix was-validated" novalidate>
+
+                <div class="form-group">
+                  <label for="nombre">Nombre</label>
+                  <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+                  <div class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+                </div>
+
+                <div class="form-group">
+                  <label for="telefono">Teléfono</label>
+                  <input type="number" class="form-control" id="telefono" th:field="*{telefono}" required>
+                  <div class="form-text text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="direccion">Dirección</label>
+                  <input type="text" class="form-control" id="direccion" th:field="*{direccion}" required>
+                  <div class="form-text text-danger" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}">
+                  </div>
+                </div><br>
+
+                <h2 class="card-title">
+                  PRODUCTOS
+                </h2>
+                <br>
+                <div class="alert alert-light" role="alert">
+                  <table class="table table-shopping-cart">
+                    <thead>
+                      <tr>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr th:each="dtventa:${cart}">
+                        <td th:text="${dtventa.nombre}"></td>
+                        <td th:text="${dtventa.precio}"></td>
+                        <td th:text="${dtventa.cantidad}"></td>
+                        <td th:text="${dtventa.total}"></td>
+
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+            </div>
+          </div>
+
+
+          <div class="col-lg-3">
             <div class="p-b-10">
+              <br><br><br>
               <h3 class="ltext-103 cl5">
-                DATOS DOMICILIO
+                RESUMEN DOMICILIO
               </h3>
             </div>
 
-            <form th:action="@{/guardarVenta}" th:object="${domicilio}" method="post" enctype="multipart/form-data"
-              style="width: 35rem;" class="mx-auto needs-validation clearfix was-validated">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <h5 th:text=" 'Total: '+ ${venta.total} "> </h5>
+              </li>
 
-              <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
-                <div class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
-              </div>
 
-              <div class="form-group">
-                <label for="telefono">Teléfono</label>
-                <input type="number" class="form-control" id="telefono" th:field="*{telefono}" required>
-                <div class="form-text text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">
+              <div>
+                <ul class="list-group">
+                  <button type="submit" class="btn flex-c-m cl0 hov-bg1 bg10 p-lr-15 trans-04">Continuar</button>
+                </ul>
+                <div>
+
                 </div>
               </div>
-
-              <div class="form-group">
-                <label for="direccion">Dirección</label>
-                <input type="text" class="form-control" id="direccion" th:field="*{direccion}" required>
-                <div class="form-text text-danger" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}">
-                </div>
-              </div><br>
-              <h2 class="card-title">
-                PRODUCTOS
-              </h2>
-              <br>
-              <div class="alert alert-light" role="alert">
-                <table class="table table-shopping-cart">
-                  <thead>
-                    <tr>
-                      <th scope="col">Producto</th>
-                      <th scope="col">Precio</th>
-                      <th scope="col">Cantidad</th>
-                      <th scope="col">Total</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr th:each="dtventa:${cart}">
-                      <td th:text="${dtventa.nombre}"></td>
-                      <td th:text="${dtventa.precio}"></td>
-                      <td th:text="${dtventa.cantidad}"></td>
-                      <td th:text="${dtventa.total}"></td>
-
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
+            </ul>
           </div>
         </div>
 
-
-        <div class="col-lg-3">
-          <div class="p-b-10">
-            <br><br><br>
-            <h3 class="ltext-103 cl5">
-              RESUMEN DOMICILIO
-            </h3>
-          </div>
-
-          <ul class="list-group">
-            <li class="list-group-item">
-              <h5 th:text=" 'Total: '+ ${venta.total} "> </h5>
-            </li>
-
-
-            <div>
-              <ul class="list-group">
-                <a th:href="@{/Datos}" class="btn flex-c-m cl0 hov-bg1 bg10 p-lr-15 trans-04">Continuar</a>
-              </ul>
-            </div>
-          </ul>
-        </div>
+        </form>
       </div>
-
-      </form>
     </div>
-  </div>
-  </div>
+    </div>
   </section>
 
 

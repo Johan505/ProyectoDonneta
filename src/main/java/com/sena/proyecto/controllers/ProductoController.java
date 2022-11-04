@@ -37,8 +37,10 @@ public class ProductoController {
     private IProductoService productod;
 
     @Autowired
-    private ICategoriaService categoriad;
+    private IProductoService productoda;
 
+    @Autowired
+    private ICategoriaService categoriad;
 
     @Autowired
     private IUploadFileService uploadFileService;
@@ -62,8 +64,7 @@ public class ProductoController {
 
     @GetMapping(path = { "/listar", "", "/" })
     public String listar(Model m) {
-        m.addAttribute("productos", productod.findAll());
-
+        m.addAttribute("productos", productoda.findAlla());
         return "producto/listar";
     }
 

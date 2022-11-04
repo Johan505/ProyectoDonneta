@@ -3,6 +3,7 @@
 
 
 <!-- Mirrored from slidesigma.com/themes/html/costic/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:03:18 GMT -->
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,10 +29,11 @@
 </head>
 
 <body class="ms-body ms-aside-left-open ms-primary-theme ms-has-quickbar">
-  
+
   <!-- Overlays -->
   <div class="ms-aside-overlay ms-overlay-left ms-toggler" data-target="#ms-side-nav" data-toggle="slideLeft"></div>
-  <div class="ms-aside-overlay ms-overlay-right ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight"></div>
+  <div class="ms-aside-overlay ms-overlay-right ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight">
+  </div>
   <!-- Sidebar Navigation Left -->
   <aside id="ms-side-nav" class="side-nav fixed ms-aside-scrollable ms-aside-left">
     <!-- Logo -->
@@ -41,29 +43,19 @@
       </a>
     </div>
     <!-- Navigation -->
-    <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
-  
+    <ul>
+
       <!-- categoria -->
       <li class="menu-item">
         <a th:href="@{/categoria}"> <span><i class="fas fa-clipboard-list fs-16"></i>Categorias</span>
         </a>
       </li>
       <!-- categoria end -->
-     
+
       <!-- product -->
       <li class="menu-item">
-        <a href="#" class="has-chevron" data-toggle="collapse" data-target="#product" aria-expanded="false" aria-controls="product"> <span><i class="fa fa-coffee"></i>Productos</span>
+        <a th:href="@{/producto}"> <span><i class="fa fa-truck"></i>Productos</span>
         </a>
-        <ul id="product" class="collapse" aria-labelledby="product" data-parent="#side-nav-accordion">
-          <li> <a href="../pages/producto/productcata.html">Menu Catalogue</a>
-          </li>
-          <li> <a th:href="@{/producto}">Lista de Productos</a>
-          </li>
-          <li> <a th:href="@{/producto/form}">Agregar Producto</a>
-          </li>
-          <li> <a href="../pages/producto/detalle.html">Product Detail</a>
-          </li>
-        </ul>
       </li>
       <!-- product end -->
       <!-- orders -->
@@ -72,19 +64,20 @@
         </a>
       </li>
       <!-- orders end -->
-    
+
       <!-- sales -->
       <li class="menu-item">
         <a th:href="@{/administrador/ventas}"> <span><i class="fa fa-briefcase fs-16"></i>Ventas</span>
         </a>
       </li>
-          
+
       <!-- customers-->
       <li class="menu-item">
-        <a href="#" class="has-chevron" data-toggle="collapse" data-target="#customer" aria-expanded="false" aria-controls="customer"> <span><i class="fas fa-user-friends fs-16"></i>Usuarios</span>
+        <a href="#" class="has-chevron" data-toggle="collapse" data-target="#customer" aria-expanded="false"
+          aria-controls="customer"> <span><i class="fas fa-user-friends fs-16"></i>Usuarios</span>
         </a>
         <ul id="customer" class="collapse" aria-labelledby="customer" data-parent="#side-nav-accordion">
-          
+
           <li> <a th:href="@{/cliente}">Lista de Clientes</a>
           </li>
           <li> <a th:href="@{/empleado}">Lista de Empleados</a>
@@ -100,25 +93,30 @@
   <main class="body-content">
     <!-- Navigation Bar -->
     <nav class="navbar ms-navbar">
-      <div class="ms-aside-toggler ms-toggler pl-0" data-target="#ms-side-nav" data-toggle="slideLeft"> <span class="ms-toggler-bar bg-primary"></span>
+      <div class="ms-aside-toggler ms-toggler pl-0" data-target="#ms-side-nav" data-toggle="slideLeft"> <span
+          class="ms-toggler-bar bg-primary"></span>
         <span class="ms-toggler-bar bg-primary"></span>
         <span class="ms-toggler-bar bg-primary"></span>
       </div>
       <div class="logo-sn logo-sm ms-d-block-sm">
-        <a class="pl-0 ml-0 text-center navbar-brand mr-0" href="index.html"><img src="assets/img/logos/logoHnegro.png" alt="logo"> </a>
+        <a class="pl-0 ml-0 text-center navbar-brand mr-0" href="index.html"><img src="assets/img/logos/logoHnegro.png"
+            alt="logo"> </a>
       </div>
       <ul class="ms-nav-list ms-inline mb-0" id="ms-nav-options">
         <li class="ms-nav-item ms-search-form pb-0 py-0">
           <form class="ms-form" method="post">
             <div class="ms-form-group my-0 mb-0 has-icon fs-14">
-              <input type="search" class="ms-form-input" name="search" placeholder="Search here..." value=""> <i class="flaticon-search text-disabled"></i>
+              <input type="search" class="ms-form-input" name="search" placeholder="Search here..." value=""> <i
+                class="flaticon-search text-disabled"></i>
             </div>
           </form>
         </li>
-        <li class="ms-nav-item dropdown"> <a href="#" class="text-disabled ms-has-notification" id="mailDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-mail"></i></a>
+        <li class="ms-nav-item dropdown"> <a href="#" class="text-disabled ms-has-notification" id="mailDropdown"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-mail"></i></a>
           <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="mailDropdown">
             <li class="dropdown-menu-header">
-              <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Mail</span></h6><span class="badge badge-pill badge-success">3 New</span>
+              <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Mail</span></h6><span
+                class="badge badge-pill badge-success">3 New</span>
             </li>
             <li class="dropdown-divider"></li>
             <li class="ms-scrollable ms-dropdown-list">
@@ -152,10 +150,13 @@
             </li>
           </ul>
         </li>
-        <li class="ms-nav-item dropdown"> <a href="#" class="text-disabled ms-has-notification" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-bell"></i></a>
+        <li class="ms-nav-item dropdown"> <a href="#" class="text-disabled ms-has-notification"
+            id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+              class="flaticon-bell"></i></a>
           <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationDropdown">
             <li class="dropdown-menu-header">
-              <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Notifications</span></h6><span class="badge badge-pill badge-info">4 New</span>
+              <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Notifications</span></h6><span
+                class="badge badge-pill badge-info">4 New</span>
             </li>
             <li class="dropdown-divider"></li>
             <li class="ms-scrollable ms-dropdown-list">
@@ -196,26 +197,32 @@
             </li>
             <li class="dropdown-divider"></li>
             <li class="ms-dropdown-list">
-              <a class="media fs-14 p-2" href="pages/prebuilt-pages/user-profile.html"> <span><i class="flaticon-user mr-2"></i> Profile</span>
+              <a class="media fs-14 p-2" href="pages/prebuilt-pages/user-profile.html"> <span><i
+                    class="flaticon-user mr-2"></i> Profile</span>
               </a>
-              <a class="media fs-14 p-2" href="pages/apps/email.html"> <span><i class="flaticon-mail mr-2"></i> Inbox</span> <span class="badge badge-pill badge-info">3</span>
+              <a class="media fs-14 p-2" href="pages/apps/email.html"> <span><i class="flaticon-mail mr-2"></i>
+                  Inbox</span> <span class="badge badge-pill badge-info">3</span>
               </a>
-              <a class="media fs-14 p-2" href="pages/prebuilt-pages/user-profile.html"> <span><i class="flaticon-gear mr-2"></i> Account Settings</span>
+              <a class="media fs-14 p-2" href="pages/prebuilt-pages/user-profile.html"> <span><i
+                    class="flaticon-gear mr-2"></i> Account Settings</span>
               </a>
             </li>
             <li class="dropdown-divider"></li>
             <li class="dropdown-menu-footer">
-              <a class="media fs-14 p-2" href="pages/prebuilt-pages/lock-screen.html"> <span><i class="flaticon-security mr-2"></i> Lock</span>
+              <a class="media fs-14 p-2" href="pages/prebuilt-pages/lock-screen.html"> <span><i
+                    class="flaticon-security mr-2"></i> Lock</span>
               </a>
             </li>
             <li class="dropdown-menu-footer">
-              <a class="media fs-14 p-2" href="pages/prebuilt-pages/default-login.html"> <span><i class="flaticon-shut-down mr-2"></i> Logout</span>
+              <a class="media fs-14 p-2" href="pages/prebuilt-pages/default-login.html"> <span><i
+                    class="flaticon-shut-down mr-2"></i> Logout</span>
               </a>
             </li>
           </ul>
         </li>
       </ul>
-      <div class="ms-toggler ms-d-block-sm pr-0 ms-nav-toggler" data-toggle="slideDown" data-target="#ms-nav-options"> <span class="ms-toggler-bar bg-primary"></span>
+      <div class="ms-toggler ms-d-block-sm pr-0 ms-nav-toggler" data-toggle="slideDown" data-target="#ms-nav-options">
+        <span class="ms-toggler-bar bg-primary"></span>
         <span class="ms-toggler-bar bg-primary"></span>
         <span class="ms-toggler-bar bg-primary"></span>
       </div>
@@ -253,17 +260,20 @@
                       <td>67384917</td>
                     </tr>
                     <tr>
-                      <td class="ms-table-f-w"> <img src="assets/img/costic/french-fries.jpg" alt="people"> French Fries </td>
+                      <td class="ms-table-f-w"> <img src="assets/img/costic/french-fries.jpg" alt="people"> French Fries
+                      </td>
                       <td>$14.59</td>
                       <td>789393819</td>
                     </tr>
                     <tr>
-                      <td class="ms-table-f-w"> <img src="assets/img/costic/cereals.jpg" alt="people"> Multigrain Hot Cereal </td>
+                      <td class="ms-table-f-w"> <img src="assets/img/costic/cereals.jpg" alt="people"> Multigrain Hot
+                        Cereal </td>
                       <td>$25.22</td>
                       <td>137893137</td>
                     </tr>
                     <tr>
-                      <td class="ms-table-f-w"> <img src="assets/img/costic/egg-sandwich.jpg" alt="people"> Fried Egg Sandwich </td>
+                      <td class="ms-table-f-w"> <img src="assets/img/costic/egg-sandwich.jpg" alt="people"> Fried Egg
+                        Sandwich </td>
                       <td>$11.23</td>
                       <td>235193138</td>
                     </tr>
@@ -296,19 +306,23 @@
             <div class="ms-panel-body">
               <span class="progress-label"> <strong>Week 1</strong> </span>
               <div class="progress">
-                <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="25"
+                  aria-valuemin="0" aria-valuemax="100">25%</div>
               </div>
               <span class="progress-label"> <strong>Week 2</strong> </span>
               <div class="progress">
-                <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+                <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50"
+                  aria-valuemin="0" aria-valuemax="100">50%</div>
               </div>
               <span class="progress-label"> <strong>Week 3</strong> </span>
               <div class="progress">
-                <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="75"
+                  aria-valuemin="0" aria-valuemax="100">75%</div>
               </div>
               <span class="progress-label"> <strong>Week 4</strong> </span>
               <div class="progress">
-                <div class="progress-bar bg-primary" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">40%</div>
+                <div class="progress-bar bg-primary" role="progressbar" style="width: 40%" aria-valuenow="40"
+                  aria-valuemin="0" aria-valuemax="100">40%</div>
               </div>
             </div>
           </div>
@@ -444,11 +458,16 @@
             </div>
             <div class="ms-panel-body p-0">
               <ul class="nav nav-tabs nav-justified has-gap px-4 pt-4" role="tablist">
-                <li role="presentation" class="fs-12"><a href="#btc" aria-controls="btc" class="active show" role="tab" data-toggle="tab"> Mon </a></li>
-                <li role="presentation" class="fs-12"><a href="#xrp" aria-controls="xrp" role="tab" data-toggle="tab"> Tue </a></li>
-                <li role="presentation" class="fs-12"><a href="#ltc" aria-controls="ltc" role="tab" data-toggle="tab"> Wed </a></li>
-                <li role="presentation" class="fs-12"><a href="#eth" aria-controls="eth" role="tab" data-toggle="tab"> Thu </a></li>
-                <li role="presentation" class="fs-12"><a href="#zec" aria-controls="zec" role="tab" data-toggle="tab"> Fri </a></li>
+                <li role="presentation" class="fs-12"><a href="#btc" aria-controls="btc" class="active show" role="tab"
+                    data-toggle="tab"> Mon </a></li>
+                <li role="presentation" class="fs-12"><a href="#xrp" aria-controls="xrp" role="tab" data-toggle="tab">
+                    Tue </a></li>
+                <li role="presentation" class="fs-12"><a href="#ltc" aria-controls="ltc" role="tab" data-toggle="tab">
+                    Wed </a></li>
+                <li role="presentation" class="fs-12"><a href="#eth" aria-controls="eth" role="tab" data-toggle="tab">
+                    Thu </a></li>
+                <li role="presentation" class="fs-12"><a href="#zec" aria-controls="zec" role="tab" data-toggle="tab">
+                    Fri </a></li>
               </ul>
               <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active show fade in" id="btc">
@@ -849,7 +868,8 @@
                         <li class="ms-rating-item rated"> <i class="material-icons">star</i> </li>
                         <li class="ms-rating-item rated"> <i class="material-icons">star</i> </li>
                       </ul>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nunc velit, dictum eget nulla a, sollicitudin rhoncus orci. Vivamus nec commodo turpis.</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nunc velit, dictum eget
+                        nulla a, sollicitudin rhoncus orci. Vivamus nec commodo turpis.</p>
                     </div>
                     <div class="ms-card-img">
                       <img src="assets/img/costic/food-1.jpg" alt="card_img">
@@ -908,7 +928,8 @@
                         <li class="ms-rating-item rated"> <i class="material-icons">star</i> </li>
                         <li class="ms-rating-item rated"> <i class="material-icons">star</i> </li>
                       </ul>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nunc velit, dictum eget nulla a, sollicitudin rhoncus orci. Vivamus nec commodo turpis.</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nunc velit, dictum eget
+                        nulla a, sollicitudin rhoncus orci. Vivamus nec commodo turpis.</p>
                     </div>
                     <div class="ms-card-img">
                       <img src="assets/img/costic/food-2.jpg" alt="card_img">
@@ -967,7 +988,8 @@
                         <li class="ms-rating-item rated"> <i class="material-icons">star</i> </li>
                         <li class="ms-rating-item rated"> <i class="material-icons">star</i> </li>
                       </ul>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nunc velit, dictum eget nulla a, sollicitudin rhoncus orci. Vivamus nec commodo turpis.</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nunc velit, dictum eget
+                        nulla a, sollicitudin rhoncus orci. Vivamus nec commodo turpis.</p>
                     </div>
                     <div class="ms-card-img">
                       <img src="assets/img/costic/food-3.jpg" alt="card_img">
@@ -1002,13 +1024,16 @@
               <ul class="ms-list ms-feed ms-twitter-feed ms-recent-support-tickets">
                 <li class="ms-list-item">
                   <a href="#" class="media clearfix">
-                    <img src="assets/img/costic/customer-4.jpg" class="ms-img-round ms-img-small" alt="This is another feature">
+                    <img src="assets/img/costic/customer-4.jpg" class="ms-img-round ms-img-small"
+                      alt="This is another feature">
                     <div class="media-body">
                       <div class="d-flex justify-content-between">
                         <h6 class="ms-feed-user mb-0">Lorem ipsum dolor</h6>
                         <span class="badge badge-success"> Open </span>
-                      </div> <span class="my-2 d-block"> <i class="material-icons">date_range</i> February 24, 2019</span>
-                      <p class="d-block">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus lectus a facilisis bibendum. Duis quis convallis sapien ...</p>
+                      </div> <span class="my-2 d-block"> <i class="material-icons">date_range</i> February 24,
+                        2019</span>
+                      <p class="d-block">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus lectus a
+                        facilisis bibendum. Duis quis convallis sapien ...</p>
                       <div class="d-flex justify-content-between align-items-end">
                         <div class="ms-feed-controls"> <span>
                             <i class="material-icons">chat</i> 16
@@ -1023,13 +1048,16 @@
                 </li>
                 <li class="ms-list-item">
                   <a href="#" class="media clearfix">
-                    <img src="assets/img/costic/customer-1.jpg" class="ms-img-round ms-img-small" alt="This is another feature">
+                    <img src="assets/img/costic/customer-1.jpg" class="ms-img-round ms-img-small"
+                      alt="This is another feature">
                     <div class="media-body">
                       <div class="d-flex justify-content-between">
                         <h6 class="ms-feed-user mb-0">Lorem ipsum dolor</h6>
                         <span class="badge badge-success"> Open </span>
-                      </div> <span class="my-2 d-block"> <i class="material-icons">date_range</i> February 24, 2019</span>
-                      <p class="d-block">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus lectus a facilisis bibendum. Duis quis convallis sapien ...</p>
+                      </div> <span class="my-2 d-block"> <i class="material-icons">date_range</i> February 24,
+                        2019</span>
+                      <p class="d-block">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus lectus a
+                        facilisis bibendum. Duis quis convallis sapien ...</p>
                       <div class="d-flex justify-content-between align-items-end">
                         <div class="ms-feed-controls"> <span>
                             <i class="material-icons">chat</i> 11
@@ -1044,13 +1072,16 @@
                 </li>
                 <li class="ms-list-item">
                   <a href="#" class="media clearfix">
-                    <img src="assets/img/costic/customer-7.jpg" class="ms-img-round ms-img-small" alt="This is another feature">
+                    <img src="assets/img/costic/customer-7.jpg" class="ms-img-round ms-img-small"
+                      alt="This is another feature">
                     <div class="media-body">
                       <div class="d-flex justify-content-between">
                         <h6 class="ms-feed-user mb-0">Lorem ipsum dolor</h6>
                         <span class="badge badge-danger"> Closed </span>
-                      </div> <span class="my-2 d-block"> <i class="material-icons">date_range</i> February 24, 2019</span>
-                      <p class="d-block">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus lectus a facilisis bibendum. Duis quis convallis sapien ...</p>
+                      </div> <span class="my-2 d-block"> <i class="material-icons">date_range</i> February 24,
+                        2019</span>
+                      <p class="d-block">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus lectus a
+                        facilisis bibendum. Duis quis convallis sapien ...</p>
                       <div class="d-flex justify-content-between align-items-end">
                         <div class="ms-feed-controls"> <span>
                             <i class="material-icons">chat</i> 21
@@ -1087,9 +1118,11 @@
                 <ul class="ms-list ms-list-flex ms-chat-controls">
                   <li data-toggle="tooltip" data-placement="top" title="Call"> <i class="material-icons">local_phone</i>
                   </li>
-                  <li data-toggle="tooltip" data-placement="top" title="Video Call"> <i class="material-icons">videocam</i>
+                  <li data-toggle="tooltip" data-placement="top" title="Video Call"> <i
+                      class="material-icons">videocam</i>
                   </li>
-                  <li data-toggle="tooltip" data-placement="top" title="Add to Chat"> <i class="material-icons">person_add</i>
+                  <li data-toggle="tooltip" data-placement="top" title="Add to Chat"> <i
+                      class="material-icons">person_add</i>
                   </li>
                 </ul>
               </div>
@@ -1113,7 +1146,8 @@
                 <div class="media-body">
                   <div class="ms-chat-text">
                     <p>I'm doing great, thanks for asking</p>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                      the industry's standard</p>
                   </div>
                   <p class="ms-chat-time">11:01 pm</p>
                 </div>
@@ -1124,7 +1158,8 @@
                 </div>
                 <div class="media-body">
                   <div class="ms-chat-text">
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a page</p>
+                    <p>It is a long established fact that a reader will be distracted by the readable content of a page
+                    </p>
                     <p>There are many variations of passages of Lorem Ipsum available</p>
                   </div>
                   <p class="ms-chat-time">11:03 pm</p>
@@ -1138,7 +1173,8 @@
                     <li class="ms-chat-input">
                       <input type="text" name="msg" placeholder="Enter Message" value="">
                     </li>
-                    <li class="ms-chat-text-controls ms-list-flex"> <span> <i class="material-icons">tag_faces</i> </span>
+                    <li class="ms-chat-text-controls ms-list-flex"> <span> <i class="material-icons">tag_faces</i>
+                      </span>
                       <span> <i class="material-icons">attach_file</i> </span>
                       <span> <i class="material-icons">camera_alt</i> </span>
                     </li>
@@ -1148,11 +1184,11 @@
             </div>
           </div>
         </div>
-      <!-- client chat -->
+        <!-- client chat -->
       </div>
     </div>
 
-    
+
   </main>
   <!-- MODALS -->
   <!-- Quick bar -->
@@ -1160,31 +1196,36 @@
 
     <ul class="nav nav-tabs ms-quick-bar-list" role="tablist">
 
-      <li class="ms-quick-bar-item ms-has-qa" role="presentation" data-toggle="tooltip" data-placement="left" title="Launch To-do-list" data-title="To-do-list">
+      <li class="ms-quick-bar-item ms-has-qa" role="presentation" data-toggle="tooltip" data-placement="left"
+        title="Launch To-do-list" data-title="To-do-list">
         <a href="#qa-toDo" aria-controls="qa-toDo" role="tab" data-toggle="tab">
           <i class="flaticon-list"></i>
 
         </a>
       </li>
-      <li class="ms-quick-bar-item ms-has-qa" role="presentation" data-toggle="tooltip" data-placement="left" title="Launch Reminders" data-title="Reminders">
+      <li class="ms-quick-bar-item ms-has-qa" role="presentation" data-toggle="tooltip" data-placement="left"
+        title="Launch Reminders" data-title="Reminders">
         <a href="#qa-reminder" aria-controls="qa-reminder" role="tab" data-toggle="tab">
           <i class="flaticon-bell"></i>
 
         </a>
       </li>
-      <li class="ms-quick-bar-item ms-has-qa" role="presentation" data-toggle="tooltip" data-placement="left" title="Launch Notes" data-title="Notes">
+      <li class="ms-quick-bar-item ms-has-qa" role="presentation" data-toggle="tooltip" data-placement="left"
+        title="Launch Notes" data-title="Notes">
         <a href="#qa-notes" aria-controls="qa-notes" role="tab" data-toggle="tab">
           <i class="flaticon-pencil"></i>
 
         </a>
       </li>
-      <li class="ms-quick-bar-item ms-has-qa" role="presentation" data-toggle="tooltip" data-placement="left" title="Invite Members" data-title="Invite Members">
+      <li class="ms-quick-bar-item ms-has-qa" role="presentation" data-toggle="tooltip" data-placement="left"
+        title="Invite Members" data-title="Invite Members">
         <a href="#qa-invite" aria-controls="qa-invite" role="tab" data-toggle="tab">
           <i class="flaticon-share-1"></i>
 
         </a>
       </li>
-      <li class="ms-quick-bar-item ms-has-qa" role="presentation" data-toggle="tooltip" data-placement="left" title="Settings" data-title="Settings">
+      <li class="ms-quick-bar-item ms-has-qa" role="presentation" data-toggle="tooltip" data-placement="left"
+        title="Settings" data-title="Settings">
         <a href="#qa-settings" aria-controls="qa-settings" role="tab" data-toggle="tab">
           <i class="flaticon-gear"></i>
 
@@ -1205,7 +1246,8 @@
 
       <div class="ms-quick-bar-header clearfix">
         <h5 class="ms-quick-bar-title float-left">Title</h5>
-        <button type="button" class="close ms-toggler" data-target="#ms-quick-bar" data-toggle="hideQuickBar" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close ms-toggler" data-target="#ms-quick-bar" data-toggle="hideQuickBar"
+          aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
 
       <div class="ms-quick-bar-body tab-content">
@@ -1217,8 +1259,10 @@
 
             <form class="ms-add-task-block">
               <div class="form-group mx-3 mt-0  fs-14 clearfix">
-                <input type="text" class="form-control fs-14 float-left" id="task-block" name="todo-block" placeholder="Add Task Block" value="">
-                <button type="submit" class="ms-btn-icon bg-primary float-right"><i class="material-icons text-disabled">add</i></button>
+                <input type="text" class="form-control fs-14 float-left" id="task-block" name="todo-block"
+                  placeholder="Add Task Block" value="">
+                <button type="submit" class="ms-btn-icon bg-primary float-right"><i
+                    class="material-icons text-disabled">add</i></button>
               </div>
             </form>
 
@@ -1227,7 +1271,9 @@
 
                 <div class="ms-card-header clearfix">
                   <h6 class="ms-card-title">Task Block Title</h6>
-                  <button data-toggle="tooltip" data-placement="left" title="Add a Task to this block" class="ms-add-task-to-block ms-btn-icon float-right"> <i class="material-icons text-disabled">add</i> </button>
+                  <button data-toggle="tooltip" data-placement="left" title="Add a Task to this block"
+                    class="ms-add-task-to-block ms-btn-icon float-right"> <i
+                      class="material-icons text-disabled">add</i> </button>
                 </div>
 
                 <div class="ms-card-body">
@@ -1253,7 +1299,8 @@
 
                 <div class="ms-card-footer clearfix">
                   <a href="#" class="text-disabled mr-2"> <i class="flaticon-archive"> </i> Archive </a>
-                  <a href="#" class="text-disabled  ms-delete-trigger float-right"> <i class="flaticon-trash"> </i> Delete </a>
+                  <a href="#" class="text-disabled  ms-delete-trigger float-right"> <i class="flaticon-trash"> </i>
+                    Delete </a>
                 </div>
 
               </li>
@@ -1266,7 +1313,8 @@
           <div class="ms-quickbar-container ms-reminders">
 
             <ul class="ms-qa-options">
-              <li> <a href="#" data-toggle="modal" data-target="#reminder-modal"> <i class="flaticon-bell"></i> New Reminder </a> </li>
+              <li> <a href="#" data-toggle="modal" data-target="#reminder-modal"> <i class="flaticon-bell"></i> New
+                  Reminder </a> </li>
             </ul>
 
             <div class="ms-quickbar-container ms-scrollable">
@@ -1274,12 +1322,14 @@
               <div class="ms-card ms-qa-card ms-deletable">
                 <div class="ms-card-body">
                   <p> Developer Meeting in Block B </p>
-                  <span class="text-disabled fs-12"><i class="material-icons fs-14">access_time</i> Today - 3:45 pm</span>
+                  <span class="text-disabled fs-12"><i class="material-icons fs-14">access_time</i> Today - 3:45
+                    pm</span>
                 </div>
                 <div class="ms-card-footer clearfix">
 
                   <div class="ms-note-editor float-right">
-                    <a href="#" class="text-disabled mr-2" data-toggle="modal" data-target="#reminder-modal"> <i class="flaticon-pencil"> </i> Edit </a>
+                    <a href="#" class="text-disabled mr-2" data-toggle="modal" data-target="#reminder-modal"> <i
+                        class="flaticon-pencil"> </i> Edit </a>
                     <a href="#" class="text-disabled  ms-delete-trigger"> <i class="flaticon-trash"> </i> Delete </a>
                   </div>
 
@@ -1288,12 +1338,14 @@
               <div class="ms-card ms-qa-card ms-deletable">
                 <div class="ms-card-body">
                   <p> Start adding change log to version 2 </p>
-                  <span class="text-disabled fs-12"><i class="material-icons fs-14">access_time</i> Tomorrow - 12:00 pm</span>
+                  <span class="text-disabled fs-12"><i class="material-icons fs-14">access_time</i> Tomorrow - 12:00
+                    pm</span>
                 </div>
                 <div class="ms-card-footer clearfix">
 
                   <div class="ms-note-editor float-right">
-                    <a href="#" class="text-disabled mr-2" data-toggle="modal" data-target="#reminder-modal"> <i class="flaticon-pencil"> </i> Edit </a>
+                    <a href="#" class="text-disabled mr-2" data-toggle="modal" data-target="#reminder-modal"> <i
+                        class="flaticon-pencil"> </i> Edit </a>
                     <a href="#" class="text-disabled  ms-delete-trigger"> <i class="flaticon-trash"> </i> Delete </a>
                   </div>
 
@@ -1308,7 +1360,8 @@
         <div role="tabpanel" class="tab-pane" id="qa-notes">
 
           <ul class="ms-qa-options">
-            <li> <a href="#" data-toggle="modal" data-target="#notes-modal"> <i class="flaticon-sticky-note"></i> New Note </a> </li>
+            <li> <a href="#" data-toggle="modal" data-target="#notes-modal"> <i class="flaticon-sticky-note"></i> New
+                Note </a> </li>
             <li> <a href="#"> <i class="flaticon-excel"></i> Export to Excel </a> </li>
           </ul>
 
@@ -1320,7 +1373,8 @@
               </div>
               <div class="ms-card-body">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vulputate urna in faucibus venenatis. Etiam at dapibus neque,
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vulputate urna in faucibus venenatis.
+                  Etiam at dapibus neque,
                   vel varius metus. Pellentesque eget orci malesuada, venenatis magna et
                 </p>
                 <ul class="ms-note-members clearfix mb-0">
@@ -1368,7 +1422,8 @@
                   </ul>
                 </div>
                 <div class="ms-note-editor float-right">
-                  <a href="#" class="text-disabled mr-2" data-toggle="modal" data-target="#notes-modal"> <i class="flaticon-pencil"> </i> Edit </a>
+                  <a href="#" class="text-disabled mr-2" data-toggle="modal" data-target="#notes-modal"> <i
+                      class="flaticon-pencil"> </i> Edit </a>
                   <a href="#" class="text-disabled  ms-delete-trigger"> <i class="flaticon-trash"> </i> Delete </a>
                 </div>
 
@@ -1381,7 +1436,8 @@
               </div>
               <div class="ms-card-body">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vulputate urna in faucibus venenatis. Etiam at dapibus neque,
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vulputate urna in faucibus venenatis.
+                  Etiam at dapibus neque,
                   vel varius metus. Pellentesque eget orci malesuada, venenatis magna et
                 </p>
                 <ul class="ms-note-members clearfix mb-0">
@@ -1428,7 +1484,8 @@
                   </ul>
                 </div>
                 <div class="ms-note-editor float-right">
-                  <a href="#" class="text-disabled mr-2" data-toggle="modal" data-target="#notes-modal"> <i class="flaticon-pencil"> </i> Edit </a>
+                  <a href="#" class="text-disabled mr-2" data-toggle="modal" data-target="#notes-modal"> <i
+                      class="flaticon-pencil"> </i> Edit </a>
                   <a href="#" class="text-disabled  ms-delete-trigger"> <i class="flaticon-trash"> </i> Delete </a>
                 </div>
 
@@ -1499,7 +1556,8 @@
       <div class="modal-content">
         <div class="modal-header bg-secondary">
           <h5 class="modal-title has-icon text-white"> New Reminder</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span>
           </button>
         </div>
         <form>
@@ -1546,7 +1604,8 @@
       <div class="modal-content">
         <div class="modal-header bg-secondary">
           <h5 class="modal-title has-icon text-white" id="NoteModal">New Note</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span>
           </button>
         </div>
         <form>
@@ -1602,4 +1661,5 @@
 
 
 <!-- Mirrored from slidesigma.com/themes/html/costic/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:05:48 GMT -->
+
 </html>

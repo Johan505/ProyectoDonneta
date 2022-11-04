@@ -69,22 +69,12 @@ public class VistaClienteController {
 		m.addAttribute("categorias", categoriad.findAll());
 		return "VistaCliente/index";
 	}
-	@GetMapping(path = { "/cart" })
-	public String cart(Model m) {
-		m.addAttribute("productos", productod.findAll());
-		m.addAttribute("categorias", categoriad.findAll());
-		return "VistaCliente/shoping-cart";
-	}
 
 	@GetMapping(path = { "/Login" })
 	public String login() {
 		return "VistaCliente/Login";
 	}
-	// @GetMapping(path = { "/cart" })
-	// public String cart() {
-	// 	return "VistaCliente/shoping-cart";
-	// }
-	
+
 	@GetMapping(path = { "/register" })
 	public String register() {
 		return "VistaCliente/Register";
@@ -155,7 +145,7 @@ public class VistaClienteController {
 		model.addAttribute("cart", detalles);
 		model.addAttribute("venta", venta);
 
-		return "VistaCliente/index";
+		return "VistaCliente/shoping-cart";
 	}
 
 	@GetMapping("/getCart")

@@ -5,7 +5,7 @@
 	<title>Iniciar sesión</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" th:href="@{/images/icons/Logo final - Domidonetta 1.png}" />
+	<link rel="icon" type="image/png" th:href="@{/login-register/images/icons/Logo final - Domidonetta 1.png}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/login-register/vendor/bootstrap/css/bootstrap.min.css}">
 	<link rel="stylesheet" type="text/css"
 		th:href="@{/login-register/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
@@ -17,7 +17,6 @@
 </head>
 
 <body>
-
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -26,52 +25,49 @@
 				</div><br><br>
 
 				<form class="login100-form validate-form">
-					<img class="LogoLogin" th:src="@{/login-register/images/logo-horizontal - negro.png}"
-						alt="Donetta"><br><br><br>
+					<img class="LogoLogin" th:src="@{/login-register/images/logo-horizontal - negro.png}"><br><br><br>
 					<span class="login100-form-title">
 						Inicio sesión
+
+
+
 						<br><br>
-						<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-							<input class="input100" type="text" name="email" placeholder="Usuario" required />
-					</span>
-					<span class="focus-input100"></span>
-					<span class="symbol-input100">
-						<i class="fa fa-envelope" aria-hidden="true"></i>
-					</span>
-			</div>
+						<div class="form-field validate-input" data-validate="Valid email is required: ex@abc.xyz">
+							<label class="labelu" style="font-size: 75%;">Usuario</label>
+							<input type="email" class="form-control">
+						</div>
 
-			<div class="wrap-input100 validate-input" data-validate="Password is required">
-				<input class="input100" type="password" name="pass" placeholder="Contraseña" required />
-				<span class="focus-input100"></span>
-				<span class="symbol-input100">
-					<i class="fa fa-lock" aria-hidden="true"></i>
-				</span>
-			</div>
+						<div class="form-field validate-input" data-validate="Password is required">
+							<label class="labelc" style="font-size: 75%;">Contraseña</label>
+							<input type="password" class="form-control">
+						</div>
 
-			<div class="container-login100-form-btn">
-				<button class="login100-form-btn" type="submit">
-					Ingresar
-				</button>
-			</div><br></br>
+						<div class="container-login100-form-btn">
+							<button class="login100-form-btn" type="submit">
+								Ingresar
+							</button>
+						</div><br></br>
 
-			<div class="text-center p-t-12">
+						<div class="text-center p-t-12">
 
-				<a class="txt2" th:href="@{/register}">Crear cuenta
-					<i class="fa" aria-hidden="true"></i>
-				</a>
-			</div>
+							<a class="txt2" href="#">
+								Olvidó alguna credencial?
+							</a><a class="txt2" th:href="@{/register}">Crear cuenta
+								<i class="fa" aria-hidden="true"></i>
+							</a>
+						</div>
 
-			<!--<div class="text-center p-t-136">
+						<!--<div class="text-center p-t-136">
 						<a class="txt2" href="Register.html">
 							Crear cuenta nueva	
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>-->
-			</form>
+				</form>
+			</div>
 		</div>
 	</div>
-	</div>
-	<script src="login-register/js/main.js"></script>
+	<script th:src="@{/login-register/login-register/js/main.js}"></script>
 
 </body>
 

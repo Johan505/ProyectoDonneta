@@ -1,64 +1,67 @@
 <!DOCTYPE html>
 <html xmlns:th="https://wwww.thymeleaf.org" lang="es">
+
 <head>
 	<title>Carrito</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" th:href="@{/css/footer.css}">
-<!--===============================================================================================-->	
+	<!--===============================================================================================-->
 	<link rel="icon" th:href="@{/img/logo-solo - negro.png}">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" th:href="@{/css/styles-merged.css}">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" th:href="@{/fonts/iconic/css/material-design-iconic-font.min.css}">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" th:href="@{/fonts/linearicons-v1.0.0/icon-font.min.css}">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" th:href="@{/vendor/animate/animate.css}">
-<!--===============================================================================================-->	
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" th:href="@{/vendor/css-hamburgers/hamburgers.min.css}">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" th:href="@{/vendor/animsition/css/animsition.min.css}">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" th:href="@{/vendor/perfect-scrollbar/perfect-scrollbar.css}">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" thhref="@{/css/util.css}">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}">
 </head>
+
 <body class="animsition">
 
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-default navbar-fixed-top" id="colorNavBar">
 		<div class="container">
-		  
-		  <nav class="navbar navbar-expand-lg">
-			<div class="container-fluid">
-			  <div class="logo1">
-			  <a class="navbar-logo" th:href="@{/}"><img src="img/Logo final - Domidonetta 2 Letra Blanco.png" width="200" ></a>
-			  </div>
-			  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-				  <span class="hamburger-menu"></span>
-  
-				<div class="navbar-nav closed" id="menu">
-				  <ul>
-					<li><a class="nav-link active" aria-current="page" th:href="@{/}">Inicio</a></li>
-					<li><a class="nav-link" th:href="@{/index}">Productos</a></li>
-					<li><a class="nav-link" th:href="@{/cart}">Carrito</a></li>
-					<li><a class="nav-link" th:href="@{/Login}">Iniciar Sesión</a></li>
-				  </ul>
+
+			<nav class="navbar navbar-expand-lg">
+				<div class="container-fluid">
+					<div class="logo1">
+						<a class="navbar-logo" th:href="@{/}"><img src="img/Logo final - Domidonetta 2 Letra Blanco.png"
+								width="200"></a>
+					</div>
+					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+						<span class="hamburger-menu"></span>
+
+						<div class="navbar-nav closed" id="menu">
+							<ul>
+								<li><a class="nav-link active" aria-current="page" th:href="@{/}">Inicio</a></li>
+								<li><a class="nav-link" th:href="@{/index}">Productos</a></li>
+								<li><a class="nav-link" th:href="@{/cart}">Carrito</a></li>
+								<li><a class="nav-link" th:href="@{/Login}">Iniciar Sesión</a></li>
+							</ul>
+						</div>
+					</div>
 				</div>
-			  </div>
-			</div>
-		  </nav>
+			</nav>
 		</div>
 	</nav>
 	<!-- Fixed navbar end -->
@@ -88,15 +91,16 @@
 							<tr th:each="dventa:${cart}">
 								<td th:text="${dventa.nombre}"></td>
 								<td th:text="${dventa.precio}"></td>
-								<td><input type="number" id="cantidad" name="cantidad"
-										autocomplete="off" min="1" max="50" th:value="${dventa.cantidad}"></td>
-								
+								<td><input type="number" id="cantidad" name="cantidad" autocomplete="off" min="1"
+										max="50" th:value="${dventa.cantidad}"></td>
+
 								<td th:text="${dventa.total}"></td>
 								<td>
 									<button th:href="@{/cart}"
-									class="flex-c-m cl0 bg1 hov-btn1 p-lr-15 trans-04 btn btn-danger">
-									Quitar
-								</button></center></td>
+										class="flex-c-m cl0 bg1 hov-btn1 p-lr-15 trans-04 btn btn-danger">
+										Quitar
+									</button></center>
+								</td>
 							</tr>
 						</tbody>
 					</table>
@@ -106,7 +110,9 @@
 					<h2 class="card-title">TOTAL</h2>
 
 					<ul class="list-group">
-						<li class="list-group-item"><h5 th:text="${venta.total}"></h5></li>
+						<li class="list-group-item">
+							<h5 th:text="${venta.total}"></h5>
+						</li>
 						<a th:href="@{/Datos}" class="btn flex-c-m cl0 hov-bg1 bg10 p-lr-15 trans-04">Continuar</a>
 					</ul>
 				</div>
@@ -115,29 +121,32 @@
 			</div>
 		</div>
 	</div>
-</div>
-	
+	</div>
+
 
 	<!-- Footer -->
-	
+
 	<section class="probootstrap-copyright">
 		<div class="container">
-		  <div class="row">
-			<div class="col-md-8">
-			  <p class="copyright-text">&copy; 2022 <a target="_blank" href="https://uicookies.com/">uiCookies:Resto</a>. Todos los derechos reservados. Imagenes de <a target="_blank" href="https://graphicburger.com/">GraphicBurger</a> &amp; <a target="_blank" href="https://unsplash.com/">Unsplash</a></p>
+			<div class="row">
+				<div class="col-md-8">
+					<p class="copyright-text">&copy; 2022 <a target="_blank"
+							href="https://uicookies.com/">uiCookies:Resto</a>. Todos los derechos reservados. Imagenes
+						de <a target="_blank" href="https://graphicburger.com/">GraphicBurger</a> &amp; <a
+							target="_blank" href="https://unsplash.com/">Unsplash</a></p>
+				</div>
+				<div class="col-md-4">
+					<ul class="probootstrap-footer-social right">
+						<li><a href="https://github.com/santicarreno13"><i class="icon-github"></i></a></li>
+						<li><a href="https://github.com/Johan505"><i class="icon-github"></i></a></li>
+						<li><a href="https://github.com/julianruizzz"><i class="icon-github"></i></a></li>
+						<li><a href="https://github.com/Verink55"><i class="icon-github"></i></a></li>
+					</ul>
+				</div>
 			</div>
-			<div class="col-md-4">
-			  <ul class="probootstrap-footer-social right">
-				<li><a href="https://github.com/santicarreno13"><i class="icon-github"></i></a></li>
-				<li><a href="https://github.com/Johan505"><i class="icon-github"></i></a></li>
-				<li><a href="https://github.com/julianruizzz"><i class="icon-github"></i></a></li>
-				<li><a href="https://github.com/Verink55"><i class="icon-github"></i></a></li>
-			  </ul>
-			</div>
-		  </div>
 		</div>
-	  </section>
-	
+	</section>
+
 	<!-- Back to top -->
 	<div class="btn-back-to-top" id="myBtn">
 		<span class="symbol-btn-back-to-top">
@@ -145,45 +154,46 @@
 		</span>
 	</div>
 
-<!--===============================================================================================-->	
+	<!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/bootstrap/js/popper.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/select2/select2.min.js"></script>
 	<script>
-		$(".js-select2").each(function(){
+		$(".js-select2").each(function () {
 			$(this).select2({
 				minimumResultsForSearch: 20,
 				dropdownParent: $(this).next('.dropDownSelect2')
 			});
 		})
 	</script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 	<script>
-		$('.js-pscroll').each(function(){
-			$(this).css('position','relative');
-			$(this).css('overflow','hidden');
+		$('.js-pscroll').each(function () {
+			$(this).css('position', 'relative');
+			$(this).css('overflow', 'hidden');
 			var ps = new PerfectScrollbar(this, {
 				wheelSpeed: 1,
 				scrollingThreshold: 1000,
 				wheelPropagation: false,
 			});
 
-			$(window).on('resize', function(){
+			$(window).on('resize', function () {
 				ps.update();
 			})
 		});
 	</script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="js/main.js"></script>
 	<script src="js/hamburger.js"></script>
 
 </body>
+
 </html>

@@ -29,7 +29,7 @@ public class Categoria {
     private String nombre;
 
     @NotEmpty
-    @Size(min = 8, max = 28)
+    @Size(min = 8, max = 30)
     @Column(length = 28, nullable = false)
     private String descripcion;
 
@@ -43,7 +43,7 @@ public class Categoria {
     }
 
     public Categoria(Integer idCategoria, @NotEmpty @Size(min = 3, max = 25) String nombre,
-            @NotEmpty @Size(min = 8, max = 28) String descripcion, List<Producto> producto) {
+            @NotEmpty @Size(min = 8, max = 30) String descripcion, List<Producto> producto) {
         this.idCategoria = idCategoria;
         this.nombre = nombre;
         this.descripcion = descripcion;

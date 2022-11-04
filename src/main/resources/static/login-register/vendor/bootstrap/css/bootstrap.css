@@ -3160,7 +3160,7 @@ tbody.collapse.show {
 
 .nav-link {
   display: block;
-  padding: 5.5px 1rem;
+  padding: 0.5rem 1rem;
 }
 
 .nav-link:focus, .nav-link:hover {
@@ -3250,7 +3250,7 @@ tbody.collapse.show {
       align-items: center;
   -ms-flex-pack: justify;
       justify-content: space-between;
-  padding: 5.5px 0rem;
+  padding: 0.5rem 1rem;
 }
 
 .navbar > .container,

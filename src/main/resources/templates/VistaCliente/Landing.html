@@ -13,7 +13,7 @@
   <link rel="stylesheet" th:href="@{/css/styles-merged.css}">
   <link rel="stylesheet" th:href="@{/css/style.min.css}">
   <link rel="stylesheet" th:href="@{/css/style.css}">
-	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
   <link rel="icon" th:href="@{/img/logo-solo - negro.png}">
 
   <!--[if lt IE 9]>
@@ -106,8 +106,9 @@
     align-items: flex-end;
     flex-direction: row;">
       <div class="row">
-          <div class="probootstrap-heading dark">
-            <h6 class="secondary-heading">Cafeteria Donneta </h6><div>
+        <div class="probootstrap-heading dark">
+          <h6 class="secondary-heading">Cafeteria Donneta </h6>
+          <div>
             <p>La cafetería Donneta ubicada en Outlet de las Américas,
               local en el centro comercial, Outlet Centro.
             </p>
@@ -116,18 +117,21 @@
               dedicada a la venta de donas por medio de domicilios, te los llevamos hasta la puerta de tu hogar
               Pide tu domicilio ahora no que te quedes con la espera aprovecha ahora...
             </p>
-            <center><p><a href="https://goo.gl/maps/fMByHZjhZ9akGFmu7" class="probootstrap-custom-link">Ubicanos</a></p></center>
+            <center>
+              <p><a href="https://goo.gl/maps/fMByHZjhZ9akGFmu7" class="probootstrap-custom-link">Ubicanos</a></p>
+            </center>
           </div>
-          </div>
-
-          
-
         </div>
-        <div class="col-md-6 col-md-push-1 probootstrap-animate">
-          <img src="img/Logo final - Domidonetta 4 - negro.png" alt="" width="500" height="400" style="margin-right: 50px;">
-        </div>
+
+
+
       </div>
-      <!-- END row -->
+      <div class="col-md-6 col-md-push-1 probootstrap-animate">
+        <img src="img/Logo final - Domidonetta 4 - negro.png" alt="" width="500" height="400"
+          style="margin-right: 50px;">
+      </div>
+    </div>
+    <!-- END row -->
     </div>
   </section>
 
@@ -426,8 +430,8 @@
             </div>
           </div>
           <div class="form-group">
-            <button  class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" 
-            name="c_submit" id="c_submit" style="border:none;">Enviar Mensaje</button>
+            <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail"
+              name="c_submit" id="c_submit" style="border:none;">Enviar Mensaje</button>
           </div>
         </form>
       </div>
@@ -456,41 +460,41 @@
   </section>
 
   <script>
-		$('.js-addwish-b2, .js-addwish-detail').on('click', function (e) {
-			e.preventDefault();
-		});
+    $('.js-addwish-b2, .js-addwish-detail').on('click', function (e) {
+      e.preventDefault();
+    });
 
-		$('.js-addwish-b2').each(function () {
-			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-			$(this).on('click', function () {
-				swal(nameProduct, "is added to wishlist !", "success");
+    $('.js-addwish-b2').each(function () {
+      var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+      $(this).on('click', function () {
+        swal(nameProduct, "is added to wishlist !", "success");
 
-				$(this).addClass('js-addedwish-b2');
-				$(this).off('click');
-			});
-		});
+        $(this).addClass('js-addedwish-b2');
+        $(this).off('click');
+      });
+    });
 
-		$('.js-addwish-detail').each(function () {
-			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+    $('.js-addwish-detail').each(function () {
+      var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
 
-			$(this).on('click', function () {
-				swal(nameProduct, "is added to wishlist !", "success");
+      $(this).on('click', function () {
+        swal(nameProduct, "is added to wishlist !", "success");
 
-				$(this).addClass('js-addedwish-detail');
-				$(this).off('click');
-			});
-		});
+        $(this).addClass('js-addedwish-detail');
+        $(this).off('click');
+      });
+    });
 
-		/*---------------------------------------------*/
+    /*---------------------------------------------*/
 
-		$('.js-addcart-detail').each(function () {
-			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-			$(this).on('click', function () {
-				swal(nameProduct, "Tu mensaje ha sido enviado!", "success");
-			});
-		});
+    $('.js-addcart-detail').each(function () {
+      var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+      $(this).on('click', function () {
+        swal(nameProduct, "Tu mensaje ha sido enviado!", "success");
+      });
+    });
 
-	</script>
+  </script>
   <script src="js/scripts.min.js"></script>
   <script src="js/custom.min.js"></script>
   <script src="js/hamburger.js"></script>

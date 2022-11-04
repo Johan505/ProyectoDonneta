@@ -27,11 +27,12 @@ public class Empleado {
     private String foto;
 
     @NotEmpty
-    @Size(min = 2, max = 50)
+    @Column(name = "nombre", length = 40)
+    @Size(min = 3, max = 30)
     private String nombre;
 
-    @NotEmpty
-    @Size(min = 2, max = 50)
+    @Column(name = "apellido", length = 40)
+    @Size(min = 3, max = 30)
     private String apellido;
 
     @NotEmpty
@@ -39,16 +40,18 @@ public class Empleado {
     public String tipodoc;
 
     @NotEmpty
-    @Size(min = 2, max = 50)
-    @Column(length = 50, nullable = false)
+    @Size(min = 8, max = 10)
+    @Column(length = 50, nullable = false, unique = true)
     private String noDocumento;
 
     @NotEmpty
     @Email
-    @Column(length = 100, nullable = false)
+    @Column(length = 100, nullable = false, unique = true)
     private String email;
 
-    @Column(length = 20)
+    @NotEmpty
+    @Column(length = 20, nullable = false, unique = true)
+    @Size(min = 7, max = 15)
     private String telefono;
 
     private Boolean estado;
@@ -62,10 +65,10 @@ public class Empleado {
         venta = new ArrayList<Venta>();
     }
 
-    public Empleado(Integer idEmpleado, String foto, @NotEmpty @Size(min = 2, max = 50) String nombre,
-            @NotEmpty @Size(min = 2, max = 50) String apellido, @NotEmpty String tipodoc,
-            @NotEmpty @Size(min = 2, max = 50) String noDocumento, @NotEmpty @Email String email, String telefono,
-            Boolean estado) {
+    public Empleado(Integer idEmpleado, String foto, @NotEmpty @Size(min = 3, max = 30) String nombre,
+            @Size(min = 3, max = 30) String apellido, @NotEmpty String tipodoc,
+            @NotEmpty @Size(min = 8, max = 10) String noDocumento, @NotEmpty @Email String email,
+            @NotEmpty @Size(min = 7, max = 15) String telefono, Boolean estado, List<Venta> venta) {
         this.idEmpleado = idEmpleado;
         this.foto = foto;
         this.nombre = nombre;
@@ -75,6 +78,7 @@ public class Empleado {
         this.email = email;
         this.telefono = telefono;
         this.estado = estado;
+        this.venta = venta;
     }
 
     public Integer getIdEmpleado() {
@@ -147,6 +151,14 @@ public class Empleado {
 
     public void setEstado(Boolean estado) {
         this.estado = estado;
+    }
+
+    public List<Venta> getVenta() {
+        return venta;
+    }
+
+    public void setVenta(List<Venta> venta) {
+        this.venta = venta;
     }
 
 }
