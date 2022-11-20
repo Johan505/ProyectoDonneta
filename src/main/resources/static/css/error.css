@@ -1,0 +1,34 @@
+*{
+    background-color: #bd5050;
+    text-align: center;
+}
+a {
+    outline: none;
+    text-decoration: none;
+    padding: 2px 1px 0;
+  }
+  
+  a:link {
+    color: #fdfdfd;
+  }
+  
+  a:visited {
+    color: #ffffff;
+  }
+  
+  a:focus {
+    border-bottom: 1px solid;
+  }
+  
+  a:hover {
+    border-bottom: 1px solid;
+  }
+  
+  a:active {
+    background: #ffffff;
+  }
+  
+  
+  
+
+  
