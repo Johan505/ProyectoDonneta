@@ -384,15 +384,16 @@
                       <td th:text="${d.nombre}"></td>
                       <td th:text="${d.telefono}"></td>
                       <td th:text="${d.direccion}"></td>
+                   
                       <td><a th:href="@{/domicilio/detalle/{id} (id=${d.idDomicilio}) }">Produtos</a></td>
 
                       
-                      <!-- <td th:if="${d.user.id != 3}" >
+                      <td th:if="${d.user.id != 2}" >
                         Asignado
                      </td>
-                     <td th:if="${d.user.id == 3}" >
+                     <td th:if="${d.user.id == 2}" >
                         No asignado
-                     </td> -->
+                     </td>
 
                     
                       <td><a th:href="@{/domicilio/ver/}+${d.idDomicilio}">Asignar</a></td>

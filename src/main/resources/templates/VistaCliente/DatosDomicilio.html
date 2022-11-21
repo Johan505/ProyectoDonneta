@@ -86,6 +86,13 @@
               <form th:action="@{/user/guardarVenta}" th:object="${domicilio}" method="post" enctype="multipart/form-data"
                 style="width: 35rem;" class="mx-auto needs-validation clearfix was-validated" novalidate>
 
+
+                <select id="domiciliario" th:field="*{user}" class="form-select form-control" required hidden>
+                  <option value="2">
+                    Sin Asignar
+                  </option>
+                </select>
+
                 <div class="form-group">
                   <label for="nombre">Nombre</label>
                   <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>

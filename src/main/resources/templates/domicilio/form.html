@@ -355,8 +355,8 @@
                   
                   <div class="col-md-6 mb-3">
                     <label for="domiciliario">Domiciliarios</label>
-                    <select class="form-control" id="domiciliario" th:field="*{domiciliarios}" required>
-                      <option th:each="d:${domiciliarios}" th:value="${d.id}" th:text="${d.name}">
+                    <select class="form-control" id="domiciliario" th:field="*{user}" required>
+                      <option th:each="domi:${domi}" th:value="${domi.id}" th:text="${domi.name}">
                       </option>
                     </select>
                   </div><br><br>

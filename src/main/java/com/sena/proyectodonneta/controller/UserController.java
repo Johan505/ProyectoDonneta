@@ -223,17 +223,6 @@ public class UserController {
 		return "redirect:/user";
 	}
 
-	@PostMapping("/buscar")
-	public String Buscar(@RequestParam String nombre, Model model) {
-		
-		log.info("Nombre del producto: {}",nombre );
-		
-		
-		List<Producto> productos=productod.findAll().stream().filter
-		(p -> p.getNombre().contains(nombre)).collect(Collectors.toList());
-		
-		model.addAttribute("productos",productos);
-		return "VistaCliente/index";
-	}
+
 
 }

@@ -52,6 +52,15 @@ public class DomicilioController {
 
     @GetMapping("/listar")
     public String listar(Model m) {
+        List<User> domiciliarios = userFindDomiciliarioService.obtenerDom();
+
+        for(User domiciliario : domiciliarios){
+
+               
+               System.out.println(domiciliario.getName());
+        }
+
+        m.addAttribute("domiciliarios", domiciliarios);
         m.addAttribute("domicilios", domicilioService.findAll());
         return "domicilio/listar";
     }
@@ -69,12 +78,13 @@ public class DomicilioController {
 
         for(User domiciliario : domiciliarios){
 
-               
                System.out.println(domiciliario.getName());
         }
 
-        m.addAttribute("domiciliarios", domiciliarios);
+        List<Venta> venta = ventad.findAll();
+        m.addAttribute("domi", domiciliarios);
         m.addAttribute("domicilio", domicilio);
+        m.addAttribute("venta", venta);
         m.addAttribute("accion", "Actualizar Domicilio");
         return "domicilio/form";
     }
@@ -92,7 +102,7 @@ public class DomicilioController {
         }
 
         List<Venta> venta = ventad.findAll();
-        m.addAttribute("domiciliarios", domiciliarios);
+        m.addAttribute("domi", domiciliarios);
         m.addAttribute("venta", venta);
         m.addAttribute("domicilio", domicilio);
         m.addAttribute("accion", "Agregar Domicilio");
