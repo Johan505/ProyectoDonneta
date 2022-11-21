@@ -29,6 +29,7 @@ public class SpringSecurity {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/admin/producto/uploads/**").permitAll()
                 .antMatchers("/js/**", "/css/**", "/img/**").permitAll() //pueden acceder todos
                 .antMatchers("/register/**").permitAll() // pueden acceder todos
                 .antMatchers("/index").permitAll() // pueden acceder todos

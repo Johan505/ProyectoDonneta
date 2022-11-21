@@ -196,7 +196,7 @@
                     <tr th:if="${productos.size()>0}" th:each="p:${productos}">
                       <td th:text="${p.idProducto}"></td>
                       <td><img th:if="${#strings.length(p.foto) > 0}" class="rounded"
-                          th:src="@{'/producto/uploads/' + ${p.foto}}" th:alt="${p.foto}" width="75px" height="75px" />
+                          th:src="@{'/admin/producto/uploads/' + ${p.foto}}" th:alt="${p.foto}" width="75px" height="75px" />
                       </td>
                       <td th:text="${p.nombre}"></td>
                       <td th:text="${p.cantidad}"></td>

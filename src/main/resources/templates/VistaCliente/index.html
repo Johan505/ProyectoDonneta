@@ -78,8 +78,7 @@
 
 	<section class="bg0 p-t-23 p-b-140">
 
-		<input class="input" placeholder="Search here">
-									<button class="search-btn" method="post" th:action="@{/buscar}">Buscar</button>
+		
 		<div class="container">
 			<div class="p-b-10">
 				<h3 class="ltext-103 cl5">
@@ -115,7 +114,7 @@
 					<div class="block2">
 						<div class="block2-pic hov-img0">
 							<img th:if="${#strings.length(p.foto) > 0}" class="rounded"
-								th:src="@{'/producto/uploads/' + ${p.foto}}" th:alt="${p.foto}" width="100%"
+								th:src="@{'/admin/producto/uploads/' + ${p.foto}}" th:alt="${p.foto}" width="100%"
 								height="100%" />
 
 							<a href="#"
