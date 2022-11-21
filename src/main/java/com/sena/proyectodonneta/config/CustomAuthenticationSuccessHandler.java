@@ -15,6 +15,10 @@ import java.util.Collection;
 
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
+     //Ruta usuario
+     SimpleUrlAuthenticationSuccessHandler domiciliarioSuccessHandler =
+     new SimpleUrlAuthenticationSuccessHandler("/domiciliario");
+
     //Ruta usuario
     SimpleUrlAuthenticationSuccessHandler userSuccessHandler =
             new SimpleUrlAuthenticationSuccessHandler("/user");
@@ -35,8 +39,16 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
                 this.userSuccessHandler.onAuthenticationSuccess(request, response, authentication);
                 return;
             }
+
+            if (authorityName.equals("ROLE_DOMICILIARIO")) {
+                // if the user NOT is an ADMIN delegate to the USERSuccessHandler
+                this.domiciliarioSuccessHandler.onAuthenticationSuccess(request, response, authentication);
+                return;
+            }
         }
         // if the user is an admin delegate to the ADMINSuccessHandler
         this.adminSuccessHandler.onAuthenticationSuccess(request, response, authentication);
     }
+
+    
 }

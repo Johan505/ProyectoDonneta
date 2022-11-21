@@ -45,7 +45,11 @@ public class ProyectodonnetaApplication {
 		// 		"admin@localhost.com",
 		// 		// la contraseña es alamo6402 cambienla pero debe estar encriptada
 		// 		"$2a$10$n.qDryUMLQrVfN3R3kgodOnnniZcnK/HLhfkxEcDxqtp2sHlll8Ty",
-		// 		Arrays.asList(role));
+				
+		// 		Arrays.asList(role),
+		// 		null);
+				
+				
 
 		// userRepository.save(admin);
 	}

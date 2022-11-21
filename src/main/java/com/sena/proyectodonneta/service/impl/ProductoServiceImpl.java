@@ -29,11 +29,6 @@ public class ProductoServiceImpl implements IProductoService {
     return (List<Producto>) productoda.findAll();
     }
 
-    @Override
-    public List<Producto> findAlla() {
-
-    return (List<Producto>) productoda.findAll();
-    }
 
     @Override
     public void save(Producto producto) {

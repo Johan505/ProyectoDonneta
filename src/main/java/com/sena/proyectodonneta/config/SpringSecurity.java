@@ -32,6 +32,7 @@ public class SpringSecurity {
                 .antMatchers("/js/**", "/css/**", "/img/**").permitAll() //pueden acceder todos
                 .antMatchers("/register/**").permitAll() // pueden acceder todos
                 .antMatchers("/index").permitAll() // pueden acceder todos
+                .antMatchers("/domicilio/**").hasAnyRole("ADMIN")
                 .antMatchers("/user/**").hasAnyRole("USER", "ADMIN") //ruta que protegera usuarios
                 .antMatchers("/admin/**").hasAnyRole("ADMIN") // ruta protegida de clientes
                 .and().

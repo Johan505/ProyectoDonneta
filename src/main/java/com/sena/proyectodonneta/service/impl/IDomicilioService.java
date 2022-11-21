@@ -13,4 +13,6 @@ public interface IDomicilioService {
 
 	Domicilio save(Domicilio domicilio);
 
+	Domicilio findOne(Integer idDomicilio);
+
 }

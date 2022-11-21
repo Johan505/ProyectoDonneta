@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -220,6 +221,19 @@ public class UserController {
 		detalles.clear();
 
 		return "redirect:/user";
+	}
+
+	@PostMapping("/buscar")
+	public String Buscar(@RequestParam String nombre, Model model) {
+		
+		log.info("Nombre del producto: {}",nombre );
+		
+		
+		List<Producto> productos=productod.findAll().stream().filter
+		(p -> p.getNombre().contains(nombre)).collect(Collectors.toList());
+		
+		model.addAttribute("productos",productos);
+		return "VistaCliente/index";
 	}
 
 }

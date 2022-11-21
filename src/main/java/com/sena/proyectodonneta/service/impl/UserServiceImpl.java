@@ -54,6 +54,28 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void saveDomiciliario(UserDto userDto) {
+        User user = new User();
+        // el Dto es el de manipulación de datos por eso en la entity guardamos el nombre pero en el dto pedimos el
+        // nombre y apellido
+        user.setName(userDto.getFirstName() + " " + userDto.getLastName());
+        user.setEmail(userDto.getEmail());
+
+        //encrypt the password once we integrate spring security
+        //user.setPassword(userDto.getPassword());
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+
+        // buscar si existe el ROLE_USER en caso de que sea null invocamos el metodo para que lo cree
+        Role role = roleRepository.findByName("ROLE_DOMICILIARIO");
+        if(role == null){
+            role = checkDomExist();
+        }
+        //asignamos los roles a un arreglo de lo que devuelve el metodo
+        user.setRoles(Arrays.asList(role));
+        userRepository.save(user);
+    }
+
+    @Override
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
@@ -82,10 +104,17 @@ public class UserServiceImpl implements UserService {
         return roleRepository.save(role);
     }
 
+    private Role checkDomExist() {
+        Role role = new Role();
+        role.setName("ROLE_DOMICILIARIO");
+        return roleRepository.save(role);
+    }
+
 
     @Override
 	public Optional<User> findById(Long id) {
 		return userRepository.findById(id);
 	}
+
 
 }

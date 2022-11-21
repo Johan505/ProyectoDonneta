@@ -7,11 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sena.proyectodonneta.model.Domicilio;
+import com.sena.proyectodonneta.model.IDomicilio;
 import com.sena.proyectodonneta.repository.IDomicilioRepository;
 
 @Service
 public class DomicilioServiceImpl implements IDomicilioService {
 
+	@Autowired
+    private IDomicilio domiciliod;
+	
 	@Autowired
 	private IDomicilioRepository domicilioRepository;
 
@@ -28,5 +32,10 @@ public class DomicilioServiceImpl implements IDomicilioService {
 	@Override
 	public Optional<Domicilio> findById(Integer idDomicilio) {
 		return domicilioRepository.findById(idDomicilio);
+	}
+
+	@Override
+	public Domicilio findOne(Integer idDomicilio) {
+		return domiciliod.findById(idDomicilio).orElse(null);
 	}
 }

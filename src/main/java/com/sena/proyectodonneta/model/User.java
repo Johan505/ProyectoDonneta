@@ -38,6 +38,7 @@ public class User
     @Column(nullable=false)
     private String password;
 
+
     //LAZY = fetch cuando se necesita
     //EAGER = fetch inmediatamente
 
@@ -49,5 +50,8 @@ public class User
             joinColumns={@JoinColumn(name="USER_ID", referencedColumnName="ID")},
             inverseJoinColumns={@JoinColumn(name="ROLE_ID", referencedColumnName="ID")})
     private List<Role> roles = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Domicilio> domicilio;
 
 }
