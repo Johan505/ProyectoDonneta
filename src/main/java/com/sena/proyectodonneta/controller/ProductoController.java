@@ -2,15 +2,22 @@ package com.sena.proyectodonneta.controller;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import com.lowagie.text.DocumentException;
+import com.sena.proyectodonneta.Util_Reportes.ProductosExporterPDF;
 import com.sena.proyectodonneta.model.Categoria;
 import com.sena.proyectodonneta.model.Producto;
 import com.sena.proyectodonneta.service.impl.ICategoriaService;
 import com.sena.proyectodonneta.service.impl.IProductoService;
 import com.sena.proyectodonneta.service.impl.IUploadFileService;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -44,6 +51,26 @@ public class ProductoController {
 
     @Autowired
     private IUploadFileService uploadFileService;
+
+    @Autowired
+    private  IProductoService productoService;
+
+
+    @GetMapping("/pdfgenerate")
+    public void generatePDF(HttpServletResponse response) throws DocumentException,IOException{
+        response.setContentType("application/pdf");	
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
+        String currentDateTime = dateFormatter.format(new Date());
+
+        String headerkey = "content-Disposition";
+        String headerValue = "attachment; filename=pdf_" + currentDateTime +  ".pdf";
+        response.setHeader(headerkey,headerValue);
+
+        List<Producto> productos = productoService.findAll();
+
+        ProductosExporterPDF exporterPDF = new ProductosExporterPDF(productos);
+        exporterPDF.exportar(response);
+    }
 
     @GetMapping(value = "/uploads/{filename:.+}")
     public ResponseEntity<Resource> verFoto(@PathVariable String filename) {
