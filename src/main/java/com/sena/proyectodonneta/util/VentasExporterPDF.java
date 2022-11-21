@@ -1,5 +1,4 @@
-package com.sena.proyectodonneta.Util_Reportes;
-
+package com.sena.proyectodonneta.util;
 import java.awt.Color;
 import java.io.IOException;
 import java.util.List;
@@ -16,14 +15,14 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
-import com.sena.proyectodonneta.model.Categoria;
+import com.sena.proyectodonneta.model.Venta;
 
-public class CategoriasExporterPDF {
-    private List<Categoria> listcategoria ;
+public class VentasExporterPDF {
+    private List<Venta> listventa ;
     
-    public CategoriasExporterPDF(List<Categoria> listcategoria){
+    public VentasExporterPDF(List<Venta> listventa){
         super();
-        this.listcategoria = listcategoria;
+        this.listventa = listventa;
     }
     private void escribirCabeceraDeTabla(PdfPTable tabla){
         PdfPCell celda = new PdfPCell();
@@ -33,22 +32,22 @@ public class CategoriasExporterPDF {
     Font fuente = FontFactory.getFont(FontFactory.HELVETICA);
     fuente.setColor(Color.white);
 
-     celda.setPhrase(new Phrase("Id",fuente));
-     tabla.addCell(celda);
-
-    celda.setPhrase(new Phrase("Nombre",fuente));
+    celda.setPhrase(new Phrase("Numero De Venta",fuente));
     tabla.addCell(celda);
 
-    celda.setPhrase(new Phrase("Descripcion",fuente));
-     tabla.addCell(celda);
+    celda.setPhrase(new Phrase("Fecha",fuente));
+    tabla.addCell(celda);
+
+    celda.setPhrase(new Phrase("Total",fuente));
+    tabla.addCell(celda);
 
     
 }
     private void escribirDatosDeLaTabla(PdfPTable tabla){
-        for(Categoria categoria : listcategoria){
-             tabla.addCell(categoria.getIdCategoria().toString());
-            tabla.addCell(categoria.getNombre());
-             tabla.addCell(categoria.getDescripcion());
+        for(Venta venta : listventa){
+            tabla.addCell(String.valueOf(venta.getNumero()));
+            tabla.addCell(venta.getFechaCreacion().toString());
+            tabla.addCell(String.valueOf(venta.getTotal()));
         }
     }
     public void exportar(HttpServletResponse res) throws DocumentException, IOException{

@@ -75,6 +75,8 @@ public class UserController {
 
 	Domicilio domicilio = new Domicilio();
     
+
+
     @GetMapping("")
     public String userView(Model model, HttpSession session)
     {

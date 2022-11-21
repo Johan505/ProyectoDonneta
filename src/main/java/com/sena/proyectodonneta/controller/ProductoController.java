@@ -11,13 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import com.lowagie.text.DocumentException;
-import com.sena.proyectodonneta.Util_Reportes.ProductosExporterPDF;
 import com.sena.proyectodonneta.model.Categoria;
 import com.sena.proyectodonneta.model.Producto;
 import com.sena.proyectodonneta.service.impl.ICategoriaService;
 import com.sena.proyectodonneta.service.impl.IProductoService;
 import com.sena.proyectodonneta.service.impl.IUploadFileService;
-
+import com.sena.proyectodonneta.util.ProductosExporterPDF;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;

@@ -1,4 +1,4 @@
-package com.sena.proyectodonneta.Util_Reportes;
+package com.sena.proyectodonneta.util;
 
 import java.awt.Color;
 import java.io.IOException;
@@ -16,15 +16,14 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
-import com.sena.proyectodonneta.model.Producto;
+import com.sena.proyectodonneta.model.Categoria;
 
-
-public class ProductosExporterPDF {
-    private List<Producto> listproducto ;
+public class CategoriasExporterPDF {
+    private List<Categoria> listcategoria ;
     
-    public ProductosExporterPDF(List<Producto> listproducto){
+    public CategoriasExporterPDF(List<Categoria> listcategoria){
         super();
-        this.listproducto = listproducto;
+        this.listcategoria = listcategoria;
     }
     private void escribirCabeceraDeTabla(PdfPTable tabla){
         PdfPCell celda = new PdfPCell();
@@ -34,45 +33,24 @@ public class ProductosExporterPDF {
     Font fuente = FontFactory.getFont(FontFactory.HELVETICA);
     fuente.setColor(Color.white);
 
-    celda.setPhrase(new Phrase("Id",fuente));
-    tabla.addCell(celda);
-
-    celda.setPhrase(new Phrase("Foto",fuente));
-    tabla.addCell(celda);
+     celda.setPhrase(new Phrase("Id",fuente));
+     tabla.addCell(celda);
 
     celda.setPhrase(new Phrase("Nombre",fuente));
     tabla.addCell(celda);
 
-    celda.setPhrase(new Phrase("Cantidad",fuente));
-    tabla.addCell(celda);
-
     celda.setPhrase(new Phrase("Descripcion",fuente));
-    tabla.addCell(celda);
+     tabla.addCell(celda);
 
-    celda.setPhrase(new Phrase("Precio",fuente));
-    tabla.addCell(celda);
-
-    celda.setPhrase(new Phrase("Categoria",fuente));
-    tabla.addCell(celda);
-    
-    celda.setPhrase(new Phrase("Actividad",fuente));
-    tabla.addCell(celda);
     
 }
-
     private void escribirDatosDeLaTabla(PdfPTable tabla){
-        for(Producto producto : listproducto){
-            tabla.addCell(producto.getIdProducto().toString());
-            tabla.addCell(producto.getFoto());
-            tabla.addCell(producto.getNombre());
-            tabla.addCell(producto.getCantidad().toString());
-            tabla.addCell(producto.getDescripcion());
-            tabla.addCell(producto.getPrecio().toString());
-            tabla.addCell(producto.getCategoria().getNombre());
-            tabla.addCell(producto.getEstado().toString());
+        for(Categoria categoria : listcategoria){
+             tabla.addCell(categoria.getIdCategoria().toString());
+            tabla.addCell(categoria.getNombre());
+             tabla.addCell(categoria.getDescripcion());
         }
     }
-
     public void exportar(HttpServletResponse res) throws DocumentException, IOException{
         Document documento = new Document(PageSize.A4);
         PdfWriter.getInstance(documento, res.getOutputStream());
@@ -83,11 +61,11 @@ public class ProductosExporterPDF {
         fuente.setColor(new Color(189, 80, 80));
         fuente.setSize(18);
 
-        Paragraph titulo = new Paragraph("Lista de productos",fuente);
+        Paragraph titulo = new Paragraph("Lista de Categorias",fuente);
         titulo.setAlignment(Paragraph.ALIGN_CENTER);
         documento.add(titulo);
 
-        PdfPTable tabla = new PdfPTable(8);
+        PdfPTable tabla = new PdfPTable(3);
         tabla.setWidthPercentage(100);
         tabla.setSpacingBefore(15);
         tabla.setWidths(new float[] {3f, 2.3f, 2.2f} );

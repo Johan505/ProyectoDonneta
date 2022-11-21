@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.lowagie.text.DocumentException;
-import com.sena.proyectodonneta.Util_Reportes.CategoriasExporterPDF;
 import com.sena.proyectodonneta.model.Categoria;
 import com.sena.proyectodonneta.service.impl.ICategoriaService;
+import com.sena.proyectodonneta.util.CategoriasExporterPDF;
 
 @Controller
 @SessionAttributes("categoria")
