@@ -43,25 +43,21 @@
       </a>
     </div>
     <!-- Navigation -->
-    <ul>
+    <ul  class="accordion ms-main-aside fs-14" id="side-nav-accordion">
 
       <!-- categoria -->
       <li class="menu-item">
-        <a th:href="@{/admin/categoria/listar}"> <span><i class="fas fa-clipboard-list fs-16"></i>Categorias</span>
+        <a th:href="@{/admin/categoria/listar}"> <span><i class="fas fa-archive fs-16"></i>Categorias</span>
         </a>
       </li>
       <!-- categoria end -->
 
       <!-- product -->
       <li class="menu-item">
-        <a th:href="@{/admin/producto/listar}"> <span><i class="fa fa-truck"></i>Productos</span>
+        <a th:href="@{/admin/producto/listar}"> <span><i class="fas fa fa-coffee fs-16"></i>Productos</span>
         </a>
       </li>
 
-      <li class="menu-item">
-        <a th:href="@{/admin/domiciliario/listar}"> <span><i class="fa fa-truck"></i>Users</span>
-        </a>
-      </li>
       <!-- product end -->
       <!-- orders -->
       <li class="menu-item">
@@ -69,12 +65,14 @@
         </a>
       </li>
       <!-- orders end -->
-
-      <!-- sales -->
       <li class="menu-item">
         <a th:href="@{/admin/ventas}"> <span><i class="fa fa-briefcase fs-16"></i>Ventas</span>
         </a>
       </li>
+
+
+      <!-- sales -->
+
 
       <!-- customers-->
       <li class="menu-item">
@@ -83,17 +81,15 @@
         </a>
         <ul id="customer" class="collapse" aria-labelledby="customer" data-parent="#side-nav-accordion">
 
-          <li> <a th:href="@{/cliente}">Lista de Clientes</a>
+          <li> <a th:href="@{/admin/cliente/listar}">Lista de Clientes</a>
           </li>
-          <li> <a th:href="@{/empleado}">Lista de Empleados</a>
-          </li>
-          <li> <a th:href="@{/domiciliario}">Lista de Domiciliarios</a>
+          <li> <a th:href="@{/admin/domiciliario/listar}">Lista de Domiciliarios</a>
           </li>
         </ul>
       </li>
+    </ul>
 
-
-      <!-- Customers  end -->
+    <!-- Customers  end -->
   </aside>
 
   <!-- Main Content -->
@@ -109,24 +105,24 @@
         <a class="pl-0 ml-0 text-center navbar-brand mr-0" href="index.html"><img src="assets/img/logos/logoHnegro.png"
             alt="logo"> </a>
       </div>
-      
 
-        <li class="ms-nav-item ms-nav-user dropdown">
-          <a href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img class="ms-user-img ms-img-round float-right" src="/img/usuario1.png" alt="people">
-          </a>
-          <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
-            <li class="dropdown-menu-header">
-              <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Bienvenido, <span th:text="${username}"></span></span></h6>
-            </li>
-            
-            <li class="dropdown-menu-footer">
-              <a class="media fs-14 p-2" th:href="@{/logout}"> <span><i
-                    class="flaticon-shut-down mr-2"></i> Logout</span>
-              </a>
-            </li>
-          </ul>
-        </li>
+
+      <li class="ms-nav-item ms-nav-user dropdown">
+        <a href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img class="ms-user-img ms-img-round float-right" src="/img/usuario1.png" alt="people">
+        </a>
+        <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
+          <li class="dropdown-menu-header">
+            <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Bienvenido, <span
+                  th:text="${username}"></span></span></h6>
+          </li>
+
+          <li class="dropdown-menu-footer">
+            <a class="media fs-14 p-2" th:href="@{/logout}"> <span><i class="flaticon-shut-down mr-2"></i> Cerrar</span>
+            </a>
+          </li>
+        </ul>
+      </li>
       </ul>
       <div class="ms-toggler ms-d-block-sm pr-0 ms-nav-toggler" data-toggle="slideDown" data-target="#ms-nav-options">
         <span class="ms-toggler-bar bg-primary"></span>
@@ -721,16 +717,16 @@
             </div>
           </div>
         </div>
-       
+
   </main>
   <!-- MODALS -->
   <!-- Quick bar -->
   <aside id="ms-quick-bar" class="ms-quick-bar fixed ms-d-block-lg">
 
-   
+
   </aside>
- 
- 
+
+
   <!-- SCRIPTS -->
   <!-- Global Required Scripts Start -->
   <script src="/dashboard/js/jquery-3.3.1.min.js"></script>

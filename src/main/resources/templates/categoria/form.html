@@ -9,7 +9,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Listado de ventas</title>
+  <title>Agregra Categoria</title>
 
   <!-- Iconic Fonts -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -54,49 +54,51 @@
       </a>
     </div>
     <!-- Navigation -->
-    <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
+    <ul  class="accordion ms-main-aside fs-14" id="side-nav-accordion">
 
       <!-- categoria -->
       <li class="menu-item">
-        <a th:href="@{/admin/categoria/listar}"> <span><i class="fas fa-clipboard-list fs-16"></i>Categorias</span>
+        <a th:href="@{/admin/categoria/listar}"> <span><i class="fas fa-archive fs-16"></i>Categorias</span>
         </a>
       </li>
       <!-- categoria end -->
 
       <!-- product -->
       <li class="menu-item">
-        <a th:href="@{/admin/producto/listar}"> <span><i class="fa fa-truck"></i>Productos</span>
+        <a th:href="@{/admin/producto/listar}"> <span><i class="fas fa fa-coffee fs-16"></i>Productos</span>
         </a>
       </li>
+
       <!-- product end -->
       <!-- orders -->
       <li class="menu-item">
-        <a th:href="@{/admin/domicilios}"> <span><i class="fas fa-clipboard-list fs-16"></i>Domicilios</span>
+        <a th:href="@{/domicilio/listar}"> <span><i class="fas fa-solid fa-truck fs-16"></i> Domicilios</span>
         </a>
       </li>
       <!-- orders end -->
-
-      <!-- sales -->
       <li class="menu-item">
         <a th:href="@{/admin/ventas}"> <span><i class="fa fa-briefcase fs-16"></i>Ventas</span>
         </a>
       </li>
 
+
+      <!-- sales -->
+
+
       <!-- customers-->
       <li class="menu-item">
         <a href="#" class="has-chevron" data-toggle="collapse" data-target="#customer" aria-expanded="false"
-          aria-controls="customer"> <span><i class="fas fa-user-friends fs-16"></i>Usuarios</span>
+          aria-controls="customer"> <span><i class="fas fa-user-friends fs-16"></i>Usuario</span>
         </a>
         <ul id="customer" class="collapse" aria-labelledby="customer" data-parent="#side-nav-accordion">
 
-          <li> <a th:href="@{/cliente}">Lista de Clientes</a>
+          <li> <a th:href="@{/admin/cliente/listar}">Lista de Clientes</a>
           </li>
-          <li> <a th:href="@{/empleado}">Lista de Empleados</a>
-          </li>
-          <li> <a th:href="@{/domiciliario}">Lista de Domiciliarios</a>
+          <li> <a th:href="@{/admin/domiciliario/listar}">Lista de Domiciliarios</a>
           </li>
         </ul>
       </li>
+    </ul>
       <!-- Customers  end -->
   </aside>
 
@@ -133,7 +135,7 @@
             
             <li class="dropdown-menu-footer">
               <a class="media fs-14 p-2" th:href="@{/logout}"> <span><i
-                    class="flaticon-shut-down mr-2"></i> Logout</span>
+                    class="flaticon-shut-down mr-2"></i> Cerrar</span>
               </a>
             </li>
           </ul>
@@ -154,8 +156,8 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb pl-0">
               <li class="breadcrumb-item"><a href="#"><i class="material-icons">home</i> Home</a></li>
-              <li class="breadcrumb-item"><a href="#">Menu</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Add Product</li>
+              <li class="breadcrumb-item"><a th:href="@{/admin/categoria/listar}">Categorias</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Agregar Categoria</li>
             </ol>
           </nav>
 

@@ -9,7 +9,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Listado de ventas</title>
+  <title>Listado de domiciliario</title>
 
   <!-- Iconic Fonts -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -54,56 +54,58 @@
       </a>
     </div>
     <!-- Navigation -->
-    <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
+    <ul  class="accordion ms-main-aside fs-14" id="side-nav-accordion">
 
       <!-- categoria -->
       <li class="menu-item">
-        <a th:href="@{/admin/categoria/listar}"> <span><i class="fas fa-clipboard-list fs-16"></i>Categorias</span>
+        <a th:href="@{/admin/categoria/listar}"> <span><i class="fas fa-archive fs-16"></i>Categorias</span>
         </a>
       </li>
       <!-- categoria end -->
 
       <!-- product -->
       <li class="menu-item">
-        <a th:href="@{/admin/producto/listar}"> <span><i class="fa fa-truck"></i>Productos</span>
+        <a th:href="@{/admin/producto/listar}"> <span><i class="fas fa fa-coffee fs-16"></i>Productos</span>
         </a>
       </li>
+
       <!-- product end -->
       <!-- orders -->
       <li class="menu-item">
-        <a th:href="@{/admin/domicilios}"> <span><i class="fas fa-clipboard-list fs-16"></i>Domicilios</span>
+        <a th:href="@{/domicilio/listar}"> <span><i class="fas fa-solid fa-truck fs-16"></i> Domicilios</span>
         </a>
       </li>
       <!-- orders end -->
-
-      <!-- sales -->
       <li class="menu-item">
         <a th:href="@{/admin/ventas}"> <span><i class="fa fa-briefcase fs-16"></i>Ventas</span>
         </a>
       </li>
 
+
+      <!-- sales -->
+
+
       <!-- customers-->
       <li class="menu-item">
         <a href="#" class="has-chevron" data-toggle="collapse" data-target="#customer" aria-expanded="false"
-          aria-controls="customer"> <span><i class="fas fa-user-friends fs-16"></i>Usuarios</span>
+          aria-controls="customer"> <span><i class="fas fa-user-friends fs-16"></i>Usuario</span>
         </a>
         <ul id="customer" class="collapse" aria-labelledby="customer" data-parent="#side-nav-accordion">
 
-          <li> <a th:href="@{/cliente}">Lista de Clientes</a>
+          <li> <a th:href="@{/admin/cliente/listar}">Lista de Clientes</a>
           </li>
-          <li> <a th:href="@{/empleado}">Lista de Empleados</a>
-          </li>
-          <li> <a th:href="@{/domiciliario}">Lista de Domiciliarios</a>
+          <li> <a th:href="@{/admin/domiciliario/listar}">Lista de Domiciliarios</a>
           </li>
         </ul>
       </li>
-      <!-- Customers  end -->
+    </ul>
+    <!-- Customers  end -->
   </aside>
 
   <!-- Sidebar Right -->
   <aside id="ms-recent-activity" class="side-nav fixed ms-aside-right ms-scrollable">
 
-    
+
   </aside>
 
   <!-- Main Content -->
@@ -120,24 +122,24 @@
         <a class="pl-0 ml-0 text-center navbar-brand mr-0" href="index.html"><img src="assets/img/logos/logoHnegro.png"
             alt="logo"> </a>
       </div>
-      
 
-        <li class="ms-nav-item ms-nav-user dropdown">
-          <a href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img class="ms-user-img ms-img-round float-right" src="/img/usuario1.png" alt="people">
-          </a>
-          <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
-            <li class="dropdown-menu-header">
-              <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Bienvenido, <span th:text="${username}"></span></span></h6>
-            </li>
-            
-            <li class="dropdown-menu-footer">
-              <a class="media fs-14 p-2" th:href="@{/logout}"> <span><i
-                    class="flaticon-shut-down mr-2"></i> Logout</span>
-              </a>
-            </li>
-          </ul>
-        </li>
+
+      <li class="ms-nav-item ms-nav-user dropdown">
+        <a href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img class="ms-user-img ms-img-round float-right" src="/img/usuario1.png" alt="people">
+        </a>
+        <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
+          <li class="dropdown-menu-header">
+            <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Bienvenido, <span
+                  th:text="${username}"></span></span></h6>
+          </li>
+
+          <li class="dropdown-menu-footer">
+            <a class="media fs-14 p-2" th:href="@{/logout}"> <span><i class="flaticon-shut-down mr-2"></i> Cerrar</span>
+            </a>
+          </li>
+        </ul>
+      </li>
       </ul>
       <div class="ms-toggler ms-d-block-sm pr-0 ms-nav-toggler" data-toggle="slideDown" data-target="#ms-nav-options">
         <span class="ms-toggler-bar bg-primary"></span>
@@ -154,8 +156,8 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb pl-0">
               <li class="breadcrumb-item"><a href="#"><i class="material-icons">home</i> Home</a></li>
-              <li class="breadcrumb-item"><a href="#">Menu</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Add Product</li>
+              <li class="breadcrumb-item"><a th:href="@{/admin/domiciliario/listar}">Domiciliarios</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Agregar Domiciliario</li>
             </ol>
           </nav>
 
@@ -175,57 +177,33 @@
 
                 <div class="form-group col-md-12 mb-3">
                   <label for="nombre">Nombre</label>
-                  <input class="form-control"
-                               id="firstName"
-                               name="firstName"
-                               placeholder="Enter first name"
-                               th:field="*{firstName}"
-                               type="text"
-                        />
-                        <p th:errors="*{firstName}" class="text-danger"
-                           th:if="${#fields.hasErrors('firstName')}">
-                        </p>
+                  <input class="form-control" id="firstName" name="firstName" 
+                    th:field="*{firstName}" type="text" />
+                  <p th:errors="*{firstName}" class="text-danger" th:if="${#fields.hasErrors('firstName')}">
+                  </p>
                 </div>
 
                 <div class="form-group col-md-12 mb-3">
-                 <label class="form-label">Last Name</label>
-                        <input class="form-control"
-                               id="lastName"
-                               name="lastName"
-                               placeholder="Enter last name"
-                               th:field="*{lastName}"
-                               type="text"
-                        />
-                        <p th:errors="*{lastName}" class="text-danger"
-                           th:if="${#fields.hasErrors('lastName')}">
-                        </p>
+                  <label class="form-label">Apellido</label>
+                  <input class="form-control" id="lastName" name="lastName" 
+                    th:field="*{lastName}" type="text" />
+                  <p th:errors="*{lastName}" class="text-danger" th:if="${#fields.hasErrors('lastName')}">
+                  </p>
                 </div>
 
                 <div class="form-group col-md-12 mb-3">
-                    <label class="form-label">Email</label>
-                    <input class="form-control"
-                           id="email"
-                           name="email"
-                           placeholder="Enter email address"
-                           th:field="*{email}"
-                           type="email"
-                    />
-                    <p th:errors="*{email}" class="text-danger"
-                       th:if="${#fields.hasErrors('email')}">
-                    </p>
+                  <label class="form-label">Correo</label>
+                  <input class="form-control" id="email" name="email" 
+                    th:field="*{email}" type="email" />
+                  <p th:errors="*{email}" class="text-danger" th:if="${#fields.hasErrors('email')}">
+                  </p>
                 </div>
                 <div class="form-group col-md-12 mb-3">
-                    <label class="form-label">Password</label>
-                    <input class="form-control"
-                           id="password"
-                           name="password"
-                           placeholder="Enter password"
-                           th:field="*{password}"
-                           type="password"
-                    />
-                    <p th:errors="*{password}" class="text-danger"
-                       th:if="${#fields.hasErrors('password')}">
-                    </p>
+                  <label class="form-label">Contraseña</label>
+                  <input class="form-control" id="password" name="password" 
+                    th:field="*{password}" type="password" />
+                  <p th:errors="*{password}" class="text-danger" th:if="${#fields.hasErrors('password')}">
+                  </p>
                 </div>
 
                 <div>
@@ -252,7 +230,7 @@
   <!-- Quick bar -->
   <aside id="ms-quick-bar" class="ms-quick-bar fixed ms-d-block-lg">
 
-   
+
   </aside>
 
   <!-- Reminder Modal -->

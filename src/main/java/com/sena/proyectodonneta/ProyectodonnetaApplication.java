@@ -38,20 +38,20 @@ public class ProyectodonnetaApplication {
 			role = createRoleAdmin();
 		}
 
-		// // construimos un usuario si se quiere pueden cambiar
-		// User admin = new User(
-		// 		null,
-		// 		"admin",
-		// 		"admin@localhost.com",
-		// 		// la contraseña es alamo6402 cambienla pero debe estar encriptada
-		// 		"$2a$10$n.qDryUMLQrVfN3R3kgodOnnniZcnK/HLhfkxEcDxqtp2sHlll8Ty",
+		 // construimos un usuario si se quiere pueden cambiar
+		//  User admin = new User(
+		//  		null,
+		//  		"admin",
+		//  		"admin@localhost.com",
+		//  		// la contraseña es alamo6402 cambienla pero debe estar encriptada
+		//  		"$2a$10$n.qDryUMLQrVfN3R3kgodOnnniZcnK/HLhfkxEcDxqtp2sHlll8Ty",
 				
-		// 		Arrays.asList(role),
-		// 		null);
+		//  		Arrays.asList(role),
+		//  		null);
 				
 				
 
-		// userRepository.save(admin);
+		//  userRepository.save(admin);
 	}
 
 	//creamos el role si no existe se hace por defecto no borrarlo porque no se puede crear desde la app

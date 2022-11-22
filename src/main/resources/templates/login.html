@@ -21,18 +21,16 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="tapped-img	" data-tilt>
-					
+
 					<img th:src="@{/login-register/images/Prub.png}" alt="IMG">
-				
+
 				</div><br><br>
 
-				<form class="login100-form validate-form" method="post"
-                th:action="@{/login}"
-                role="form">
-				<a th:href="@{/}">
-					<img class="LogoLogin" th:src="@{/login-register/images/logo-horizontal - negro.png}">
-				</a>
-				<br><br><br>
+				<form class="login100-form validate-form" method="post" th:action="@{/login}" role="form">
+					<a th:href="@{/}">
+						<img class="LogoLogin" th:src="@{/login-register/images/logo-horizontal - negro.png}">
+					</a>
+					<br><br><br>
 					<span class="login100-form-title">
 						Inicio sesión
 
@@ -41,20 +39,12 @@
 						<br><br>
 						<div class="form-field validate-input" data-validate="Valid email is required: ex@abc.xyz">
 							<label class="labelu" style="font-size: 75%;">Usuario</label>
-                            <input type="text"
-                            id="username"
-                            name="username"
-                            class="form-control"
-                     />
+							<input required type="text" id="username" name="username" class="form-control" />
 						</div>
 
 						<div class="form-field validate-input" data-validate="Password is required">
 							<label class="labelc" style="font-size: 75%;">Contraseña</label>
-                            <input type="password"
-                            id="password"
-                            name="password"
-                            class="form-control"
-                     />
+							<input required type="password" id="password" name="password" class="form-control" />
 						</div>
 
 						<div class="container-login100-form-btn">
@@ -63,12 +53,12 @@
 							</button>
 						</div><br></br>
 
-                        <div th:if="${param.error}">
-                            <div class="alert alert-danger">Invalido, El correo y contraseña son incorrectas</div>
-                        </div>
-                        <div th:if="${param.logout}">
-                            <div class="alert alert-success">Tu has sido desconectado</div>
-                        </div>
+						<div th:if="${param.error}">
+							<div class="alert alert-danger">Invalido, El correo y contraseña son incorrectas</div>
+						</div>
+						<div th:if="${param.logout}">
+							<div class="alert alert-success">Tu has sido desconectado</div>
+						</div>
 
 						<div class="text-center p-t-12">
 
@@ -76,7 +66,7 @@
 								<i class="fa" aria-hidden="true"></i>
 							</a>
 
-                            <a class="txt2" th:href="@{/register/forgotPassword}">Olvidaste la clave?
+							<a class="txt2" th:href="@{/register/forgotPassword}">Olvidaste la clave?
 								<i class="fa" aria-hidden="true"></i>
 							</a>
 						</div>

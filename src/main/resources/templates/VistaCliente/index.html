@@ -55,11 +55,10 @@
 
 						<div class="navbar-nav closed" id="menu">
 							<ul>
-								<li><a class="nav-link active" aria-current="page" th:href="@{/}">Inicio</a></li>
+								<!-- <li><a class="nav-link active" aria-current="page" th:href="@{/}">Inicio</a></li> -->
 								<li><a class="nav-link" th:href="@{/index}">Productos</a></li>
 								<li><a class="nav-link" th:href="@{/user/getCart}">Carrito</a></li>
-                                <li class="nav-link">
-                                    <a class="nav-link active" aria-current="page" th:href="@{/logout}">Logout</a>
+                                <li><a class="nav-link active" aria-current="page" th:href="@{/logout}">Cerrar</a>
                                 </li>
 							</ul>
 						</div>
@@ -105,7 +104,7 @@
 
 			</div>
 
-
+		
 
 			<div class="row isotope-grid" th:if="${productos.size()>0}" th:each="p:${productos}">
 
@@ -210,7 +209,7 @@
 						</div>
 					</div>
 			</div>
-
+		
 		
 	</section>
 
@@ -220,9 +219,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8">
-					<p class="copyright-text">&copy; 2022 <a href="https://uicookies.com/">uiCookies:Resto</a>. Todos
-						los derechos reservados. Imagenes de <a href="https://graphicburger.com/">GraphicBurger</a>
-						&amp; <a href="https://unsplash.com/">Unsplash</a></p>
+					<p class="copyright-text">&copy; 2022 <a>Donneta</a>.
+						Todos los derechos reservados. <a>| SENA : ADSI|</a> &amp; <a>FICHA : 2465896</a></p>
 				</div>
 				<div class="col-md-4">
 					<ul class="probootstrap-footer-social right">

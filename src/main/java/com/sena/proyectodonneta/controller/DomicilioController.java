@@ -1,7 +1,12 @@
 package com.sena.proyectodonneta.controller;
 
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +25,10 @@ import com.sena.proyectodonneta.service.impl.IDomicilioService;
 
 import com.sena.proyectodonneta.model.Venta;
 import com.sena.proyectodonneta.repository.UserFindDomiciliarioService;
+import com.sena.proyectodonneta.security.SecurityUtils;
 import com.sena.proyectodonneta.service.impl.IVentaService;
-
+import com.sena.proyectodonneta.util.DomiciliosExporterPDF;
+import com.lowagie.text.DocumentException;
 import com.sena.proyectodonneta.model.Domicilio;
 import com.sena.proyectodonneta.model.User;
 
@@ -47,11 +54,32 @@ public class DomicilioController {
 
     @Autowired
     private IVentaService ventasService;
+
+
+    @GetMapping("/domicilio/pdfgenerate")
+    public void generatePDF(HttpServletResponse response) throws DocumentException,IOException{
+        response.setContentType("application/pdf");	
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
+        String currentDateTime = dateFormatter.format(new Date());
+
+        String headerkey = "content-Disposition";
+        String headerValue = "attachment; filename=pdf_" + currentDateTime +  ".pdf";
+        response.setHeader(headerkey,headerValue);
+
+        List<Domicilio> domicilios = domicilioService.findAll();
+
+        DomiciliosExporterPDF exporterPDF = new DomiciliosExporterPDF(domicilios);
+        exporterPDF.exportar(response);
+    }
     
     private Logger logg = LoggerFactory.getLogger(DomicilioController.class);
 
     @GetMapping("/listar")
     public String listar(Model m) {
+
+        String currentUser = SecurityUtils.getUserName();
+        m.addAttribute("username", currentUser);
+        
         List<User> domiciliarios = userFindDomiciliarioService.obtenerDom();
 
         for(User domiciliario : domiciliarios){
@@ -67,6 +95,10 @@ public class DomicilioController {
 
     @GetMapping("/ver/{idDomicilio}")
     public String ver(@PathVariable Integer idDomicilio, Model m) {
+        
+        String currentUser = SecurityUtils.getUserName();
+        m.addAttribute("username", currentUser);
+        
         Domicilio domicilio = null;
         if (idDomicilio > 0) {
             domicilio = domicilioService.findOne(idDomicilio);
@@ -91,6 +123,10 @@ public class DomicilioController {
 
     @GetMapping("/form")
     public String form(Model m) {
+        
+        String currentUser = SecurityUtils.getUserName();
+        m.addAttribute("username", currentUser);
+        
         Domicilio domicilio = new Domicilio();
 
         List<User> domiciliarios = userFindDomiciliarioService.obtenerDom();
@@ -111,6 +147,10 @@ public class DomicilioController {
 
     @PostMapping("/add")
     public String add(@Valid Domicilio domicilio, BindingResult res, Model m, SessionStatus status) {
+        
+        String currentUser = SecurityUtils.getUserName();
+        m.addAttribute("username", currentUser);
+        
         if (res.hasErrors()) {
             return "domicilio/form";
         }

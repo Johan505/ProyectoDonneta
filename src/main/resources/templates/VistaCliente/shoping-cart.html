@@ -47,10 +47,10 @@
 
 						<div class="navbar-nav closed" id="menu">
 							<ul>
-								<li><a class="nav-link active" aria-current="page" th:href="@{/}">Inicio</a></li>
+								<!-- <li><a class="nav-link active" aria-current="page" th:href="@{/}">Inicio</a></li> -->
 								<li><a class="nav-link" th:href="@{/index}">Productos</a></li>
 								<li><a class="nav-link" th:href="@{/cart}">Carrito</a></li>
-								<li><a class="nav-link" th:href="@{/logout}">Logout</a></li>
+								<li><a class="nav-link" th:href="@{/logout}">Cerrar</a></li>
 							</ul>
 						</div>
 					</div>
@@ -83,7 +83,8 @@
 							<tr th:each="dventa:${cart}">
 								<td th:text="${dventa.nombre}"></td>
 								<td class="precio" th:text="${dventa.precio}"></td>
-								<td><input type="number" class="cantidad" name="cantidad" autocomplete="off" min="1" max="10" th:value="${dventa.cantidad}"></td>
+								<td class="cantidad" th:text="${dventa.cantidad}"></td>
+								<!-- <td><input type="number" class="cantidad" name="cantidad" autocomplete="off" min="1" max="10" th:value="${dventa.cantidad}"></td> -->
 								<td class="subTotal" th:text="${dventa.total}"></td>
 								<td>
 									<a th:href="@{/user/delete/cart/{id}   (id=${dventa.producto.idProducto}) }" class="flex-c-m cl0 bg1 hov-btn1 p-lr-15 trans-04 btn btn-danger">
@@ -116,10 +117,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8">
-					<p class="copyright-text">&copy; 2022 <a target="_blank"
-							href="https://uicookies.com/">uiCookies:Resto</a>. Todos los derechos reservados. Imagenes
-						de <a target="_blank" href="https://graphicburger.com/">GraphicBurger</a> &amp; <a
-							target="_blank" href="https://unsplash.com/">Unsplash</a></p>
+					<p class="copyright-text">&copy; 2022 <a>Donneta</a>.
+						Todos los derechos reservados. <a>| SENA : ADSI|</a> &amp; <a>FICHA : 2465896</a></p>
 				</div>
 				<div class="col-md-4">
 					<ul class="probootstrap-footer-social right">

@@ -1,17 +1,20 @@
 package com.sena.proyectodonneta.controller;
-
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
-
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-
+import com.lowagie.text.DocumentException;
 import com.sena.proyectodonneta.model.Categoria;
 import com.sena.proyectodonneta.model.Producto;
+import com.sena.proyectodonneta.security.SecurityUtils;
 import com.sena.proyectodonneta.service.impl.ICategoriaService;
 import com.sena.proyectodonneta.service.impl.IProductoService;
 import com.sena.proyectodonneta.service.impl.IUploadFileService;
-
+import com.sena.proyectodonneta.util.ProductosExporterPDF;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -45,8 +48,29 @@ public class ProductoController {
     @Autowired
     private IUploadFileService uploadFileService;
 
+    @Autowired
+    private  IProductoService productoService;
+
+
+    @GetMapping("/pdfgenerate")
+    public void generatePDF(HttpServletResponse response) throws DocumentException,IOException{
+        response.setContentType("application/pdf");	
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
+        String currentDateTime = dateFormatter.format(new Date());
+
+        String headerkey = "content-Disposition";
+        String headerValue = "attachment; filename=pdf_" + currentDateTime +  ".pdf";
+        response.setHeader(headerkey,headerValue);
+
+        List<Producto> productos = productoService.findAll();
+
+        ProductosExporterPDF exporterPDF = new ProductosExporterPDF(productos);
+        exporterPDF.exportar(response);
+    }
+
     @GetMapping(value = "/uploads/{filename:.+}")
     public ResponseEntity<Resource> verFoto(@PathVariable String filename) {
+
         Resource recurso = null;
         try {
             recurso = uploadFileService.load(filename);
@@ -64,12 +88,18 @@ public class ProductoController {
 
     @GetMapping("/listar")
     public String listar(Model m) {
+        String currentUser = SecurityUtils.getUserName();
+        m.addAttribute("username", currentUser);
+
         m.addAttribute("productos", productoda.findAll());
         return "producto/listar";
     }
 
     @GetMapping("/ver/{idProducto}")
     public String ver(@PathVariable Integer idProducto, Model m) {
+        String currentUser = SecurityUtils.getUserName();
+        m.addAttribute("username", currentUser);
+
         Producto producto = null;
         if (idProducto > 0) {
             producto = productod.findOne(idProducto);
@@ -86,6 +116,9 @@ public class ProductoController {
 
     @GetMapping("/form")
     public String form(Model m) {
+        String currentUser = SecurityUtils.getUserName();
+        m.addAttribute("username", currentUser);
+
         Producto producto = new Producto();
 
         List<Categoria> listade = categoriad.findAll();
@@ -98,6 +131,9 @@ public class ProductoController {
     @PostMapping("/add")
     public String add(@Valid Producto producto, BindingResult res, Model m, @RequestParam("file") MultipartFile foto,
             SessionStatus status) {
+                String currentUser = SecurityUtils.getUserName();
+        m.addAttribute("username", currentUser);
+
         if (res.hasErrors()) {
             return "producto/form";
         }
