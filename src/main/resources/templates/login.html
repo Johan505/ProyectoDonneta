@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/login-register/vendor/bootstrap/css/bootstrap.min.css}">
 	<link rel="stylesheet" type="text/css"
 		th:href="@{/login-register/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
 	<link rel="stylesheet" type="text/css" th:href="@{/login-register/vendor/animate/animate.css}">
 	<link rel="stylesheet" type="text/css" th:href="@{/login-register/vendor/css-hamburgers/hamburgers.min.css}">
 	<link rel="stylesheet" type="text/css" th:href="@{/login-register/vendor/select2/select2.min.css}">
@@ -42,10 +43,13 @@
 							<input required type="text" id="username" name="username" class="form-control" />
 						</div>
 
-						<div class="form-field validate-input" data-validate="Password is required">
+						<div class="form-field validate-input" data-validate="Password is required" >
 							<label class="labelc" style="font-size: 75%;">Contraseña</label>
-							<input required type="password" id="password" name="password" class="form-control" />
-						</div>
+							<div class="position-relative">
+							<input required type="password" id="password" name="password" class="form-control position-relative" autocomplete="0ff"/>
+							<p onclick="showPassword()" class="position-absolute" style="top:-100px; right: 50px;"><i class="bi bi-eye"></i></p>
+						</div></div>
+
 
 						<div class="container-login100-form-btn">
 							<button class="login100-form-btn" type="submit">
@@ -76,6 +80,17 @@
 		</div>
 	</div>
 	<script th:src="@{/login-register/login-register/js/main.js}"></script>
+
+	<script>
+        function showPassword(){
+            input = document.getElementById("password")
+            if(input.type === "password"){
+                input.type = "text";
+            }else{
+                input.type = "password";
+            }
+        }
+    </script>
 
 </body>
 

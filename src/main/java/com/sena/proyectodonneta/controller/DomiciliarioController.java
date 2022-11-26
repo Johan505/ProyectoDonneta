@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sena.proyectodonneta.model.Domicilio;
 import com.sena.proyectodonneta.model.User;
-
+import com.sena.proyectodonneta.repository.DomicilioIdRepository;
 import com.sena.proyectodonneta.security.SecurityUtils;
 import com.sena.proyectodonneta.service.UserService;
 import com.sena.proyectodonneta.service.impl.IDomicilioService;
@@ -33,20 +33,27 @@ public class DomiciliarioController {
     @Autowired
     private IDomicilioService domicilioService;
 
-    @Autowired
-    private UserService Service;
 
     @Autowired
 	private UserService userService;
+
+    @Autowired
+    private DomicilioIdRepository domicilioIdRepository;
 
     @GetMapping("")
     public String listar(Model model, Long idDomicilio, HttpSession session) {
 
 
         String currentUser = SecurityUtils.getUserName();
-        model.addAttribute("username", currentUser);
+        User user = userService.findByEmail(currentUser);
 
-        model.addAttribute("domicilios", domicilioService.findAll());
+        List <Domicilio> domicilios = domicilioIdRepository.findDomiciliario(user.getId());
+
+
+        model.addAttribute("username", currentUser);
+        
+
+        model.addAttribute("domicilios", domicilios);
 		
         return "VistaDomiciliario/listar";
     }

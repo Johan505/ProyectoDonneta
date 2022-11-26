@@ -3,6 +3,7 @@ package com.sena.proyectodonneta.controller;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,14 +23,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.support.SessionStatus;
+
 import com.lowagie.text.DocumentException;
 
 import com.sena.proyectodonneta.dto.UserDto;
+import com.sena.proyectodonneta.model.Role;
 import com.sena.proyectodonneta.model.User;
 import com.sena.proyectodonneta.model.Venta;
 import com.sena.proyectodonneta.security.SecurityUtils;
+import com.sena.proyectodonneta.repository.RoleRepository;
 import com.sena.proyectodonneta.repository.UserFindClienteService;
 import com.sena.proyectodonneta.repository.UserFindDomiciliarioService;
+import com.sena.proyectodonneta.repository.UserRepository;
 import com.sena.proyectodonneta.service.UserService;
 import com.sena.proyectodonneta.service.impl.IProductoService;
 import com.sena.proyectodonneta.service.impl.IVentaService;
@@ -57,7 +64,22 @@ public class AdminController {
     
     @Autowired
     private IVentaService ventaService;
+
+    @Autowired
+    private RoleRepository roleRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     
+
+    public Role createRolDom(){
+		Role domiciliario = new Role();
+		domiciliario.setName("ROLE_DOMICILIARIO");
+		return roleRepository.save(domiciliario);
+	}
 
     @GetMapping("/ventas/pdfgenerate")
     public void generatePDF(HttpServletResponse response) throws DocumentException,IOException{
@@ -128,32 +150,36 @@ public class AdminController {
     @GetMapping("/domiciliario/register")
     public String showRegistrationForm(Model model){
 
-        String currentUser = SecurityUtils.getUserName();
-        model.addAttribute("username", currentUser);
-
-        UserDto user = new UserDto();
+        User user = new User();
         model.addAttribute("user", user);
         return "VistaAdmin/formDom";
     }
 
-    @PostMapping("/domiciliario/register/save")
-    public String registration(@Valid @ModelAttribute("user") UserDto user,
-                               BindingResult result,
-                               Model model){
+ 
+@PostMapping("domiciliario/register/save")
+    public String addMed(@Valid User user, BindingResult reslt, Model m, SessionStatus status) {
 
-                                String currentUser = SecurityUtils.getUserName();
-                                model.addAttribute("username", currentUser);
-
-                                User existing = userService.findByEmail(user.getEmail());
-        if (existing != null) {
-            result.rejectValue("email", null, "There is already an account registered with that email");
-        }
-        if (result.hasErrors()) {
-            model.addAttribute("user", user);
+        if (reslt.hasErrors()) {
             return "VistaAdmin/formDom";
         }
-        userService.saveDomiciliario(user);
-        return "redirect:/admin/domiciliario/listar";
+        try {
+            Role role = roleRepository.findByName("ROLE_DOMICILIARIO");
+            if (role == null) {
+                role = createRolDom();
+            }
+            user.setPassword(passwordEncoder.encode(user.getEmail()));
+            user.setRoles(Arrays.asList(role));
+            userRepository.save(user);
+            status.setComplete();
+            return "redirect:/admin/domiciliario/listar";
+
+        } catch (Exception e) {
+            // duplicate primary key
+            m.addAttribute("usuario", user);
+            m.addAttribute("error", "El usuario ya existe");
+            System.out.println("ya existe");
+            return "VistaAdmin/formDom";
+        }
     }
 
 
