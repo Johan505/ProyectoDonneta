@@ -1,0 +1,182 @@
+
+  
+html {
+    min-height: 100%;
+    position: relative;
+  }
+  body {
+    margin: 0;
+    margin-bottom: 40px;
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  footer {
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-image: url(../img/opinion/vector-comentarios.svg);
+    color: #000;
+    padding: 1em;
+  }
+
+  .probootstrap-copyright {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+
+  }
+  
+  .probootstrap-footer {
+    background-size: cover;
+    background: #000000;
+    padding: 7em 0;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  @media screen and (max-width: 768px) {
+    .probootstrap-footer {
+      padding: 2em 0;
+    }
+  }
+  
+  .probootstrap-footer h3 {
+    font-size: 18px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+  
+  .probootstrap-footer .probootstrap-footer-widget {
+    margin-bottom: 0;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .probootstrap-footer .probootstrap-footer-widget {
+      margin-bottom: 20px;
+    }
+  }
+  
+  .probootstrap-copyright {
+    background: #262626;
+    padding: 20px 0;
+  }
+  
+  .probootstrap-copyright a {
+    color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .probootstrap-copyright a:hover {
+    color: white;
+  }
+  
+  .probootstrap-copyright p {
+    font-size: 14px;
+  }
+  
+  .probootstrap-copyright p:last-child {
+    margin-bottom: 0;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .probootstrap-copyright p.copyright-text {
+      margin-bottom: 20px;
+    }
+  }
+  
+  .probootstrap-footer-social {
+    padding: 0;
+    margin: 0;
+  }
+  
+  .probootstrap-footer-social.right {
+    text-align: right;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .probootstrap-footer-social.right {
+      text-align: left;
+    }
+  }
+  
+  .probootstrap-footer-social li {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  .probootstrap-footer-social li a {
+    padding: 10px;
+    font-size: 22px;
+  }
+  
+  .probootstrap-footer-social li:first-child>a {
+    padding-left: 0;
+  }
+  
+  
+  
+  
+  footer div {
+    max-width: 300px;
+  
+  }
+  iframe {
+    width: 100%;
+  }
+  .cards {
+    width: 400px;
+    padding: 2%;
+    background: rgb(164, 92, 63);
+  
+    color: #fff;
+  }
+  
+  .bg-cards {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+  
+  }
+  
+  .cards-info {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 40px;
+    z-index: 2;
+    font-size: 17px;
+    font-weight: bold;
+  }
+  
+  .cards-info img {
+    width: 65px;
+    border-radius: 50%;
+  }
+  
+  .cards-info div p {
+    margin: 0;
+  }
+  
+  .cards div p {
+    line-height: 20px;
+  }
+  
+  #comentarios h2 {
+    text-align: center;
+    color: #000;
+    margin: auto;
+    font-size: 50px;
+  }
+  
+  #a {
+    height: 150px;
+    margin-bottom: -70px;
+  }
+  
+  
+  
+  
