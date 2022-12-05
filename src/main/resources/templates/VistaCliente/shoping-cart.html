@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns:th="https://wwww.thymeleaf.org" lang="es">
+
+<head>
+	<title>Carrito</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	
+	 <link rel="stylesheet" th:href="@{/css/footer.css}">
+	
+	<link rel="icon" th:href="@{/img/logo-solo - negro.png}">
+	
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+	
+	<link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+	
+	<link rel="stylesheet" th:href="@{/css/styles-merged.css}">
+	
+	<link rel="stylesheet" type="text/css" th:href="@{/fonts/iconic/css/material-design-iconic-font.min.css}">
+	
+	<link rel="stylesheet" type="text/css" th:href="@{/fonts/linearicons-v1.0.0/icon-font.min.css}">
+
+	<link rel="stylesheet" type="text/css" thhref="@{/css/util.css}">
+	
+	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+	
+	<link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}"> 
+
+	
+</head>
+
+<body class="animsition">
+
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-default navbar-fixed-top" id="colorNavBar">
+		<div class="container">
+
+			<nav class="navbar navbar-expand-lg">
+				<div class="container-fluid">
+					<div class="logo1">
+						<a class="navbar-logo" th:href="@{/}"><img th:src="@{/img/Logo final - Domidonetta 2 Letra Blanco.png}"
+								width="200"></a>
+					</div>
+					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+						<span class="hamburger-menu"></span>
+
+						<div class="navbar-nav closed" id="menu">
+							<ul>
+								<!-- <li><a class="nav-link active" aria-current="page" th:href="@{/}">Inicio</a></li> -->
+								<li><a class="nav-link" th:href="@{/user/index}">Productos</a></li>
+								<li><a class="nav-link" th:href="@{/user/cart}">Carrito</a></li>
+								<li><a class="nav-link" th:href="@{/logout}">Cerrar</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</nav>
+	<!-- Fixed navbar end -->
+
+	<div class="p-b-10">
+		<h3 class="ltext-103 cl5">
+			Visualizar producto
+		</h3>
+	</div>
+	<div class="card mb-4">
+		<div class="card-body">
+			<div class="row">
+				<div class="col-lg-9">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Producto</th>
+								<th scope="col">Precio</th>
+								<th scope="col">Cantidad</th>
+								<th scope="col">SubTotal</th>
+								<th scope="col">Acción</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="dventa:${cart}">
+								<td th:text="${dventa.nombre}"></td>
+								<td class="precio" th:text="${dventa.precio}"></td>
+								<td class="cantidad" th:text="${dventa.cantidad}"></td>
+								<!-- <td><input type="number" class="cantidad" name="cantidad" autocomplete="off" min="1" max="10" th:value="${dventa.cantidad}"></td> -->
+								<td class="subTotal" th:text="${dventa.total}"></td>
+								<td>
+									<a th:href="@{/user/delete/cart/{id}   (id=${dventa.producto.idProducto}) }" class="flex-c-m cl0 bg1 hov-btn1 p-lr-15 trans-04 btn btn-danger">
+										Quitar
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class="col-lg-3">
+					<h2 class="card-title">TOTAL</h2>
+
+					<ul class="list-group">
+						<li class="list-group-item"><h5 id="total" th:text="${venta.total}"></h5></li>				
+						<a th:href="@{/user/Datos}" class="btn btn-dark">Continuar</a>
+					</ul>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Footer -->
+
+	<section class="probootstrap-copyright">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<p class="copyright-text">&copy; 2022 <a>Donneta</a>.
+						Todos los derechos reservados. <a>| SENA : ADSI|</a> &amp; <a>FICHA : 2465896</a></p>
+				</div>
+				<div class="col-md-4">
+					<ul class="probootstrap-footer-social right">
+						<li><a href="https://github.com/santicarreno13"><i class="icon-github"></i></a></li>
+						<li><a href="https://github.com/Johan505"><i class="icon-github"></i></a></li>
+						<li><a href="https://github.com/julianruizzz"><i class="icon-github"></i></a></li>
+						<li><a href="https://github.com/Verink55"><i class="icon-github"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="zmdi zmdi-chevron-up"></i>
+		</span>
+	</div>
+
+	
+	<script th:src="@{/vendor/jquery/jquery-3.2.1.min.js}"></script>
+	
+	<script th:src="@{/vendor/animsition/js/animsition.min.js}"></script>
+	
+	<script th:src="@{/vendor/bootstrap/js/popper.js}"></script>
+	<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+	
+	<script th:src="@{/vendor/select2/select2.min.js}"></script>
+	
+	<script>
+		$(".js-select2").each(function () {
+			$(this).select2({
+				minimumResultsForSearch: 20,
+				dropdownParent: $(this).next('.dropDownSelect2')
+			});
+		})
+	</script>
+	
+	<script th:src="@{/vendor/MagnificPopup/jquery.magnific-popup.min.js}"></script>
+	
+	<script th:src="@{/vendor/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
+	<script>
+		$('.js-pscroll').each(function () {
+			$(this).css('position', 'relative');
+			$(this).css('overflow', 'hidden');
+			var ps = new PerfectScrollbar(this, {
+				wheelSpeed: 1,
+				scrollingThreshold: 1000,
+				wheelPropagation: false,
+			});
+
+			$(window).on('resize', function () {
+				ps.update();
+			})
+		});
+	</script>
+	
+	<script th:src="@{/js/main.js}"></script>
+	<script th:src="@{/js/hamburger.js}"></script>
+	<script th:src="@{/js/UpdatePrice.js}"></script>
+
+</body>
+
+</html>

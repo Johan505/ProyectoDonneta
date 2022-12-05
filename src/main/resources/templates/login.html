@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Iniciar sesión</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" th:href="@{/login-register/images/icons/Logo final - Domidonetta 1.png}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/login-register/vendor/bootstrap/css/bootstrap.min.css}">
+	<link rel="stylesheet" type="text/css"
+		th:href="@{/login-register/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+	<link rel="stylesheet" type="text/css" th:href="@{/login-register/vendor/animate/animate.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/login-register/vendor/css-hamburgers/hamburgers.min.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/login-register/vendor/select2/select2.min.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/login-register/css/util.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/login-register/css/main.css}">
+</head>
+
+<body>
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="tapped-img	" data-tilt>
+
+					<img th:src="@{/login-register/images/Prub.png}" alt="IMG">
+
+				</div><br><br>
+
+				<form class="login100-form validate-form" method="post" th:action="@{/login}" role="form">
+					<a th:href="@{/}">
+						<img class="LogoLogin" th:src="@{/login-register/images/logo-horizontal - negro.png}">
+					</a>
+					<br><br><br>
+					<span class="login100-form-title">
+						Inicio sesión
+
+
+
+						<br><br>
+						<div class="form-field validate-input" data-validate="Valid email is required: ex@abc.xyz">
+							<label class="labelu" style="font-size: 75%;">Usuario</label>
+							<input required type="text" id="username" name="username" class="form-control" />
+						</div>
+
+						<div class="form-field validate-input" data-validate="Password is required" >
+							<label class="labelc" style="font-size: 75%;">Contraseña</label>
+							<div class="position-relative">
+							<input required type="password" id="password" name="password" class="form-control position-relative" autocomplete="0ff"/>
+	
+						</div></div>
+
+
+						<div class="container-login100-form-btn">
+							<button class="login100-form-btn" type="submit">
+								Ingresar
+							</button>
+						</div><br></br>
+
+						<div th:if="${param.error}">
+							<div class="alert alert-danger">Invalido, El correo y contraseña son incorrectas</div>
+						</div>
+						<div th:if="${param.logout}">
+							<div class="alert alert-success">Has cerrado sesión</div>
+						</div>
+
+						<div class="text-center p-t-12">
+
+							<a class="txt2" th:href="@{/register}">Crear cuenta
+								<i class="fa" aria-hidden="true"></i>
+							</a>
+							<br>
+							<a class="txt2" th:href="@{/register/forgotPassword}">Olvidaste la clave?
+								<i class="fa" aria-hidden="true"></i>
+							</a>
+						</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/login-register/login-register/js/main.js}"></script>
+
+	<script>
+        function showPassword(){
+            input = document.getElementById("password")
+            if(input.type === "password"){
+                input.type = "text";
+            }else{
+                input.type = "password";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
