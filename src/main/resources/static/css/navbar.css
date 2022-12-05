@@ -1,0 +1,218 @@
+.navbar{
+    width: 100%;
+}
+.navbar .container-fluid ul li a.nav-link{
+    color: #fff;
+}
+.navbar-nav > ul {
+    margin: 0;
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .navbar-nav > ul > li {
+    display: inline-block;
+    list-style: none;
+  }
+  
+  @media screen and (max-width: 1213px) {
+    .navbar-nav {
+      /* display: none; */
+      margin-top: 15px;
+      transition: transform .5s;
+    }
+  
+    .closed {
+      transform: translateX(200px);
+    }
+  
+    .opened {
+      transform: translateX(-10px);
+    }
+  
+    .navbar-nav > ul {
+      background-color: #bd5050;
+      opacity: 90%;
+      border-radius: 10px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    #colorNavBar .navbar .container-fluid {
+      display: flex;
+      justify-content: center;
+      
+    }
+  
+    #navbarNavAltMarkup {
+      width: 100%;
+      height: 30px;
+      position: absolute;
+      right: 20px;
+      cursor: pointer;
+    }
+  
+    #navbarNavAltMarkup span.hamburger-menu {
+      width: 25px;
+      height: 4px;
+      background-color: white;
+      position: absolute;
+      top: 7px;
+    }
+  
+    #navbarNavAltMarkup span.hamburger-menu::before {
+      content: "";
+      position: absolute;
+      width: 25px;
+      height: 4px;
+      margin-top: 6px;
+      background-color: white;
+    }
+  
+    #navbarNavAltMarkup span.hamburger-menu::after {
+      content: "";
+      position: absolute;
+      width: 25px;
+      height: 4px;
+      margin-top: 12px;
+      background-color: white;
+    }
+  }
+  
+  .navbar-toggle:focus,
+  .navbar-toggle:hover {
+    background-color: transparent;
+  }
+  
+  .navbar-toggle {
+    border: none;
+  }
+  
+  .navbar-toggle span.icon-bar {
+    -webkit-transition: all 0.15s;
+    transition: all 0.15s;
+  }
+  
+  .navbar-toggle span:nth-child(2) {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transform-origin: 10% 10%;
+    transform-origin: 10% 10%;
+  }
+  
+  .navbar-toggle span:nth-child(3) {
+    opacity: 0;
+  }
+  
+  .navbar-toggle span:nth-child(4) {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-transform-origin: 10% 90%;
+    transform-origin: 10% 90%;
+  }
+  
+  .navbar-toggle.collapsed span:nth-child(2),
+  .navbar-toggle.collapsed span:nth-child(4) {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  
+  .navbar-toggle.collapsed span:nth-child(3) {
+    opacity: 1;
+  }
+  
+  .dropdown-header {
+    color: rgba(255, 255, 255, 0.2);
+    padding-left: 10px;
+    text-transform: uppercase;
+  }
+  
+  .dropdown>a {
+    padding-right: 10px !important;
+    position: relative;
+    display: block;
+    color: #fff;
+  }
+  .navbar-right .dropdown-menu {
+    right: auto;
+  }
+  #logo-navbar {
+
+    margin-top: 50px !important;
+  
+  }
+  @media screen and (max-width: 768px) {
+    .navbar-brand {
+      top: 5px !important;
+      background-position: left 100%;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .navbar-brand {
+      top: 6px !important;
+    }
+  }
+  .scrolled .navbar-brand {
+    top: 10px;
+    background-position: left 100%;
+  }
+  
+  .scrolled .dropdown>a:before {
+    color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .navbar .container {
+    float: left;
+  }
+  
+  .logo1 {
+    float: left;
+  }
+  
+  .container-fluid .navbar-brand {
+    margin-left: 15px;
+  }
+  .navbar.navbar-expand-lg.bg-light .container-fluid {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  #navbarNavAltMarkup {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  
+  #colorNavBar {
+    background: #bd5050;
+    display: flex;
+  }
+  
+  #colorNavBar .container {
+    width: 100%;
+  }
+  
+  #colorNavBar .container-fluid {
+    display: flex;
+    justify-content: space-between;
+  }
+  .container-fluid .dropdown-submenu {
+    position: relative;
+  }
+  container-fluid .dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: auto;
+    right: 100%;
+    margin-top: -1px;
+  }
+  
+  @media screen and (max-width: 480px) {
+    .container-fluid .dropdown-submenu:hover>.dropdown-menu {
+      display: block;
+    }
+  }
+  

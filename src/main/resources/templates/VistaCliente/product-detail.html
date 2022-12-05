@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html xmlns:th="https://wwww.thymeleaf.org" lang="es">
+
+<head>
+	<title>Detalle del producto</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" th:href="@{/css/footer.css}">
+	<!--===============================================================================================-->
+	<link rel="icon" th:href="@{/img/logo-solo - negro.png}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" th:href="@{/css/styles-merged.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/fonts/iconic/css/material-design-iconic-font.min.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/fonts/linearicons-v1.0.0/icon-font.min.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/animate/animate.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/css-hamburgers/hamburgers.min.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{vendor/animsition/css/animsition.min.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/daterangepicker/daterangepicker.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/slick/slick.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/MagnificPopup/magnific-popup.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/perfect-scrollbar/perfect-scrollbar.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/login-register/css/main.css}">
+
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}">
+	<!--===============================================================================================-->
+</head>
+
+<body class="animsition">
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-default navbar-fixed-top" id="colorNavBar" style="padding: 3px;">
+		<div class="container">
+			<nav class="navbar navbar-expand-lg" style="padding: 3px;">
+				<div class="container-fluid">
+					<div class="logo1">
+						<a class="navbar-logo" th:href="@{/}">
+							<img src="/img/Logo final - Domidonetta 2 Letra Blanco.png" width="200">
+						</a>
+					</div>
+					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+						<span class="hamburger-menu"></span>
+
+						<div class="navbar-nav closed" id="menu">
+							<ul>
+								<!-- <li><a class="nav-link active" aria-current="page" th:href="@{/}">Inicio</a></li> -->
+								<li><a class="nav-link" th:href="@{/user/index}">Productos</a></li>
+								<li><a class="nav-link" th:href="@{/user/cart}">Carrito</a></li>
+								<li><a class="nav-link" th:href="@{/logout}">Cerrar</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</nav>
+
+	<!-- Fixed navbar end -->
+
+
+
+
+	<!-- Product Detail -->
+	<div class="p-b-10">
+		<h3 class="ltext-103 cl5">
+			Visualizar producto
+		</h3>
+	</div>
+	<br><br>
+	<section class="sec-product-detail bg0">
+
+
+		<form th:action="@{/user/cart}" method="POST">
+			<input type="hidden" th:value="${producto.idProducto}" name="id">
+
+			<div class="container">
+				<div class="row">
+
+					<div class="col-md-6 col-lg-7 p-b-30">
+						<div class="p-l-25 p-r-30 p-lr-0-lg"
+							style=" align-items: center; display: flex; justify-content: center; ">
+							<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
+							<div class="slick3 gallery-lb">
+								<div class="item-slick3" data-thumb="images/product-detail-01.jpg">
+									<div class="wrap-pic-w pos-relative">
+										<img th:if="${#strings.length(producto.foto) > 0}" class="rounded"
+											th:src="@{'/admin/producto/uploads/' + ${producto.foto}}"
+											th:alt="${producto.foto}" width="100%" height="100%" />
+
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-lg-5 p-b-30">
+						<div class="p-r-50 p-t-5 p-lr-0-lg"
+							style=" align-items: center; display: flex; justify-content: center;width: 100%; flex-direction: column;">
+							<br>
+							<h1 th:text="${producto.nombre}"></h1>
+
+							<ul class="list-group">
+								<li class="list-group-item" style="border: 0px solid #ddd;">
+									<h4 style="color:#bd5050; padding-bottom: 2px;">Precio:</h4>
+									<h4 th:text="'$ '+ ${producto.precio}"></h4>
+									<hr>
+								</li>
+								<li class="list-group-item" style="border: 0px solid #ddd;">
+									<h4 style="color:#bd5050; padding-bottom: 2px;">Descripción: </h4>
+									<h4 th:text="${producto.descripcion} "></h4>
+									<hr>
+								</li>
+								<li class="list-group-item" style="border: 0px solid #ddd;">
+									<h4 style="color:#bd5050; padding-bottom: 2px;">Cantidad: </h4>
+									<br>
+<!--J-->
+									<div class="wrap-input100 validate-input" style="width: 150px;">
+										<input class="input100" type="number" id="cantidad" name="cantidad"
+											autocomplete="off" min="1" value="1" th:max="${producto.cantidad}"></p>
+										<span class="focus-input100"></span>
+										<span class="symbol-input100">
+											<i class="fa fa-slack" aria-hidden="true"></i>
+										</span>
+									</div>
+									<hr>
+								</li>
+
+								<li style="text-align: center;">
+									<center><button
+											class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+											Añadir al carrito
+										</button></center>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</form>
+
+
+	</section>
+	<br>
+	<!-- Footer -->
+
+	<section class="probootstrap-copyright">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<p class="copyright-text">&copy; 2022 <a>Donneta</a>.
+						Todos los derechos reservados. <a>| SENA : ADSI|</a> &amp; <a>FICHA : 2465896</a></p>
+				</div>
+				<div class="col-md-4">
+					<ul class="probootstrap-footer-social right">
+						<li><a href="https://github.com/santicarreno13"><i class="icon-github"></i></a></li>
+						<li><a href="https://github.com/Johan505"><i class="icon-github"></i></a></li>
+						<li><a href="https://github.com/julianruizzz"><i class="icon-github"></i></a></li>
+						<li><a href="https://github.com/Verink55"><i class="icon-github"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Back to top -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="zmdi zmdi-chevron-up"></i>
+		</span>
+	</div>
+
+	<!-- Modal1 -->
+	<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
+		<div class="overlay-modal1 js-hide-modal1"></div>
+
+		<div class="container">
+			<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
+				<button class="how-pos3 hov3 trans-04 js-hide-modal1">
+					<img src="/images/icons/icon-close.png" alt="CLOSE">
+				</button>
+
+				<div class="row">
+					<div class="col-md-6 col-lg-7 p-b-30">
+						<div class="p-l-25 p-r-30 p-lr-0-lg">
+							<div class="wrap-slick3 flex-sb flex-w">
+								<div class="wrap-slick3-dots"></div>
+								<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
+
+								<div class="slick3 gallery-lb">
+									<div class="item-slick3" data-thumb="/images/product-detail-01.jpg">
+										<div class="wrap-pic-w pos-relative">
+											<img src="/images/product-detail-01.jpg" alt="IMG-PRODUCT">
+
+											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+												href="/images/product-detail-01.jpg">
+												<i class="fa fa-expand"></i>
+											</a>
+										</div>
+									</div>
+
+									<div class="item-slick3" data-thumb="/images/product-detail-02.jpg">
+										<div class="wrap-pic-w pos-relative">
+											<img src="/images/product-detail-02.jpg" alt="IMG-PRODUCT">
+
+											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+												href="/images/product-detail-02.jpg">
+												<i class="fa fa-expand"></i>
+											</a>
+										</div>
+									</div>
+
+									<div class="item-slick3" data-thumb="/images/product-detail-03.jpg">
+										<div class="wrap-pic-w pos-relative">
+											<img src="/images/product-detail-03.jpg" alt="IMG-PRODUCT">
+
+											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+												href="/images/product-detail-03.jpg">
+												<i class="fa fa-expand"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/jquery/jquery-3.2.1.min.js}"></script>
+	<!--===============================================================================================-->
+	<script th:src="@{/js/hamburger.js}"></script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/animsition/js/animsition.min.js}"></script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/bootstrap/js/popper.js}"></script>
+	<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/select2/select2.min.js}"></script>
+	<script>
+		$(".js-select2").each(function () {
+			$(this).select2({
+				minimumResultsForSearch: 20,
+				dropdownParent: $(this).next('.dropDownSelect2')
+			});
+		})
+	</script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/daterangepicker/moment.min.js}"></script>
+	<script th:src="@{/vendor/daterangepicker/daterangepicker.js}"></script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/slick/slick.min.js}"></script>
+	<script th:src="@{/js/slick-custom.js}"></script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/parallax100/parallax100.js}"></script>
+	<script>
+		$('.parallax100').parallax100();
+	</script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/MagnificPopup/jquery.magnific-popup.min.js}"></script>
+	<script>
+		$('.gallery-lb').each(function () { // the containers for all your galleries
+			$(this).magnificPopup({
+				delegate: 'a', // the selector for gallery item
+				type: 'image',
+				gallery: {
+					enabled: true
+				},
+				mainClass: 'mfp-fade'
+			});
+		});
+	</script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/isotope/isotope.pkgd.min.js}"></script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/sweetalert/sweetalert.min.js}"></script>
+	<script>
+		$('.js-addwish-b2, .js-addwish-detail').on('click', function (e) {
+			e.preventDefault();
+		});
+
+		$('.js-addwish-b2').each(function () {
+			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+			$(this).on('click', function () {
+				swal(nameProduct, "is added to wishlist !", "success");
+
+				$(this).addClass('js-addedwish-b2');
+				$(this).off('click');
+			});
+		});
+
+		$('.js-addwish-detail').each(function () {
+			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+
+			$(this).on('click', function () {
+				swal(nameProduct, "is added to wishlist !", "success");
+
+				$(this).addClass('js-addedwish-detail');
+				$(this).off('click');
+			});
+		});
+
+		/*---------------------------------------------*/
+
+		$('.js-addcart-detail').each(function () {
+			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+			$(this).on('click', function () {
+				swal(nameProduct, "Has agregado este producto al carrito!", "success");
+			});
+		});
+
+	</script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
+	<script>
+		$('.js-pscroll').each(function () {
+			$(this).css('position', 'relative');
+			$(this).css('overflow', 'hidden');
+			var ps = new PerfectScrollbar(this, {
+				wheelSpeed: 1,
+				scrollingThreshold: 1000,
+				wheelPropagation: false,
+			});
+
+			$(window).on('resize', function () {
+				ps.update();
+			})
+		});
+	</script>
+	<!--===============================================================================================-->
+	<script th:src="@{/js/main.js}"></script>
+
+</body>
+
+</html>

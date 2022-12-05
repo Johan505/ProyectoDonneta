@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns:th="https://wwww.thymeleaf.org" lang="es">
+
+<head>
+	<title>Home</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" th:href="@{/css/navbar.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" th:href="@{/css/footer.css}">
+	<!--===============================================================================================-->
+	<link rel="icon" th:href="@{/img/logo-solo - negro.png}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/fonts/iconic/css/material-design-iconic-font.min.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/fonts/linearicons-v1.0.0/icon-font.min.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/animate/animate.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/animsition/css/animsition.min.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/daterangepicker/daterangepicker.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/slick/slick.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/MagnificPopup/magnific-popup.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/perfect-scrollbar/perfect-scrollbar.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+	<!--===============================================================================================-->
+</head>
+
+<body class="animsition">
+
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-default navbar-fixed-top" id="colorNavBar" style="padding: 3px;">
+		<div class="container">
+			<nav class="navbar navbar-expand-lg">
+				<div class="container-fluid">
+					<div class="logo1">
+						<a class="navbar-logo" th:href="@{/domiciliario}"><img th:src="@{/img/Logo final - Domidonetta 2 Letra Blanco.png}"
+								width="200"></a>
+					</div>
+					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+						<span class="hamburger-menu"></span>
+
+						<div class="navbar-nav closed" id="menu">
+							<ul>
+							
+                                <li class="nav-link">
+                                    <a class="nav-link active" aria-current="page" th:href="@{/logout}">Logout</a>
+                                </li>
+							</ul>
+						</div>
+
+					</div>
+				</div>
+			</nav>
+		</div>
+	</nav>
+
+	<!-- Fixed navbar end -->
+
+	<!-- Product -->
+
+
+    <div class="container">
+      
+        <br>
+
+        <div class="col-md-12">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb pl-0">
+            <li class="breadcrumb-item"><a th:href="@{/domiciliario}"> Home</a></li>
+            <li class="breadcrumb-item">Estado</li>
+            </ol>
+          </nav>
+      
+      
+          </div>
+
+        <div class="p-b-10">
+            <h3 class="ltext-103 cl5">
+                Cambiar el estado del domicilio
+            </h3>
+        </div>
+        
+        <form th:action="@{/domiciliario/add}" method="post" class="row g-3 needs-validation was-validated">
+                  
+          <input type="number" class="form-control" id="idDomicilio" name="idDomicilio" th:value="*{idDomicilio}" readonly hidden>
+
+
+        
+          <div class="w-100 justify-content-center align-items-center">
+          
+            <select class="form-control" name="estado" id="estado">
+                <option value="Preparando">Preparando
+                </option>
+
+                <option value="En camino">En camino
+              </option>
+
+              <option value="Entregado">Entregado
+              </option>
+              </select>
+          </div><br><br>
+
+         
+        
+        <div>
+		<center>
+          <button type="submit" class="btn btn-danger">Guardar</button>
+		</center>
+        </div>
+        </form>
+
+          
+      </div>
+
+
+
+
+	
+	
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/jquery/jquery-3.2.1.min.js}"></script>
+	<script th:src="@{/js/hamburger.js}"></script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/animsition/js/animsition.min.js}"></script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/bootstrap/js/popper.js}"></script>
+	<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/select2/select2.min.js}"></script>
+	<script>
+		$(".js-select2").each(function () {
+			$(this).select2({
+				minimumResultsForSearch: 20,
+				dropdownParent: $(this).next('.dropDownSelect2')
+			});
+		})
+	</script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/daterangepicker/moment.min.js}"></script>
+	<script th:src="@{/vendor/daterangepicker/daterangepicker.js}"></script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/slick/slick.min.js}"></script>
+	<script th:src="@{/js/slick-custom.js}"></script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/parallax100/parallax100.js}"></script>
+	<script>
+		$('.parallax100').parallax100();
+	</script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/MagnificPopup/jquery.magnific-popup.min.js}"></script>
+	<script>
+		$('.gallery-lb').each(function () { // the containers for all your galleries
+			$(this).magnificPopup({
+				delegate: 'a', // the selector for gallery item
+				type: 'image',
+				gallery: {
+					enabled: true
+				},
+				mainClass: 'mfp-fade'
+			});
+		});
+	</script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/isotope/isotope.pkgd.min.js}"></script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/sweetalert/sweetalert.min.js}"></script>
+	<script>
+		$('.js-addwish-b2').on('click', function (e) {
+			e.preventDefault();
+		});
+
+		$('.js-addwish-b2').each(function () {
+			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+			$(this).on('click', function () {
+				swal(nameProduct, "se a añadido a favoritos !", "success");
+
+				$(this).addClass('js-addedwish-b2');
+				$(this).off('click');
+			});
+		});
+
+		$('.js-addwish-detail').each(function () {
+			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+
+			$(this).on('click', function () {
+				swal(nameProduct, "se a añadido a favoritos !", "success");
+
+				$(this).addClass('js-addedwish-detail');
+				$(this).off('click');
+			});
+		});
+
+		/---------------------------------------------/
+
+		$('.js-addcart-detail').each(function () {
+			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+			$(this).on('click', function () {
+				swal(nameProduct, "is added to cart !", "success");
+			});
+		});
+
+	</script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
+	<script>
+		$('.js-pscroll').each(function () {
+			$(this).css('position', 'relative');
+			$(this).css('overflow', 'hidden');
+			var ps = new PerfectScrollbar(this, {
+				wheelSpeed: 1,
+				scrollingThreshold: 1000,
+				wheelPropagation: false,
+			});
+
+			$(window).on('resize', function () {
+				ps.update();
+			})
+		});
+	</script>
+	<!--===============================================================================================-->
+	<script th:src="@{/js/main.js}"></script>
+
+</body>
+
+</html>
