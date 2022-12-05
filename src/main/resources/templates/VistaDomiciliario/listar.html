@@ -112,7 +112,7 @@
                     <td th:text="${d.direccion}"></td>
                     <td th:text="${d.barrio}"></td>
 					<td><a th:href="@{/domiciliario/detalle/{id} (id=${d.idDomicilio}) }">Produtos</a></td>
-					<td th:text="${d.estado}"></td>
+					<td class="text-success" th:text="${d.estado}"></td>
 					<td><a th:href="@{/domiciliario/ver/}+${d.idDomicilio}">Cambiar estado</a></td>
                   </tr>
               </tbody>

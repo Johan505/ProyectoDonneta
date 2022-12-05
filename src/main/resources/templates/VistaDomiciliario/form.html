@@ -1,246 +1,237 @@
 <!DOCTYPE html>
 <html xmlns:th="https://wwww.thymeleaf.org" lang="es">
 
-
-<!-- Mirrored from slidesigma.com/themes/html/costic/pages/product/addproduct.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2020 13:10:07 GMT -->
-
 <head>
-
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Asignar Domiciliario</title>
-  <!-- Iconic Fonts -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link th:href="@{/vendor/iconic-fonts/font-awesome/css/all.min.css}" rel="stylesheet">
-  <link rel="stylesheet" th:href="@{/vendor/iconic-fonts/flat-icons/flaticon.css}">
-  <link rel="stylesheet" th:href="@{/vendor/iconic-fonts/cryptocoins/cryptocoins.css}">
-  <link rel="stylesheet" th:href="@{/vendor/iconic-fonts/cryptocoins/cryptocoins-colors.css}">
-  <!-- Bootstrap core CSS -->
-  <link th:href="@{/dashboard/css/bootstrap.min.css}" rel="stylesheet">
-
-  <!-- Page Specific Css (Datatables.css) -->
-  <link th:href="@{/dashboard/css/datatables.min.css}" rel="stylesheet">
-
-  <!-- jQuery UI -->
-  <link th:href="@{/dashboard/css/jquery-ui.min.css}" rel="stylesheet">
-  <!-- Costic Core styles -->
-  <link href="/dashboard/css/style.css" rel="stylesheet">
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" th:href="@{/dashboard/img/logos/logo-solo - negro.png}">
-
+	<title>Home</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" th:href="@{/css/navbar.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" th:href="@{/css/footer.css}">
+	<!--===============================================================================================-->
+	<link rel="icon" th:href="@{/img/logo-solo - negro.png}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/fonts/iconic/css/material-design-iconic-font.min.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/fonts/linearicons-v1.0.0/icon-font.min.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/animate/animate.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/animsition/css/animsition.min.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/daterangepicker/daterangepicker.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/slick/slick.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/MagnificPopup/magnific-popup.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/vendor/perfect-scrollbar/perfect-scrollbar.css}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+	<!--===============================================================================================-->
 </head>
 
-<body class="ms-body ms-aside-left-open ms-primary-theme ms-has-quickbar">
+<body class="animsition">
 
-  <!-- Overlays -->
-  <div class="ms-aside-overlay ms-overlay-left ms-toggler" data-target="#ms-side-nav" data-toggle="slideLeft"></div>
-  <div class="ms-aside-overlay ms-overlay-right ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight">
-  </div>
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-default navbar-fixed-top" id="colorNavBar" style="padding: 3px;">
+		<div class="container">
+			<nav class="navbar navbar-expand-lg">
+				<div class="container-fluid">
+					<div class="logo1">
+						<a class="navbar-logo" th:href="@{/domiciliario}"><img src="img/Logo final - Domidonetta 2 Letra Blanco.png"
+								width="200"></a>
+					</div>
+					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+						<span class="hamburger-menu"></span>
 
-  <!-- Sidebar Navigation Left -->
-  <aside id="ms-side-nav" class="side-nav fixed ms-aside-scrollable ms-aside-left">
-    <!-- Logo -->
-    <div class="logo-sn ms-d-block-lg">
-      <a class="pl-0 ml-0 text-center" th:href="@{/admin}">
-        <img th:src="@{/dashboard/img/logos/logoHblanco.png}" alt="logo">
-      </a>
-    </div>
-    <!-- Navigation -->
-    <ul  class="accordion ms-main-aside fs-14" id="side-nav-accordion">
+						<div class="navbar-nav closed" id="menu">
+							<ul>
+							
+                                <li class="nav-link">
+                                    <a class="nav-link active" aria-current="page" th:href="@{/logout}">Logout</a>
+                                </li>
+							</ul>
+						</div>
 
-      <!-- categoria -->
-      <li class="menu-item">
-        <a th:href="@{/admin/categoria/listar}"> <span><i class="fas fa-archive fs-16"></i>Categorias</span>
-        </a>
-      </li>
-      <!-- categoria end -->
+					</div>
+				</div>
+			</nav>
+		</div>
+	</nav>
 
-      <!-- product -->
-      <li class="menu-item">
-        <a th:href="@{/admin/producto/listar}"> <span><i class="fas fa fa-coffee fs-16"></i>Productos</span>
-        </a>
-      </li>
+	<!-- Fixed navbar end -->
 
-      <!-- product end -->
-      <!-- orders -->
-      <li class="menu-item">
-        <a th:href="@{/domicilio/listar}"> <span><i class="fas fa-solid fa-truck fs-16"></i> Domicilios</span>
-        </a>
-      </li>
-      <!-- orders end -->
-      <li class="menu-item">
-        <a th:href="@{/admin/ventas}"> <span><i class="fa fa-briefcase fs-16"></i>Ventas</span>
-        </a>
-      </li>
+	<!-- Product -->
 
 
-      <!-- sales -->
-
-
-      <!-- customers-->
-      <li class="menu-item">
-        <a href="#" class="has-chevron" data-toggle="collapse" data-target="#customer" aria-expanded="false"
-          aria-controls="customer"> <span><i class="fas fa-user-friends fs-16"></i>Usuario</span>
-        </a>
-        <ul id="customer" class="collapse" aria-labelledby="customer" data-parent="#side-nav-accordion">
-
-          <li> <a th:href="@{/admin/cliente/listar}">Lista de Clientes</a>
-          </li>
-          <li> <a th:href="@{/admin/domiciliario/listar}">Lista de Domiciliarios</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-      <!-- Customers  end -->
-  </aside>
-
-
-  <!-- Sidebar Right -->
-  <aside id="ms-recent-activity" class="side-nav fixed ms-aside-right ms-scrollable">
-
-  </aside>
-
-  <!-- Main Content -->
-  <main class="body-content">
-
-    <!-- Navigation Bar -->
-    <nav class="navbar ms-navbar">
-      <div class="ms-aside-toggler ms-toggler pl-0" data-target="#ms-side-nav" data-toggle="slideLeft"> <span
-          class="ms-toggler-bar bg-primary"></span>
-        <span class="ms-toggler-bar bg-primary"></span>
-        <span class="ms-toggler-bar bg-primary"></span>
-      </div>
-      <div class="logo-sn logo-sm ms-d-block-sm">
-        <a class="pl-0 ml-0 text-center navbar-brand mr-0" href="index.html"><img src="assets/img/logos/logoHnegro.png"
-            alt="logo"> </a>
-      </div>
+    <div class="container">
       
+        <br>
 
-        <li class="ms-nav-item ms-nav-user dropdown">
-          <a href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img class="ms-user-img ms-img-round float-right" src="/img/usuario1.png" alt="people">
-          </a>
-          <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
-            <li class="dropdown-menu-header">
-              <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Bienvenido, <span th:text="${username}"></span></span></h6>
-            </li>
-            
-            <li class="dropdown-menu-footer">
-              <a class="media fs-14 p-2" th:href="@{/logout}"> <span><i
-                    class="flaticon-shut-down mr-2"></i> Cerrar</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <div class="ms-toggler ms-d-block-sm pr-0 ms-nav-toggler" data-toggle="slideDown" data-target="#ms-nav-options">
-        <span class="ms-toggler-bar bg-primary"></span>
-        <span class="ms-toggler-bar bg-primary"></span>
-        <span class="ms-toggler-bar bg-primary"></span>
-      </div>
-    </nav>
-
-
-    <!-- Body Content Wrapper -->
-    <div class="ms-content-wrapper">
-      <div class="row">
         <div class="col-md-12">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb pl-0">
-              <li class="breadcrumb-item"><a href="#"><i class="material-icons">home</i> Home</a></li>
-              <li class="breadcrumb-item"><a th:href="@{/domicilio/listar}">Domicilios</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Asignar Domiciliario</li>
+            <li class="breadcrumb-item"><a th:href="@{/domiciliario}"> Home</a></li>
+            <li class="breadcrumb-item">Estado</li>
             </ol>
           </nav>
-        </div>
-
-        <div class="col-md-12">
-          <div class="ms-panel ms-panel-fh">
-            <div class="ms-panel-header">
-              <h6>Asignar Domiciliario</h6>
-            </div>
-          
-            <div class="ms-panel-body">
-              <div class="alert alert-light" role="alert">
-                <form th:action="@{/domiciliario/add}" method="post"
-                  class="row g-3 needs-validation was-validated">
-                  
-                  <input type="number" class="form-control" id="idDomicilio" th:value="*{idDomicilio}" readonly>
-
-                  <div class="col-md-6 mb-3">
-                    <label for="domiciliario">Domiciliarios</label>
-                    <select class="form-control" name="estado" id="estado" th:field="*{estado}">
-                        <option value="Preparando">Preparando
-                        </option>
-  
-                        <option value="En camino">En camino
-                      </option>
-  
-                      <option value="Entregado">Entregado
-                      </option>
-                      </select>
-                  </div><br><br>
-
-                 
-                
-                <div>
-                  <button type="submit" class="btn btn-primary">Guardar</button>
-                </div>
-                </form>
-              <!-- </table> -->
-                
-                <p th:text="${error}"></p>
-              </div>
-            </div>
+      
+      
           </div>
+
+        <div class="p-b-10">
+            <h3 class="ltext-103 cl5">
+                Cambiar el estado del domicilio
+            </h3>
         </div>
+        
+        <form th:action="@{/domiciliario/add}" method="post" class="row g-3 needs-validation was-validated">
+                  
+          <input type="number" class="form-control" id="idDomicilio" name="idDomicilio" th:value="*{idDomicilio}" readonly hidden>
 
+
+        
+          <div class="w-100 justify-content-center align-items-center">
+          
+            <select class="form-control" name="estado" id="estado">
+                <option value="Preparando">Preparando
+                </option>
+
+                <option value="En camino">En camino
+              </option>
+
+              <option value="Entregado">Entregado
+              </option>
+              </select>
+          </div><br><br>
+
+         
+        
+        <div>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+        </form>
+
+          
       </div>
-    </div>
-  </main>
-
-  <!-- MODALS -->
-
-  <!-- Quick bar -->
-  <aside id="ms-quick-bar" class="ms-quick-bar fixed ms-d-block-lg">
 
 
-  </aside>
 
 
-  <!-- SCRIPTS -->
-  <!-- Global Required Scripts Start -->
-  <script src="/dashboard/js/jquery-3.3.1.min.js"></script>
-  <script src="/dashboard/js/popper.min.js"></script>
-  <script src="/dashboard/js/bootstrap.min.js"></script>
-  <script src="/dashboard/js/perfect-scrollbar.js">
-  </script>
-  <script src="/dashboard/js/jquery-ui.min.js">
-  </script>
-  <!-- Global Required Scripts End -->
-  <!-- Page Specific Scripts Start -->
+	
+	
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/jquery/jquery-3.2.1.min.js}"></script>
+	<script th:src="@{/js/hamburger.js}"></script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/animsition/js/animsition.min.js}"></script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/bootstrap/js/popper.js}"></script>
+	<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/select2/select2.min.js}"></script>
+	<script>
+		$(".js-select2").each(function () {
+			$(this).select2({
+				minimumResultsForSearch: 20,
+				dropdownParent: $(this).next('.dropDownSelect2')
+			});
+		})
+	</script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/daterangepicker/moment.min.js}"></script>
+	<script th:src="@{/vendor/daterangepicker/daterangepicker.js}"></script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/slick/slick.min.js}"></script>
+	<script th:src="@{/js/slick-custom.js}"></script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/parallax100/parallax100.js}"></script>
+	<script>
+		$('.parallax100').parallax100();
+	</script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/MagnificPopup/jquery.magnific-popup.min.js}"></script>
+	<script>
+		$('.gallery-lb').each(function () { // the containers for all your galleries
+			$(this).magnificPopup({
+				delegate: 'a', // the selector for gallery item
+				type: 'image',
+				gallery: {
+					enabled: true
+				},
+				mainClass: 'mfp-fade'
+			});
+		});
+	</script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/isotope/isotope.pkgd.min.js}"></script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/sweetalert/sweetalert.min.js}"></script>
+	<script>
+		$('.js-addwish-b2').on('click', function (e) {
+			e.preventDefault();
+		});
 
-  <script src="/dashboard/js/Chart.bundle.min.js">
-  </script>
-  <script src="/dashboard/js/widgets.js"> </script>
-  <script src="/dashboard/js/clients.js"> </script>
-  <script src="/dashboard/js/Chart.Financial.js"> </script>
-  <script src="/dashboard/js/d3.v3.min.js">
-  </script>
-  <script src="/dashboard/js/topojson.v1.min.js">
-  </script>
-  <script src="/dashboard/js/datatables.min.js">
-  </script>
-  <script src="/dashboard/js/data-tables.js">
-  </script>
-  <!-- Page Specific Scripts Finish -->
-  <!-- Costic core JavaScript -->
-  <script src="/dashboard/js/framework.js"></script>
-  <!-- Settings -->
-  <script src="/dashboard/js/settings.js"></script>
+		$('.js-addwish-b2').each(function () {
+			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+			$(this).on('click', function () {
+				swal(nameProduct, "se a añadido a favoritos !", "success");
+
+				$(this).addClass('js-addedwish-b2');
+				$(this).off('click');
+			});
+		});
+
+		$('.js-addwish-detail').each(function () {
+			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+
+			$(this).on('click', function () {
+				swal(nameProduct, "se a añadido a favoritos !", "success");
+
+				$(this).addClass('js-addedwish-detail');
+				$(this).off('click');
+			});
+		});
+
+		/---------------------------------------------/
+
+		$('.js-addcart-detail').each(function () {
+			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+			$(this).on('click', function () {
+				swal(nameProduct, "is added to cart !", "success");
+			});
+		});
+
+	</script>
+	<!--===============================================================================================-->
+	<script th:src="@{/vendor/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
+	<script>
+		$('.js-pscroll').each(function () {
+			$(this).css('position', 'relative');
+			$(this).css('overflow', 'hidden');
+			var ps = new PerfectScrollbar(this, {
+				wheelSpeed: 1,
+				scrollingThreshold: 1000,
+				wheelPropagation: false,
+			});
+
+			$(window).on('resize', function () {
+				ps.update();
+			})
+		});
+	</script>
+	<!--===============================================================================================-->
+	<script th:src="@{/js/main.js}"></script>
 
 </body>
-
 
 </html>

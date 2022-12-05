@@ -166,7 +166,7 @@ public class DomiciliarioController {
 
 
     @PostMapping("/add")
-    public String update(@Valid Long idDomicilio, @Valid String estado, Model m) {
+    public String update(@Valid Long idDomicilio, @Valid String estado) {
        
        
             Domicilio domicilio = domiciliod.findOne(idDomicilio);
@@ -175,7 +175,6 @@ public class DomiciliarioController {
 
             domicilioRepository.save(domicilio);
             
-            m.addAttribute("estado", estado);
 
         return "redirect:";
     }
